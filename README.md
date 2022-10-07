@@ -1,2 +1,2 @@
-# beautibodegav0
+# beautibodega-v0
 Beauti Bodega MVP
