@@ -52,11 +52,11 @@ export default function Login() {
             </div>
                 <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label>Email</label>
-                    <input className='rounded-lg border-2 border-zinc-500 mt-2 p-2 focus:border-gray-200 ' type="text" onChange={(e)=>setEmail(e.target.value)}/>
+                    <input name="email" className='rounded-lg border-2 border-zinc-500 mt-2 p-2 focus:border-gray-200 ' type="text" onChange={(e)=>setEmail(e.target.value)}/>
                 </div>
                 <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label>Password</label>
-                    <input className='p-2 rounded-lg border-2 border-zinc-500 mt-2 focus:border-gray-200  ' type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                    <input name="password" className='p-2 rounded-lg border-2 border-zinc-500 mt-2 focus:border-gray-200  ' type="password" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label >Re-Enter Password</label>
@@ -67,7 +67,7 @@ export default function Login() {
                     <p className='text-sm'>Forgot Password</p>
                 </div> */}
                 <button className='w-full my-5 py-3 bg-olive shadow-lg  hover:bg-tan text-white  rounded-md' onClick={(e)=>handleSubmit(e)}>Sign up</button>
-                <div className="text-sm">Already have an account? <a href="#" className="text-gray-500 hover:text-blue-700 font-semibold">Login</a></div>
+                <div className="text-sm">Already have an account? <Link to='/login'><a className="text-gray-500 hover:text-blue-700 font-semibold">Login</a></Link></div>
                 
             </form>
             
