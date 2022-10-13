@@ -1,4 +1,5 @@
-const JwtStrategy = require('passport-jwt')
+const JwtStrategy = require('passport-jwt').Strategy
+const LocalStrategy = require('passport-local').Strategy
 // const GoogleStrategy = require('passport-google-oidc')
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
@@ -8,7 +9,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const secret = process.env.JWT_SECRET
+const opts = {
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    secretOrKey: process.env.JWT_SECRET,
+}
 
 //! replace these variables with .env variables
 // GOOGLE_CLIENT_ID = '907968964497-e8jrp7mfu09fadm1ep4iibefm0t6tkgm.apps.googleusercontent.com'
@@ -16,28 +20,21 @@ const secret = process.env.JWT_SECRET
 
 const init = (passport: any) => {
 
-    // Local authentication strategy
-    passport.use(new JwtStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
-
-        const opts = {
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: process.env.JWT_SECRET,
-        }
-
+    //* Local Strategy *\\
+    passport.use(new LocalStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
         try {
             // check if there's a user with that email
-            let records = await db.users.findAll({ where: { email: email }})
+            let records = await db.users.findAll({where: {email:email}})
 
             if (records){
                 //found a matching email
                 let record = records[0]
 
                 //checking if passwords match
-                bcrypt.compare(password, record.password, (err: any, match: any) => {
+                bcrypt.compare(password, record.password, (err, match) => {
                     if(match){
                         console.log('passwords match!');
-                        const token = 'Bearer ' + jwt.sign(record, `${process.env.JWT_SECRET}`, { expiresIn: '1d' }) //! Put secret in env
-                        return done(null, token)
+                        return done(null, record)
                     }
                     else{
                         console.log('Passwords didnt match');
@@ -56,6 +53,35 @@ const init = (passport: any) => {
             //db error
             return done(error)
         }
+    }))
+
+    //* JWT Strategy *\\
+    passport.use(new JwtStrategy(opts, async (payload: any, done: any)=>{
+
+        try{
+    
+            let userID = payload.sub 
+    
+            //check if user is in db
+    
+            let user = await db.users.findByPk(userID);  //{} or null 
+    
+            if(user){
+                return done(null, user) //place the user object on req.user
+                //req.user  = {id, email, password}
+            }
+            else{
+                //no user found
+                return done(null, false)
+    
+            }
+        }
+        catch(error){
+            //error reading db 
+    
+            return done(error)
+        }
+        
     }))
 
     //! Coming Soon!!

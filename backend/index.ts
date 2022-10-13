@@ -4,7 +4,7 @@ import session from 'express-session'
 import * as bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
-require('./auth/passport-config')
+// require('./auth/passport-config')
 
 dotenv.config();
 
@@ -21,8 +21,10 @@ app.use(bodyParser.json());
 //   })
 // )
 
-app.use(cookieParser())
+// app.use(cookieParser())
+require('./auth/passport-config')(passport)
 app.use(passport.initialize())
+
 // app.use(passport.session())
 
 app.get('/api', (req: Request, res: Response) => {
