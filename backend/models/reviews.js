@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     reviews: DataTypes.STRING,
     images: DataTypes.STRING,
-    reviewForID: DataTypes.UUID,
+    prodBrandID: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'reviews',
