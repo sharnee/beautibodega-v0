@@ -36,9 +36,6 @@ module.exports = {
       popular_brand: {
         type: Sequelize.BOOLEAN
       },
-      reviews: {
-        type: Sequelize.STRING
-      },
       video_link: {
         type: Sequelize.STRING
       },

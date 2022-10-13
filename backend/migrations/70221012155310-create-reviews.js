@@ -20,15 +20,7 @@ module.exports = {
       images: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      reviewsForID: {
+      prodBrandID: {
         type: Sequelize.UUID,
         references: {
           model: 'brands',
@@ -38,7 +30,15 @@ module.exports = {
           model: 'products',
           key: 'id'
         }
-      }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
     });
   },
   async down(queryInterface, Sequelize) {

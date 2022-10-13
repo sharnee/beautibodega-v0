@@ -51,9 +51,6 @@ module.exports = {
       product_type: {
         type: Sequelize.STRING
       },
-      reviews: {
-        type: Sequelize.STRING
-      },
       sold: {
         type: Sequelize.STRING
       },

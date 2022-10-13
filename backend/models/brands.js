@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // models.brands.belongsToMany(models.users, {through: models.brandAdmins})
-      models.brands.hasMany(models.reviews, {foreignKey: 'reviewForID'})
+      models.brands.hasMany(models.reviews, {foreignKey: 'prodBrandID'})
     }
   }
   brands.init({
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     collections: DataTypes.STRING,
     featured_products: DataTypes.STRING,
     popular_brand: DataTypes.BOOLEAN,
-    reviews: DataTypes.STRING,
     video_link: DataTypes.STRING,
     verified: DataTypes.BOOLEAN,
     founder: DataTypes.UUID
