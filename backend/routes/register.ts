@@ -15,24 +15,30 @@ router.post('/register', async (req: Request, res: Response) => {
       // scrape info from the header
       let { email, password, name, gender } = req.body
 
-      //encrypt password
-      password = bcrypt.hashSync(password, 10)
 
       console.log(db.users)
       // create user in db
       let user = await db.users.create({
         id: uuidv4(),
         email,
-        password,
+        password: bcrypt.hashSync(password, 10),
         name,
         gender,
       })
 
-      res.status(200).send(user)
+      res.status(200).send({
+        seccess: true,
+        message: 'User Created successfully',
+        user
+      })
 
     } catch (error) {
       console.log(error);
-      res.status(404).send(error)
+      res.status(404).send({
+        success: false,
+        message: `Something went wrong!`,
+        error
+      })
     }
   });
 

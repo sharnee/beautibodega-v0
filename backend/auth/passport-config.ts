@@ -1,7 +1,14 @@
-const localStrategy = require('passport-local')
-const GoogleStrategy = require('passport-google-oidc')
-const bcrypt = require('bcryptjs');
+const JwtStrategy = require('passport-jwt')
+// const GoogleStrategy = require('passport-google-oidc')
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken'
 const db = require('../models')
+import { ExtractJwt } from 'passport-jwt';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const secret = process.env.JWT_SECRET
 
 //! replace these variables with .env variables
 // GOOGLE_CLIENT_ID = '907968964497-e8jrp7mfu09fadm1ep4iibefm0t6tkgm.apps.googleusercontent.com'
@@ -10,10 +17,16 @@ const db = require('../models')
 const init = (passport: any) => {
 
     // Local authentication strategy
-    passport.use(new localStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
+    passport.use(new JwtStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
+
+        const opts = {
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            secretOrKey: process.env.JWT_SECRET,
+        }
+
         try {
             // check if there's a user with that email
-            let records = await db.users.findAll({where: {email:email}})
+            let records = await db.users.findAll({ where: { email: email }})
 
             if (records){
                 //found a matching email
@@ -23,7 +36,8 @@ const init = (passport: any) => {
                 bcrypt.compare(password, record.password, (err: any, match: any) => {
                     if(match){
                         console.log('passwords match!');
-                        return done(null, record)
+                        const token = 'Bearer ' + jwt.sign(record, `${process.env.JWT_SECRET}`, { expiresIn: '1d' }) //! Put secret in env
+                        return done(null, token)
                     }
                     else{
                         console.log('Passwords didnt match');

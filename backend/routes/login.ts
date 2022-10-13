@@ -6,11 +6,9 @@ const router = Router();
 
 let db = require('../models')
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'  
-
-}))
+router.post('/login', (req, res) => {
+    db.users.fi
+})
 
 module.exports = router;
 

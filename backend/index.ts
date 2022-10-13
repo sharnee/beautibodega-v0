@@ -4,6 +4,7 @@ import session from 'express-session'
 import * as bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
+require('./auth/passport-config')
 
 dotenv.config();
 
@@ -12,17 +13,17 @@ const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
-app.use(
-  session({
-    secret: 'adjkfhaljskdfhalskdjfasdlgkjhalsgfabweuybfskdjfhgaskjdgk',
-    resave: true,
-    saveUninitialized: true,
-  })
-)
+// app.use(
+//   session({
+//     secret: 'adjkfhaljskdfhalskdjfasdlgkjhalsgfabweuybfskdjfhgaskjdgk',
+//     resave: true,
+//     saveUninitialized: true,
+//   })
+// )
 
 app.use(cookieParser())
 app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.session())
 
 app.get('/api', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
