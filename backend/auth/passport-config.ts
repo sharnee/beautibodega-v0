@@ -1,4 +1,4 @@
-const JwtStrategy = require('passport-jwt')
+const JwtStrategy = require('passport-jwt').Strategy
 // const GoogleStrategy = require('passport-google-oidc')
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
@@ -8,7 +8,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const secret = process.env.JWT_SECRET
+const opts = {
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    secretOrKey: process.env.JWT_SECRET,
+}
 
 //! replace these variables with .env variables
 // GOOGLE_CLIENT_ID = '907968964497-e8jrp7mfu09fadm1ep4iibefm0t6tkgm.apps.googleusercontent.com'
@@ -17,29 +20,27 @@ const secret = process.env.JWT_SECRET
 const init = (passport: any) => {
 
     // Local authentication strategy
-    passport.use(new JwtStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
-
-        const opts = {
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: process.env.JWT_SECRET,
-        }
-
+    passport.use(new JwtStrategy(opts, async (payload: any, done: any) => {
+        console.log('In the auth')
         try {
             // check if there's a user with that email
             let records = await db.users.findAll({ where: { email: email }})
 
+            console.log('CKPoint 1')
             if (records){
                 //found a matching email
                 let record = records[0]
-
+                console.log('CKPoint 2')
                 //checking if passwords match
                 bcrypt.compare(password, record.password, (err: any, match: any) => {
                     if(match){
+                        console.log('CKPoint 3')
                         console.log('passwords match!');
                         const token = 'Bearer ' + jwt.sign(record, `${process.env.JWT_SECRET}`, { expiresIn: '1d' }) //! Put secret in env
                         return done(null, token)
                     }
                     else{
+                        console.log('CKPoint 4')
                         console.log('Passwords didnt match');
                         return done(null, false)
                     }
@@ -47,12 +48,13 @@ const init = (passport: any) => {
 
             }
             else{
-
+                console.log('CKPoint 5')
                 //username doesnt match
                 return done(null, false)
             }
 
         } catch (error) {
+            console.log(error)
             //db error
             return done(error)
         }
