@@ -14,6 +14,7 @@ import store from './slice/store';
 import App from './App';
 import Upload from './components/test/uploadImage';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 
 // const store = configureStore({
@@ -41,6 +42,7 @@ root.render(
               <Route path="/" element={<App />}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/upload" element={<Upload />}/>
+              <Route path="/signup" element={<SignUp />}/>
 
             </Routes>
           {/* </BaseLayout> */}

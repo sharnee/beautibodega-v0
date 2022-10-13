@@ -11,7 +11,7 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [rePassword, setRePassword] = useState("");
+
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -19,20 +19,8 @@ export default function Login() {
     const handleSubmit = (e: any)=>{
     
         e.preventDefault()
-        if(password === rePassword){
-
             dispatch(authActions.signUp({email: email, password: password}))
             navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
-
-        } else{
-
-            console.log('error: not matching passwords')
-
-        }
-    //     console.log('running');
-    //     dispatch(signUp({email:email, password: password},()=>{
-    //        navigate("/welcome")
-    //     }))
     
       }
 
@@ -58,16 +46,16 @@ export default function Login() {
                     <label>Password</label>
                     <input className='p-2 rounded-lg border-2 border-zinc-500 mt-2 focus:border-gray-200  ' type="password" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
-                <div className='flex flex-col text-gray-500 py-2 text-sm'>
+                {/* <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label >Re-Enter Password</label>
                     <input className='p-2 rounded-lg border-2 border-zinc-500 mt-2 focus:border-gray-200  ' type="password" onChange={(e)=>setRePassword(e.target.value)}/>
-                </div>
-                {/* <div className='flex justify-between text-gray-400 py-2'>
-                    <p className='flex items-center text-sm'><input className='mr-2' type="checkbox" /> Remember Me</p>
-                    <p className='text-sm'>Forgot Password</p>
                 </div> */}
-                <button className='w-full my-5 py-3 bg-olive shadow-lg  hover:bg-tan text-white  rounded-md' onClick={(e)=>handleSubmit(e)}>Sign up</button>
-                <div className="text-sm">Already have an account? <a href="#" className="text-gray-500 hover:text-blue-700 font-semibold">Login</a></div>
+                <div className='flex justify-between text-gray-400 py-2'>
+                    <p className='flex items-center text-sm'><input className='mr-2' type="checkbox" /> Remember Me</p>
+                    <p className='text-sm'>Forgot Password </p>  
+                </div>
+                <button className='w-full my-5 py-3 bg-olive shadow-lg  hover:bg-tan text-white  rounded-md' onClick={(e)=>handleSubmit(e)}>Login</button>
+                <div className="text-sm">Don't have an account? <Link to='/signup'><a className="text-gray-500 hover:text-blue-700 font-semibold">Sign Up</a></Link></div>
                 
             </form>
             
