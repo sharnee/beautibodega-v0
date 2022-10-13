@@ -26,8 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     following: DataTypes.STRING,
     tags: DataTypes.STRING,
     role: DataTypes.STRING,
-    full_name: DataTypes.STRING,
-    created_at: DataTypes.STRING,
     gender: DataTypes.STRING,
     reviews: DataTypes.STRING
   }, {

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // models.brands.belongsToMany(models.users, {through: models.brandAdmins})
+      models.brands.hasMany(models.reviews, {foreignKey: 'reviewForID'})
     }
   }
   brands.init({

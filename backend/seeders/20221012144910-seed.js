@@ -15,33 +15,33 @@ module.exports = {
      * }], {});
     */
 
-    //  await queryInterface.bulkInsert('roles', [
-    //   {
-    //     id:'Business',
-    //     role_name: 'Business',
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   },
-    //   {
-    //     id: 'Super Admin',
-    //     role_name: 'Super Admin',
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   },
-    //   {
-    //     id: 'Shopper',
-    //     role_name: 'Shopper',
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   },
-    //   {
-    //     id: 'Influencer',
-    //     role_name: 'Influencer',
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   }
+     await queryInterface.bulkInsert('roles', [
+      {
+        id:'Business',
+        role_name: 'Business',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 'Super Admin',
+        role_name: 'Super Admin',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 'Shopper',
+        role_name: 'Shopper',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 'Influencer',
+        role_name: 'Influencer',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
 
-    // ], {});
+    ], {});
 
     await queryInterface.bulkInsert('products', [
       {

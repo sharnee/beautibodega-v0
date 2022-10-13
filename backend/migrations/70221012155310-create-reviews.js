@@ -27,6 +27,17 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      reviewsForID: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'brands',
+          key: 'id'
+        },
+        references: {
+          model: 'products',
+          key: 'id'
+        }
       }
     });
   },

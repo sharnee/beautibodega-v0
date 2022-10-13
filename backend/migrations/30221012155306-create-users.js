@@ -46,12 +46,6 @@ module.exports = {
           key: 'id'
         }
       },
-      full_name: {
-        type: Sequelize.STRING
-      },
-      created_at: {
-        type: Sequelize.STRING
-      },
       gender: {
         type: Sequelize.STRING
       },
