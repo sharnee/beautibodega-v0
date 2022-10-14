@@ -1,12 +1,13 @@
 // import Login from './components/Login'
-import Admin from './components/Admin';
+
 
 
 function App() {
   return (
-    <div>
-      <Admin />
-
+    <div className="bg-white">
+    <div>Shop The Beauty Aisles</div> 
+    <div></div>
+    
     </div>
   );
 }

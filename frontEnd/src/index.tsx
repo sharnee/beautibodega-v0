@@ -12,9 +12,11 @@ import store from './slice/store';
 
 // import BaseLayout from './components/layout/BaseLayout';
 import App from './App';
+import BL from './components/layout/BasicLayout';
 import Upload from './components/test/uploadImage';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Admin from './components/Admin';
 
 
 // const store = configureStore({
@@ -38,11 +40,12 @@ root.render(
         <Router>
           {/* <BaseLayout> */}
             <Routes>
-
-              <Route path="/" element={<App />}/>
+              
+              <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/login" element={<Login />}/>
-              <Route path="/upload" element={<Upload />}/>
               <Route path="/signup" element={<SignUp />}/>
+              <Route path="/upload" element={<Upload />}/>
+              <Route path="/admin" element={<Admin />}/>
 
             </Routes>
           {/* </BaseLayout> */}
