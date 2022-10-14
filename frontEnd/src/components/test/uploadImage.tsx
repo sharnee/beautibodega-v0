@@ -28,6 +28,7 @@ const UploadImage = () => {
       if (!originalFile) throw new Error('Failed to retrive file');
       new Compressor(originalFile, {
           quality: 0.6,
+          maxWidth: 500,
           success: (compressdResult)=>{ 
             setCompressedFile(compressdResult)
             setconpressedFileURL(URL.createObjectURL(compressdResult))

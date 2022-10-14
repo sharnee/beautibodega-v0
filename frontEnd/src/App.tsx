@@ -4,9 +4,10 @@
 
 function App() {
   return (
-    <div>
-      
-
+    <div className="bg-white">
+    <div>Shop The Beauty Aisles</div> 
+    <div></div>
+    
     </div>
   );
 }

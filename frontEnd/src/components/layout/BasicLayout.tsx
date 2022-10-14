@@ -5,17 +5,18 @@ import Footer from './Footer';
 
 const BasicLayout = (props: any) => {
   return (
-    <div className='  bg-gray-800'>
+    <div className=' bg-gray-800 '>
 
-        <div className='container mx-auto px-4'>
+        <div className='container mx-auto px-4 '>
 
             <SeachHeader/>
             <SubHeader/>
-            {props.children}
             
 
         </div>
-
+        <div className='container mx-auto px-4 bg-white'>
+        {props.children}
+        </div>
         <Footer/>
 
     </div>
