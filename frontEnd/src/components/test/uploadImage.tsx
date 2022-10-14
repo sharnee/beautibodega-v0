@@ -28,10 +28,11 @@ const UploadImage = () => {
       if (!originalFile) throw new Error('Failed to retrive file');
       new Compressor(originalFile, {
           quality: 0.6,
-          maxWidth: 500,
+          maxWidth: 400,
           success: (compressdResult)=>{ 
             setCompressedFile(compressdResult)
             setconpressedFileURL(URL.createObjectURL(compressdResult))
+            console.log(conpressedFileURL);
             console.log(compressdResult);
           } //setting compressedFile as the compressed file so can be use by the click handler
       })
@@ -39,10 +40,10 @@ const UploadImage = () => {
 
   return (
     <div>
-      {originalFile ? <img src={originalFileURL} alt="uploadedImage" width="500"/>:<img src="/default-placeholder-image.png" alt="placeholderImage" width="500"/>}
+      {originalFile ? <img src={originalFileURL} alt="uploadedImage" width="400"/>:<img src="/default-placeholder-image.png" alt="placeholderImage" width="400"/>}
         <input type="file" onChange={fileSelectedHandler}/>
         <button onClick={fileUploadHandler}>Upload</button>
-        {compressedFile ?  <img src={conpressedFileURL} alt="uploadedImage" width="500"/>:<img src="/default-placeholder-image.png" alt="placeholderImage" width="500" />}
+        {compressedFile ?  <img src={conpressedFileURL} alt="uploadedImage" width="400"/>:<img src="/default-placeholder-image.png" alt="placeholderImage" width="400" />}
         
     </div>
   )

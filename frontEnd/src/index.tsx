@@ -19,6 +19,7 @@ import SignUp from './components/SignUp';
 import Admin from './components/Admin';
 
 
+
 // const store = configureStore({
 //   reducer: {
 //     ToDo put reducers here
@@ -42,9 +43,9 @@ root.render(
             <Routes>
               
               <Route path="/" element={<BL><App /></BL>}/>
+              <Route path="/upload" element={<BL><Upload /></BL>}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
-              <Route path="/upload" element={<Upload />}/>
               <Route path="/admin" element={<Admin />}/>
 
             </Routes>
