@@ -17,6 +17,8 @@ import Upload from './components/test/uploadImage';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Admin from './components/Admin';
+import Profile from './components/Profile/Profile';
+import EditProfile from './components/Profile/EditProfile';
 
 
 
@@ -44,6 +46,8 @@ root.render(
               
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
+              <Route path="/profile" element={<BL><Profile /></BL>}/>
+              <Route path="/editprofile" element={<BL><EditProfile /></BL>}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
               <Route path="/admin" element={<Admin />}/>
