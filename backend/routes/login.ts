@@ -28,9 +28,9 @@ router.post('/login', passport.authenticate('local', {session:false}),  (req, re
     //req.user 
     let { email } = req.body
     let user = db.users.findAll({where: {email: email}})
-    let userID = user.id
+    
 
-    res.json({token: token(req.user), id: userID})
+    res.json({token: token(req.user), user: user})
 })
 
 module.exports = router;

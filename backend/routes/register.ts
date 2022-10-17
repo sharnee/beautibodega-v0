@@ -13,7 +13,7 @@ router.post('/register', async (req: Request, res: Response) => {
     try {
       // console.log(req.body)
       // scrape info from the header
-      let { email, password, name, gender } = req.body
+      let { email, password, name } = req.body
 
 
       console.log(db.users)
@@ -23,7 +23,7 @@ router.post('/register', async (req: Request, res: Response) => {
         email,
         password: bcrypt.hashSync(password, 10),
         name,
-        gender,
+        
       })
 
       res.status(200).send({
