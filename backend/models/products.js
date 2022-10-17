@@ -15,20 +15,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   products.init({
+    name: DataTypes.STRING,
     sku: DataTypes.STRING,
     collection: DataTypes.STRING,
-    price: DataTypes.STRING,
-    sales_price: DataTypes.STRING,
-    subtext: DataTypes.STRING,
-    description: DataTypes.STRING,
-    quantity: DataTypes.STRING,
-    image: DataTypes.STRING,
+    price: DataTypes.FLOAT,
+    sales_price: DataTypes.FLOAT,
+    subtext: DataTypes.STRING(10000),
+    description: DataTypes.STRING(10000),
+    quantity: DataTypes.INTEGER,
+    images: DataTypes.STRING(10000),
     thumbnail: DataTypes.STRING,
-    instructions: DataTypes.STRING,
-    ingredients: DataTypes.STRING,
-    concern_list: DataTypes.STRING,
+    instructions: DataTypes.STRING(10000),
+    ingredients: DataTypes.STRING(10000),
+    concern_list: DataTypes.STRING(10000),
     product_type: DataTypes.STRING,
-    sold: DataTypes.STRING
+    sold: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'products',

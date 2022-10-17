@@ -14,6 +14,7 @@ import store from './slice/store';
 import App from './App';
 import BL from './components/layout/BasicLayout';
 import Upload from './components/test/uploadImage';
+import TestData from './components/test/displayBackendData'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Admin from './components/Admin';
@@ -44,6 +45,7 @@ root.render(
               
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
+              <Route path="/testData" element={<TestData />}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
               <Route path="/admin" element={<Admin />}/>
