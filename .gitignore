@@ -31,4 +31,4 @@ yarn-error.log*
 .netlify
 
 # Placeholder Images
-**/placeholderAssets
+# **/placeholderAssets
