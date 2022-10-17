@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
+import axios from 'axios'
 
 import {authActions} from '../slice/AuthSlice';
 
@@ -16,11 +17,12 @@ export default function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const handleSubmit = (e: any)=>{
+    const handleSubmit = async (e: any)=>{
     
         e.preventDefault()
-            dispatch(authActions.signUp({email: email, password: password}))
-            navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
+        let response = await axios.post('/login', {email: email, password: password})
+        dispatch(authActions.login(response))
+        navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
     
       }
 

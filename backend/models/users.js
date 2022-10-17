@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     following: DataTypes.STRING,
     tags: DataTypes.STRING,
     role: DataTypes.STRING,
-    gender: DataTypes.STRING,
     reviews: DataTypes.STRING
   }, {
     sequelize,

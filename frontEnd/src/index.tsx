@@ -12,6 +12,7 @@ import store from './slice/store';
 
 // import BaseLayout from './components/layout/BaseLayout';
 import App from './App';
+import Auth from './components/ReqAuth';
 import BL from './components/layout/BasicLayout';
 import Upload from './components/test/uploadImage';
 import Login from './components/Login';
@@ -46,8 +47,8 @@ root.render(
               
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
-              <Route path="/profile" element={<BL><Profile /></BL>}/>
-              <Route path="/editprofile" element={<BL><EditProfile /></BL>}/>
+              <Route path="/profile" element={<Auth><BL><Profile /></BL></Auth>}/>
+              <Route path="/editprofile" element={<Auth><BL><EditProfile /></BL></Auth>}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
               <Route path="/admin" element={<Admin />}/>

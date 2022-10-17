@@ -23,12 +23,12 @@ const token = (userRecord: any) => {
 //     }
 // )
 
-router.post('/login', passport.authenticate('local', {session:false}),  (req, res)=>{
+router.post('/login', passport.authenticate('local', {session:false}), async (req, res)=>{
 
     //req.user 
     let { email } = req.body
-    let user = db.users.findAll({where: {email: email}})
-    
+    let user = await db.users.findAll({where: {email: email}})
+    console.log(user)
 
     res.json({token: token(req.user), user: user})
 })
