@@ -8,6 +8,9 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
+      name: {
+        type: Sequelize.STRING
+      },
       sku: {
         type: Sequelize.STRING
       },
@@ -15,22 +18,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.FLOAT
       },
       sales_price: {
-        type: Sequelize.STRING
+        type: Sequelize.FLOAT
       },
       subtext: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
       },
       quantity: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
-      image: {
-        type: Sequelize.STRING
+      images: {
+        type: Sequelize.STRING(10000)
       },
       thumbnail: {
         type: Sequelize.UUID,
@@ -40,19 +43,19 @@ module.exports = {
         }
       },
       instructions: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
       },
       ingredients: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
       },
       concern_list: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
       },
       product_type: {
         type: Sequelize.STRING
       },
       sold: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
