@@ -8,7 +8,7 @@ const authSlice = createSlice({
     initialState: {
         token: "",
         error: "",
-        user: ""
+        user: {}
     },
     reducers: {
         loadUserToken: (state,action)=>{
