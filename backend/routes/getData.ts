@@ -1,9 +1,23 @@
 import express, { Express, Request, Response, Router } from 'express'
+import { v4 as uuidv4 } from 'uuid'
+var FormData = require('form-data');
 
 
 const router = Router();
 
 let db = require('../models')
+
+router.post('/uploadImage', async(req, res)=>{
+
+    const {URL, imageName} = req.body
+
+    let image = await db.images.create({
+        id: imageName,
+        image: URL
+      })
+
+
+})
 
 router.get('/getAllProducts', async(req, res)=>{
 
