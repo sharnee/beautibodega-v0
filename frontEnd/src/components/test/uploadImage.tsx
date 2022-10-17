@@ -60,6 +60,8 @@ const UploadImage = () => {
             setconpressedFileURL(URL.createObjectURL(compressdResult))
             console.log(conpressedFileURL);
             console.log(compressdResult);
+            
+
           } //setting compressedFile as the compressed file so can be use by the click handler
       })
     }

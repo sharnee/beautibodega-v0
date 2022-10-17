@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-
 
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
         token: "",
-        error: ""
+        error: "",
+        user: []
     },
     reducers: {
         loadUserToken: (state,action)=>{
@@ -21,10 +20,10 @@ const authSlice = createSlice({
                 try {
                     console.log(action.payload, "payload")
                     let response = await axios.post('/register', action.payload)
-                    console.log(response)
-                    let jwt = response.data.token
+                    // console.log(response)
+                    // let jwt = response.data.token
 
-                    state.token = jwt
+                    // state.token = jwt
 
                 } catch (error) {
                    
@@ -52,15 +51,27 @@ const authSlice = createSlice({
 
             console.log("token timeout and forgot password needs to be setup")
 
-            async function name() {
+            function name() {
 
                 try {
                     
-                    let response = await axios.post('/login', action.payload)
-                    console.log(response)
-                    let jwt = response.data.token
+                    // let response = await axios.post('/login', action.payload)
+                    // console.log(response)
+                    let jwt = action.payload.data.token
+                    // let user = response.data.user
+
+                    console.log(action.payload.data.user);
+                    console.log(jwt)
+                    // console.log(user[0]);
+                    
+                    // state.user = user
+
+                    // console.log(state.user);
     
                     state.token = jwt
+
+                    
+                    console.log(state.token)
 
                 } catch (error) {
                     
