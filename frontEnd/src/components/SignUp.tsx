@@ -22,7 +22,7 @@ export default function Login() {
         if(password === rePassword){
 
             dispatch(authActions.signUp({email: email, password: password}))
-            navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
+            navigate("/login") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
 
         } else{
 

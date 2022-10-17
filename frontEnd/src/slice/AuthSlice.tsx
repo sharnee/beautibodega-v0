@@ -7,7 +7,8 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         token: "",
-        error: ""
+        error: "",
+        user: ""
     },
     reducers: {
         loadUserToken: (state,action)=>{
@@ -21,10 +22,10 @@ const authSlice = createSlice({
                 try {
                     console.log(action.payload, "payload")
                     let response = await axios.post('/register', action.payload)
-                    console.log(response)
-                    let jwt = response.data.token
+                    // console.log(response)
+                    // let jwt = response.data.token
 
-                    state.token = jwt
+                    // state.token = jwt
 
                 } catch (error) {
                    
@@ -45,6 +46,8 @@ const authSlice = createSlice({
                     let response = await axios.post('/login', action.payload)
                     console.log(response)
                     let jwt = response.data.token
+                    
+                    state.user = response.data.user
     
                     state.token = jwt
 

@@ -26,8 +26,11 @@ const token = (userRecord: any) => {
 router.post('/login', passport.authenticate('local', {session:false}),  (req, res)=>{
 
     //req.user 
+    let { email } = req.body
+    let user = db.users.findAll({where: {email: email}})
+    let userID = user.id
 
-    res.json({token: token(req.user)})
+    res.json({token: token(req.user), id: userID})
 })
 
 module.exports = router;
