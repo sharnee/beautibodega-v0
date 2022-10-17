@@ -22,22 +22,19 @@ module.exports = {
         }
       },
       favorite_products: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100000)
       },
       favorite_brands: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100000)
       },
       name: {
         type: Sequelize.STRING
       },
       followers: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10485760)
       },
       following: {
-        type: Sequelize.STRING
-      },
-      tags: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10485760)
       },
       role: {
         type: Sequelize.STRING,
@@ -46,11 +43,11 @@ module.exports = {
           key: 'id'
         }
       },
-      gender: {
-        type: Sequelize.STRING
-      },
       reviews: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000)
+      },
+      tags: {
+        type: Sequelize.STRING(10000)
       },
       createdAt: {
         allowNull: false,

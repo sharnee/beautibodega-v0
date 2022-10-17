@@ -16,17 +16,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   users.init({
+    secondary_id: DataTypes.UUID,
     password: DataTypes.STRING,
     email: DataTypes.STRING,
     profile_picture: DataTypes.UUID,
-    favorite_products: DataTypes.STRING,
-    favorite_brands: DataTypes.STRING,
+    favorite_products: DataTypes.STRING(100000),
+    favorite_brands: DataTypes.STRING(100000),
     name: DataTypes.STRING,
-    followers: DataTypes.STRING,
-    following: DataTypes.STRING,
-    tags: DataTypes.STRING,
+    followers: DataTypes.STRING(10485760),
+    following: DataTypes.STRING(10485760),
     role: DataTypes.STRING,
-    reviews: DataTypes.STRING
+    reviews: DataTypes.STRING(10000),
+    tags: DataTypes.STRING(10000)
   }, {
     sequelize,
     modelName: 'users',

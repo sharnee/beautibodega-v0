@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
       },
       image: {
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
