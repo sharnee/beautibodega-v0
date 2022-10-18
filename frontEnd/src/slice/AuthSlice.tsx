@@ -57,16 +57,17 @@ const authSlice = createSlice({
 
                 try {
                     
+                    console.log(action.payload)
                     // let response = await axios.post('/login', action.payload)
                     // console.log(response)
                     let jwt = action.payload.data.token
-                    // let user = response.data.user
+                    let user = action.payload.data.user[0]
 
                     console.log(action.payload.data.user);
                     console.log(jwt)
                     // console.log(user[0]);
                     
-                    // state.user = user
+                    state.user = user
 
                     // console.log(state.user);
     
