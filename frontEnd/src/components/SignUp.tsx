@@ -9,6 +9,7 @@ import loginImg from '../assets/login.jpg'
 
 export default function Login() {
 
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
@@ -21,8 +22,8 @@ export default function Login() {
         e.preventDefault()
         if(password === rePassword){
 
-            dispatch(authActions.signUp({email: email, password: password}))
-            navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
+            dispatch(authActions.signUp({name: name, email: email, password: password}))
+            navigate("/login") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
 
         } else{
 
@@ -50,6 +51,10 @@ export default function Login() {
                 <span className=" mx-4 text-gray-400 text-sm">or</span>
                 <div className=" border-t w-20 border-tan"></div>
             </div>
+            <div className='flex flex-col text-gray-500 py-2 text-sm'>
+                    <label>Name</label>
+                    <input name="email" className='rounded-lg border-2 border-zinc-500 mt-2 p-2 focus:border-gray-200 ' type="text" onChange={(e)=>setName(e.target.value)}/>
+                </div>
                 <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label>Email</label>
                     <input name="email" className='rounded-lg border-2 border-zinc-500 mt-2 p-2 focus:border-gray-200 ' type="text" onChange={(e)=>setEmail(e.target.value)}/>

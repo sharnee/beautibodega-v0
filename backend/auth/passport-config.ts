@@ -40,7 +40,7 @@ const init = (passport: any) => {
 
             }
             else{
-
+                console.log('username dosent match')
                 //username doesnt match
                 return done(null, false)
             }
