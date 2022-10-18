@@ -18,6 +18,7 @@ import TestData from './components/test/displayBackendData'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Admin from './components/Admin';
+import Shop from './components/Shop';
 
 
 
@@ -43,6 +44,7 @@ root.render(
           {/* <BaseLayout> */}
             <Routes>
               
+              <Route path="/Shop" element={<BL><Shop /></BL>}/>
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
               <Route path="/testData" element={<TestData />}/>
