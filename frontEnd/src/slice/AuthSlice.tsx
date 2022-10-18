@@ -49,6 +49,20 @@ const authSlice = createSlice({
             }
             name()
         },
+        uploadProfileImage: (state,action)=>{
+            async function name() {
+                try {
+
+                    let response = await axios.post('/uploadImage', action.payload)
+
+                } catch (error) {
+                   
+                    console.log(error);
+
+                }
+            }
+            name()
+        },
         login: (state,action)=>{
 
             console.log("token timeout and forgot password needs to be setup")
