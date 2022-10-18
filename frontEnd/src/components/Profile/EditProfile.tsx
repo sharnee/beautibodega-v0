@@ -1,8 +1,58 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react';
+import Compressor from 'compressorjs';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { storage } from '../../firebase';
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
+
+import {authActions} from '../../slice/AuthSlice';
 
 const EditProfile = () => {
 
     const [general, setGeneral] = useState<boolean>(true)
+    const [originalFile, setOriginalFile] = useState<File | Blob>()
+    const [originalFileURL, setOriginalFileURL] = useState("")
+    const [compressedFile, setCompressedFile] = useState< File | Blob >()
+    const [conpressedFileURL, setconpressedFileURL] = useState("")
+
+    const dispatch = useDispatch()
+
+    const fileSelectedHandler = (e: any) =>{
+        console.log(e.target.files[0]) // looking at file uploaded
+        setOriginalFile(e.target.files[0])
+        setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
+        if (!e.target.files[0]) throw new Error('Failed to retrive file');
+        new Compressor(e.target.files[0], {
+            quality: 0.6,
+            maxWidth: 400,
+            success: (compressdResult)=>{ 
+              setCompressedFile(compressdResult)
+              setconpressedFileURL(URL.createObjectURL(compressdResult))
+              console.log(conpressedFileURL);
+              console.log(compressdResult);
+              
+  
+            } //setting compressedFile as the compressed file so can be use by the click handler
+        })
+
+        
+    }
+
+    const fileUploadHandler = async() =>{
+
+        if (compressedFile == null) return;
+
+        let imageName = uuidv4()
+  
+        const imageRef = ref(storage, `images/${ imageName }`)
+        let snapshot = await uploadBytes(imageRef, compressedFile);
+        let URL = await getDownloadURL(snapshot.ref)
+  
+  
+        dispatch(authActions.uploadProfileImage({imageName, URL}))
+
+      }
 
   return (
     <div>
@@ -14,6 +64,7 @@ const EditProfile = () => {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <div className="rounded-full p-5 m-3 text-center bg-gray-300">round this, this is for the profile image</div>
+                    <input type="file" onChange={fileSelectedHandler}/> <button onClick={fileUploadHandler}>Upload</button>
                 </div>
                 <div>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Name</label>
