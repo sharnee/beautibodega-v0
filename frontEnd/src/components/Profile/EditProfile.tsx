@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import Compressor from 'compressorjs';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -10,22 +11,22 @@ import {authActions} from '../../slice/AuthSlice';
 
 const EditProfile = () => {
 
+    const user = useSelector((state:{auth: {user: any}}) => state.auth.user)
+
     const [general, setGeneral] = useState<boolean>(true)
-    const [originalFile, setOriginalFile] = useState<File | Blob>()
-    const [originalFileURL, setOriginalFileURL] = useState("")
+
     const [compressedFile, setCompressedFile] = useState< File | Blob >()
-    const [conpressedFileURL, setconpressedFileURL] = useState("")
+    const [conpressedFileURL, setconpressedFileURL] = useState("/default-placeholder-image.png")
 
     const dispatch = useDispatch()
 
     const fileSelectedHandler = (e: any) =>{
         console.log(e.target.files[0]) // looking at file uploaded
-        setOriginalFile(e.target.files[0])
-        setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
+
         if (!e.target.files[0]) throw new Error('Failed to retrive file');
         new Compressor(e.target.files[0], {
             quality: 0.6,
-            maxWidth: 400,
+            maxWidth: 250,
             success: (compressdResult)=>{ 
               setCompressedFile(compressdResult)
               setconpressedFileURL(URL.createObjectURL(compressdResult))
@@ -35,22 +36,13 @@ const EditProfile = () => {
   
             } //setting compressedFile as the compressed file so can be use by the click handler
         })
-
         
     }
 
-    const fileUploadHandler = async() =>{
+    const fileUploadHandler = (e:any) =>{
 
-        if (compressedFile == null) return;
+        e.preventDefault()
 
-        let imageName = uuidv4()
-  
-        const imageRef = ref(storage, `images/${ imageName }`)
-        let snapshot = await uploadBytes(imageRef, compressedFile);
-        let URL = await getDownloadURL(snapshot.ref)
-  
-  
-        dispatch(authActions.uploadProfileImage({imageName, URL}))
 
       }
 
@@ -63,15 +55,16 @@ const EditProfile = () => {
         <form>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <div className="rounded-full p-5 m-3 text-center bg-gray-300">round this, this is for the profile image</div>
-                    <input type="file" onChange={fileSelectedHandler}/> <button onClick={fileUploadHandler}>Upload</button>
+                    <img className="w-20 h-20 rounded-full m-5" src={conpressedFileURL} alt="image description"/>
+                    {/* <div className="rounded-full p-5 m-3 text-center bg-gray-300">round this, this is for the profile image</div> */}
+                    <input type="file" onChange={fileSelectedHandler}/> 
                 </div>
-                <div>
+                <div className=''>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Name</label>
-                    <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" />
+                    <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={user.name} />
                 </div>
                 <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Tag</label>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Tags</label>
                     <button className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Have the</button>
                     <button className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tags loop here</button>
                     <button className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">from a local file</button>
