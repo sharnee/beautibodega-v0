@@ -20,9 +20,14 @@ export default function Login() {
     const handleSubmit = async (e: any)=>{
     
         e.preventDefault()
-        let response = await axios.post('/login', {email: email, password: password})
-        dispatch(authActions.login(response))
-        navigate("/") // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
+        await axios.post('/login', {email: email, password: password})
+        .then(response =>{
+            console.log(response);
+            dispatch(authActions.login(response))
+            navigate("/")
+        })
+        
+        // // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
     
       }
 

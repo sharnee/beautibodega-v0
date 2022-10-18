@@ -20,6 +20,7 @@ router.post('/register', async (req: Request, res: Response) => {
       // create user in db
       let user = await db.users.create({
         id: uuidv4(),
+        secondary_id: uuidv4(),
         email,
         password: bcrypt.hashSync(password, 10),
         name,
