@@ -5,9 +5,9 @@ import Footer from './Footer';
 
 const BasicLayout = (props: any) => {
   return (
-    <div className=' bg-gray-800 '>
+    <div className=' bg-olive '>
 
-        <div className='container mx-auto px-4 '>
+        <div className=' '>
 
             <SeachHeader/>
             <SubHeader/>
