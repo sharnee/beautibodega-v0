@@ -1,4 +1,4 @@
-git statimport React from 'react';
+
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 // import { configureStore } from '@reduxjs/toolkit'
@@ -19,6 +19,7 @@ import TestData from './components/test/displayBackendData'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Admin from './components/Admin';
+import Adminforms from './components/Adminforms';
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
 
@@ -54,6 +55,7 @@ root.render(
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
               <Route path="/admin" element={<Admin />}/>
+              <Route path="/adminforms" element={<Adminforms />}/>
 
             </Routes>
           {/* </BaseLayout> */}
