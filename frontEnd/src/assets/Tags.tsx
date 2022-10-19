@@ -1,4 +1,4 @@
-let Tags = {
+export let Tags:any = {
     worldTags: [
         "African American or African Diaspora", 
         "Hispanic or Latinx", 
