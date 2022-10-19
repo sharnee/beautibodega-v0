@@ -20,6 +20,7 @@
     margin: 5% 2.5% 5% 2.5%;
     display:flex;
     justify-content: space-around;
+    position: relative;
 }
 
 .sortButton{
@@ -41,7 +42,41 @@
 }
 
 .shopContainer{
-    height: 100vh;
+    height: auto;
+    padding-bottom: 15%;
+}
+
+.sortButtons .dropdown-content{
+    position: absolute;
+    left: 0;
+    top:110%;
+    width: 100%;
+    padding: 15px;
+    background: white;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+    color: black;
+    font-weight: 500;
+}
+
+.dropdown-content .dropdown-item{
+    display:flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items:center
+
+}
+
+
+.slider{
+    -webkit-appearance: none;
+    width: 40%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
 }
 
 .productList{
@@ -51,3 +86,38 @@
 .products{
     overflow:auto
 }
+
+.product {
+    width: 100px;
+}
+
+.product img{
+    width: 100px;
+    height: 100px;
+}
+
+.product p{
+    text-align: center;
+    color: rgba(0, 0, 0, 0.606);
+    font-size: small
+}
+
+.brandCont{
+    margin: 10% 0 10% 0;
+    justify-content: space-around;
+}
+
+
+.brandPicture {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    outline: solid rgba(0, 0, 0, 0.548);
+    outline-width: 1px;
+    border-radius: 20px;
+}
+
+.brandPicture img{
+    padding: 5%;
+}
+

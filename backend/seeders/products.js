@@ -48,7 +48,7 @@ module.exports = {
         Mint: Invigorates scalp
         Biotin: Nourishes hair follicles, improving strength, elasticity and durability of new hair growth.
         Glycine Soja (Soybean) Oil, Ricinus Communis (Castor) Seed Oil, Rosmarinus Officinalis (Rosemary) Leaf Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Mentha Piperita (Peppermint) Oil, Eucalyptus Globolus (Eucalyptus) Leaf Oil, Menthol, Melalueca Alternifolia (Tea Tree) Leaf Oil, Cocos Nucifera (Coconut) Oil, Equisetum Arvense (Horsetail) Extract, Aloe Barbadensis Extract, Lavandula Angustifolia (Lavender) Oil, Triticum Vulgare (Wheat) Germ Oil, Carthamus Tinctorius (Safflower) Seed Oil, Oenothera Biennis (Evening Primrose) Oil, Vitis Vinifera (Grape) Seed Oil, Benzyl Nicotinate, Prunus Amygdalus Dulcis (Sweet Almond) Oil, Oryza Sativa (Rice) Bran Oil, Tocopheryl Acetate, Biotin, Arctium Lappa (Burdock) Root Extract, Glycerin, Apium Graveolens (Celery) Seed Extract, Retinyl Palmitate, Cholecalciferol (Vitamin D), Ascorbic Acid, Ocimum, Basilicum (Basil) Oil, Pogostemon Cablin (Patchouli) Oil, Salvia Officinalis (Sage) Oil, Silica, Urtica Dioica (Nettle) Extract`,
-        product_type: 'hair',
+        product_type: 'nails',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -61,7 +61,20 @@ module.exports = {
         thumbnail: '496998c6-3957-43e5-883d-d1b1bd8c89c4',
         instructions: 'After shampooing with Rosemary Mint Strengthening Shampoo, smooth evenly through damp hair from roots to ends. Leave in 15–20 minutes. Rinse thoroughly.',
         ingredients: `Water (Aqua, Eau), Behentrimonium Methosulfate, Cetearyl Alcohol, Aloe Barbadensis Leaf Juice (Decolorized), Prunus Amygdalus Dulcis (Sweet Almond) Oil, Helianthus Annuus (Sunflower) Seed Oil, Olea Europaea (Olive) Fruit Oil, Copernicia Cerifera (Carnauba) Wax, Polysorbate-20, Macadamia Integrifolia Seed Oil, Glyceryl Stearate, Butyrospermum Parkii (Shea) Butter, Tocopheryl Acetate, *Orbignya Oleifera (Babassu) Seed Oil, *Zingiber Officinale (Ginger) Root Oil, *Cocos Nucifera (Coconut) Oil, Panthenol, Phytantriol, Mentha Piperita Oil, Rosmarinus Officinalis (Rosemary) Leaf Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Ricinus Communis (Castor) Seed Oil, Equisetum Arvense (Horsetail Grass) Extract, Lawsonia Inermis (Henna) Extract, Rosmarinus Officinalis (Rosemary) Leaves Extract, Anthemis Nobilis (Chamomile) Flower Extract, Symphytum Officinale (Comfrey Leaves) Extract, Humulus Lupulus (Hops) Extract, Urtica Dioica (Nettle) Extract, Honey, Biotin, Cetrimonium Chloride, Sesamum Indicum (Sesame) Seed Oil, Phenoxyethanol, Benzoic Acid, Ethylhexylglycerin, Glycereth-2 Cocoate`,
-        product_type: 'hair',
+        product_type: 'makeup',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: '6f5b71c1-7035-490e-aae7-ca46af302e26',
+        name: 'Daily Facial Cleanser',
+        price: 9.99,
+        description: `Gentle gel to foam formula deep cleans skin and reduces the appearance of pores. Clinically tested to remove dirt, excess oils and makeup without leaving skin dry or tight. Formulated with a dermatologist backed blend of vitamin B3, vitamin B5 and hydrating glycerin to reinforce the skin's moisture barrier. Defends against 5 signs of skin sensitivity including dryness, irritation, roughness, tightness and a weakened skin barrier.`,
+        images: '93584a47-ba52-4d1e-ae1b-afd4eb0425ae',
+        thumbnail: '93584a47-ba52-4d1e-ae1b-afd4eb0425ae',
+        instructions: `After cleansing, quickly follow with a facial moisturizer to help immediately hydrate and lock in vital moisture. During the day, it is also recommended to use a facial SPF moisturizer with sun protection such as Daily Facial Moisturizer with Broad Spectrum SPF 35 to deliver nourishing hydration and protect your skin from harmful UVA and UVB rays.`,
+        ingredients: `Water, Glycerin, Cocamidopropyl Betaine, Disodium Laureth Sulfosuccinate, Sodium Cocoamphoacetate, Panthenol, Niacinamide, Pantolactone, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Sodium Benzoate, Masking Fragrance, Sodium Chloride, Citric Acid.`,
+        product_type: 'skin',
         createdAt: new Date(),
         updatedAt: new Date()
       },

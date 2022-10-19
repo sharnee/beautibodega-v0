@@ -45,6 +45,24 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        id:'93584a47-ba52-4d1e-ae1b-afd4eb0425ae',
+        image: 'https://firebasestorage.googleapis.com/v0/b/beauty-bodega.appspot.com/o/images%2F93584a47-ba52-4d1e-ae1b-afd4eb0425ae?alt=media&token=d45d7795-d643-4c78-9616-db4ad202df2e',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id:'7c961e61-99d4-4dfa-8a98-504d7ac2bea4',
+        image: 'https://firebasestorage.googleapis.com/v0/b/beauty-bodega.appspot.com/o/images%2F7c961e61-99d4-4dfa-8a98-504d7ac2bea4?alt=media&token=bf7d31bb-87da-4031-b92a-819497dd7b7f',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id:'e1e59465-d939-4eb7-8e2d-4a30a65551e0',
+        image: 'https://firebasestorage.googleapis.com/v0/b/beauty-bodega.appspot.com/o/images%2Fe1e59465-d939-4eb7-8e2d-4a30a65551e0?alt=media&token=3eed827c-5473-4421-a9d3-c6898663c2ad',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
 
     ], {});
   },
