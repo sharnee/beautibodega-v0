@@ -17,11 +17,13 @@ import store from './slice/store';
 // import BaseLayout from './components/layout/BaseLayout';
 import App from './App';
 import Auth from './components/ReqAuth';
+import AAuth from './components/ReqAdminAuth';
 import BL from './components/layout/BasicLayout';
 import Upload from './components/test/uploadImage';
 import TestData from './components/test/displayBackendData'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import SignUpA from './components/SignUpAdmin';
 import Admin from './components/Admin';
 
 import Adminforms from './components/Adminforms';
@@ -65,7 +67,8 @@ root.render(
               <Route path="/testData" element={<TestData />}/>
               <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
-              <Route path="/admin" element={<Admin />}/>
+              <Route path="/4da244d5-d9db-4563-a0f4-097087d8b337" element={<SignUpA />}/>
+              <Route path="/admin" element={<AAuth><Admin /></AAuth>}/>
               <Route path="/adminforms" element={<Adminforms />}/>
 
             </Routes>

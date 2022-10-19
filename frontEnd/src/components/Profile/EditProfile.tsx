@@ -16,10 +16,20 @@ const EditProfile = () => {
 
     const [general, setGeneral] = useState<boolean>(true)
 
-    const [compressedFile, setCompressedFile] = useState< File | Blob >()
+    const [tags, setTags] = useState<any>([])
+    const [name, setName] = useState("")
+
+    const [compressedFile, setCompressedFile] = useState< File | Blob | any>()
     const [conpressedFileURL, setconpressedFileURL] = useState("/default-placeholder-image.png")
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      
+        
+
+    }, [])
+    
 
     const fileSelectedHandler = (e: any) =>{
         console.log(e.target.files[0]) // looking at file uploaded
@@ -40,10 +50,22 @@ const EditProfile = () => {
         
     }
 
-    const fileUploadHandler = (e:any) =>{
+    const generalSubmit = async(e:any) =>{
 
-        e.preventDefault()
+        e.preventDefault() 
+        console.log(tags);
+        const ID = user.id
 
+        // if (compressedFile == null) return;
+
+        let imageName = uuidv4()
+  
+        const imageRef = ref(storage, `images/${ imageName }`)
+        let snapshot = await uploadBytes(imageRef, compressedFile);
+        let URL = await getDownloadURL(snapshot.ref)
+  
+        console.log('right befoire dispatch')
+        dispatch(authActions.updateProfile({imageName, URL, ID, tags, compressedFile, name}))
 
       }
 
@@ -53,7 +75,7 @@ const EditProfile = () => {
         <label className='p-3' onClick={()=>setGeneral(true)}>General</label> <label className='p-3' onClick={()=>setGeneral(false)}>Security</label>
 
         {general?
-        <form>
+        <form onSubmit={generalSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <img className="w-20 h-20 rounded-full m-5" src={conpressedFileURL} alt="image description"/>
@@ -61,8 +83,8 @@ const EditProfile = () => {
                     <input type="file" onChange={fileSelectedHandler}/> 
                 </div>
                 <div className=''>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Name</label>
-                    <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={user.name} />
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">{name}</label>
+                    <input type="text" id="name" onChange={e=>{setName(e.target.value)}} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={user.name} />
                 </div>
                 <div>
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Tags</label>
@@ -74,7 +96,7 @@ const EditProfile = () => {
                         {key.toString()}
                         <div>
                         {Tags[key].map((tag:string)=>{
-                            return <button className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{tag}</button>
+                            return <button type="button" onClick={()=>setTags([...tags, tag])} className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{tag}</button>
                         })}
                         </div>
                         </div>

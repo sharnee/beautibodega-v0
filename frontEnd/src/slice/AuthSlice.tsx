@@ -6,7 +6,7 @@ const authSlice = createSlice({
     initialState: {
         token: "",
         error: "",
-        user: [],
+        user: {},
         product: [],
         cart:[]
     },
@@ -35,6 +35,24 @@ const authSlice = createSlice({
             }
             name()
         },
+        signUpA: (state,action)=>{
+            async function name() {
+                try {
+                    console.log(action.payload, "payload")
+                    let response = await axios.post('/registerAdmin', action.payload)
+                    // console.log(response)
+                    // let jwt = response.data.token
+
+                    // state.token = jwt
+
+                } catch (error) {
+                   
+                    console.log(error);
+
+                }
+            }
+            name()
+        },
         uploadImage: (state,action)=>{
             async function name() {
                 try {
@@ -49,12 +67,13 @@ const authSlice = createSlice({
             }
             name()
         },
-        uploadProfileImage: (state,action)=>{
+        updateProfile: (state,action)=>{
             async function name() {
                 try {
-
-                    let response = await axios.post('/uploadImage', action.payload)
-
+                    console.log("inside update profile auth")
+                    console.log(action.payload);
+                    let response = await axios.post('/updateProfile', action.payload)
+                    
                 } catch (error) {
                    
                     console.log(error);
@@ -98,6 +117,9 @@ const authSlice = createSlice({
 
             }
             name()
+        },
+        updateGeneral: (state,action)=>{
+            
         },
         setProduct: (state, action)=>{
             

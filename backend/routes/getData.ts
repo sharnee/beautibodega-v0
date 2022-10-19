@@ -69,5 +69,26 @@ router.get('/getReviews/:id', async(req, res)=>{
     res.send(reviews)
 })
 
+router.post('/updateProfile', async(req, res)=>{
+
+    let image = await db.images.create({
+        id: req.body.imageName,
+        image: req.body.URL
+      })
+
+    console.log(req.body);
+
+    switch(true){
+
+        case !(req.body.URL == ""):
+        
+       
+
+    }
+
+    // await db.users.update({},{where:{id: ID}})
+
+})
+
 module.exports = router;
 
