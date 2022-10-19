@@ -19,6 +19,15 @@ router.post('/uploadImage', async(req, res)=>{
 
 })
 
+router.get('/getImage/:id', async(req, res)=>{
+
+    const imageID = req.params.id
+
+    const image = await db.images.findByPk(imageID)
+
+    res.send(image)
+})
+
 router.get('/getAllProducts', async(req, res)=>{
 
     const products = await db.products.findAll({})
@@ -37,7 +46,7 @@ router.get('/getProduct/:id', async(req, res)=>{
 
     const productID = req.params.id
 
-    const products = await db.brands.findByPk(productID)
+    const products = await db.products.findByPk(productID)
 
     res.send(products)
 })
