@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import Compressor from 'compressorjs';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -8,9 +9,13 @@ import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 import {Tags} from '../../assets/Tags';
 
+
 import {authActions} from '../../slice/AuthSlice';
+import {getProfile} from '../../slice/UserSlice';
 
 const EditProfile = () => {
+
+    
 
     const user = useSelector((state:{auth: {user: any}}) => state.auth.user)
     const pic = useSelector((state:{auth: {pic: string}}) => state.auth.pic)
@@ -24,6 +29,7 @@ const EditProfile = () => {
     const [conpressedFileURL, setconpressedFileURL] = useState("/default-placeholder-image.png")
 
     const dispatch = useDispatch()
+    const navagate = useNavigate()
 
     useEffect(() => {
       
@@ -59,7 +65,11 @@ const EditProfile = () => {
         const ID = user.id
         console.log(conpressedFileURL);
         // if (compressedFile == null) return;
-        if(conpressedFileURL == pic){return dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name}))}
+        if(conpressedFileURL == pic){
+            dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name}))
+
+        }
+        else{
         console.log("pls dont run");
         let imageName = uuidv4()
   
@@ -72,6 +82,11 @@ const EditProfile = () => {
         // let response = await axios.post('/uploadImage', action.payload)
         
         dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name}))
+
+
+        }
+        dispatch(getProfile({ID}))
+        navagate('/profile')
 
       }
 

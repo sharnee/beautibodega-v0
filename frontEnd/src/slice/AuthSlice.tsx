@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
+
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
@@ -140,7 +141,8 @@ const authSlice = createSlice({
 
             state.cart = [...state.cart, action.payload]
         }
-    }
+    },
+
  })
 
  export const authActions = authSlice.actions
