@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
@@ -74,6 +75,12 @@ const authSlice = createSlice({
                     console.log("inside update profile auth")
                     console.log(action.payload);
                     let response = await axios.post('/updateProfile', action.payload)
+
+                    // console.log(response.data.user[0], "response")
+
+                    // state.user = response.data.user[0]
+
+                    // state.pic = response.profilePic
                     
                 } catch (error) {
                    

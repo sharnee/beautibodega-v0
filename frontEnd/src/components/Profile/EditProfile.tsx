@@ -28,6 +28,7 @@ const EditProfile = () => {
     useEffect(() => {
       
         setconpressedFileURL(pic)
+        setName(user.name)
 
     }, [])
     
@@ -67,6 +68,9 @@ const EditProfile = () => {
         let URL = await getDownloadURL(snapshot.ref)
   
         console.log('right befoire dispatch')
+
+        // let response = await axios.post('/uploadImage', action.payload)
+        
         dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name}))
 
       }
