@@ -27,6 +27,7 @@ import Admin from './components/Admin';
 import Adminforms from './components/Adminforms';
 
 import Shop from './components/Shop';
+import Product from './components/Product';
 
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
@@ -55,7 +56,8 @@ root.render(
           {/* <BaseLayout> */}
             <Routes>
               
-              <Route path="/Shop" element={<BL><Shop /></BL>}/>
+              <Route path="/shop" element={<BL><Shop /></BL>}/>
+              <Route path="/product" element={<BL><Product /></BL>}/>
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
               <Route path="/profile" element={<Auth><BL><Profile /></BL></Auth>}/>
