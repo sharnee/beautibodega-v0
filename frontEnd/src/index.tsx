@@ -24,7 +24,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Admin from './components/Admin';
 
-import Adminforms from './components/Adminforms';
+import Adminforms from './components/Adminformscopy';
 
 import Shop from './components/Shop';
 

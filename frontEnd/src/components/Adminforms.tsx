@@ -66,6 +66,10 @@ function Adminforms() {
         Text area
         <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal"></textarea>
        </label>
+             <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+        Text area
+        <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal"></textarea>
+       </label>
        <label className="block text-gray-700 text-sm font-bold mb-2">
         Input field
         <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 py-1 px-4 mt-2 block w-44 appearance-none leading-normal" type="input"></input>
@@ -80,7 +84,7 @@ function Adminforms() {
        </label>
        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
         Text area
-        <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal"></textarea>
+        <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-44 appearance-none leading-normal"></textarea>
        </label>
        </div>
      <div className=" flex mb-8">
@@ -90,7 +94,7 @@ function Adminforms() {
        </label>
        <label className="block text-gray-700 text-sm font-bold mb-2">
         Text area
-        <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal"></textarea>
+        <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-44 appearance-none leading-normal"></textarea>
        </label>
 
        </div>
