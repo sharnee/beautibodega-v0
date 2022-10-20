@@ -78,6 +78,19 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        id: 'f4902170-8aa2-4c95-8efb-a5486d14d803',
+        name: 'SOS Daily Rescue Facial Spray',
+        price: 28.00,
+        description: `A soothing, purifying, and repairing daily rescue spray for angry, stressed out skin. 100% Natural. Dermatologist Tested. Clinically Proven. SOS has received the National Eczema Association's Seal of Acceptance™ and is safe for all skin types.`,
+        images: '84b405a5-7476-4f79-bc49-64cc09d0a2df',
+        thumbnail: '84b405a5-7476-4f79-bc49-64cc09d0a2df',
+        instructions: `Use AM/PM on clean skin in place of toner to maintain and prevent redness and irritation. Also use throughout the day over makeup and as needed (post-workout, etc) to refresh and purify.`,
+        ingredients: `WATER, SODIUM CHLORIDE, HYPOCHLOROUS ACID.`,
+        product_type: 'skin',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
 
     ], {});
   },

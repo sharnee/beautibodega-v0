@@ -128,7 +128,7 @@ const Shop = () => {
                 </div>
                 <div className="dropdown-item">
                     <div>SKIN</div>
-                    <input type="checkbox" onChange={()=>setSkin(skin ? false : true)} checked></input>
+                    <input type="checkbox" checked onChange={()=>setSkin(skin ? false : true)}/>
                 </div>
                 <div className="dropdown-item">
                     <div>MAKEUP</div>

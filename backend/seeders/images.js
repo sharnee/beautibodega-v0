@@ -63,6 +63,12 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        id:'84b405a5-7476-4f79-bc49-64cc09d0a2df',
+        image: 'https://firebasestorage.googleapis.com/v0/b/beauty-bodega.appspot.com/o/images%2F84b405a5-7476-4f79-bc49-64cc09d0a2df?alt=media&token=46e86f83-442e-4954-80ce-5cd8a642117d',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
 
     ], {});
   },
