@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.product_name{
+    padding-top: 50px;
+    font-weight: 600;
+    font-size: x-large;
+    font-family: 'Playfair Display', serif;
+}
+
+.image_div{
+    padding-top: 20px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.image{
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 6px 6px 6px rgba(0,0,0,0.06)
+}
+
+.price{
+    font-size: large;
+    padding: 25px 0 25px 0;
+}
+
+
+.sub_header{
+    padding-top: 50px;
+    font-weight: 400;
+    font-size: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+.container_{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.quantity_selector{
+    display:flex;
+    /* outline: solid black 1px; */
+    width: 30%
+}
+
+.quant{
+    text-align: center;
+    outline:solid gray 1px;
+    width: 33%;
+    margin: 0px 2px 0px 2px;
+}
+
+.quant_button{
+    background-color: rgb(221, 221, 221);
+    height: 100%;
+    width: 33%;
+    color: white;
+    font-weight: 400;
+    outline: solid rgb(221, 221, 221) 1px;
+    
+}
+
+.add_to_cart_cont{
+    color: white;
+    background-color: rgb(64, 64, 64);
+    width: 30%;
+    margin-top: 30px;
+    padding: 3%;
+    font-weight: 500;
+}
+
