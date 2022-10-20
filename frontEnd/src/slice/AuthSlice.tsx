@@ -10,7 +10,7 @@ const authSlice = createSlice({
         user: {},
         pic: "",
         product: [],
-        cart:[]
+        cart:{}
     },
     reducers: {
         loadUserToken: (state,action)=>{

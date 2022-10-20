@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 const Profile = () => {
 
-  const user = useSelector((state:{auth: {user: any}}) => state.auth.user)
+  const user = useSelector((state:{auth: {user: {}}}) => state.auth.user)
 
   return (
     <div>
