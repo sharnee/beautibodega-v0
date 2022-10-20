@@ -7,6 +7,7 @@ import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
 import {authActions} from '../../slice/AuthSlice';
+import { userInfo } from 'os';
 
 const UploadImage = () => {
 

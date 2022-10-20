@@ -17,12 +17,13 @@ const opts = {
 const init = (passport: any) => {
 
     //* Local Strategy *\\
-    passport.use(new LocalStrategy({usernameField: 'email'}, async (email: any, password: any, done: any) => {
+    passport.use(new LocalStrategy({usernameField: 'email'}, async (email: string, password: string, done: any) => {
         try {
             // check if there's a user with that email
+            console.log(email, password)
             let records = await db.users.findAll({where: {email:email}})
-
-            if (records){
+            console.log(records, "records")
+            if (records.length > 0){
                 //found a matching email
                 let record = records[0]
 
@@ -47,6 +48,7 @@ const init = (passport: any) => {
 
         } catch (error) {
             //db error
+            console.log(error, "error")
             return done(error)
         }
     }))

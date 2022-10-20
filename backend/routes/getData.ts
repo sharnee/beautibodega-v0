@@ -69,5 +69,38 @@ router.get('/getReviews/:id', async(req, res)=>{
     res.send(reviews)
 })
 
+router.post('/updateProfile', async(req, res)=>{
+
+    let user = await db.users.findAll({where: {id: req.body.ID}})
+    console.log(req.body.conpressedFileURL, "check", req.body.pic);
+
+    switch(true){
+
+        case !(req.body.conpressedFileURL == req.body.pic):
+            console.log("dontrun");
+            let image = await db.images.create({
+                id: req.body.imageName,
+                image: req.body.URL
+              });
+              
+            await db.users.update({profile_picture: req.body.imageName}, {where:{id: req.body.ID}})
+
+        case (true):
+            console.log(req.body.tags.toString());
+            let splitTags = req.body.tags.toString()
+            await db.users.update({name: req.body.name, tags: splitTags}, {where:{id: req.body.ID}})
+       
+    }
+    user = await db.users.findAll({where: {id: req.body.ID}})
+    res.json({user: user, profilePic: req.body.imageName})
+
+    console.log(req.body);
+
+
+
+    // await db.users.update({},{where:{id: ID}})
+
+})
+
 module.exports = router;
 

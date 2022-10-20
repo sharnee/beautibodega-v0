@@ -1,14 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+
 
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
         token: "",
         error: "",
-        user: [],
+        user: {},
+        pic: "",
         product: [],
-        cart:[]
+        cart:{}
     },
     reducers: {
         loadUserToken: (state,action)=>{
@@ -22,6 +24,24 @@ const authSlice = createSlice({
                 try {
                     console.log(action.payload, "payload")
                     let response = await axios.post('/register', action.payload)
+                    // console.log(response)
+                    // let jwt = response.data.token
+
+                    // state.token = jwt
+
+                } catch (error) {
+                   
+                    console.log(error);
+
+                }
+            }
+            name()
+        },
+        signUpA: (state,action)=>{
+            async function name() {
+                try {
+                    console.log(action.payload, "payload")
+                    let response = await axios.post('/registerAdmin', action.payload)
                     // console.log(response)
                     // let jwt = response.data.token
 
@@ -49,6 +69,27 @@ const authSlice = createSlice({
             }
             name()
         },
+        updateProfile: (state,action)=>{
+            async function name() {
+                try {
+                    console.log("inside update profile auth")
+                    console.log(action.payload);
+                    let response = await axios.post('/updateProfile', action.payload)
+
+                    // console.log(response.data.user[0], "response")
+
+                    // state.user = response.data.user[0]
+
+                    // state.pic = response.profilePic
+                    
+                } catch (error) {
+                   
+                    console.log(error);
+
+                }
+            }
+            name()
+        },
         login: (state,action)=>{
 
             console.log("token timeout and forgot password needs to be setup")
@@ -57,16 +98,20 @@ const authSlice = createSlice({
 
                 try {
                     
+                    console.log(action.payload)
                     // let response = await axios.post('/login', action.payload)
                     // console.log(response)
                     let jwt = action.payload.data.token
-                    // let user = response.data.user
+                    let user = action.payload.data.user[0]
+                    let pic = action.payload.data.profilePic
 
+                    console.log(pic)
                     console.log(action.payload.data.user);
                     console.log(jwt)
                     // console.log(user[0]);
-                    
-                    // state.user = user
+                    state.pic = pic
+
+                    state.user = user
 
                     // console.log(state.user);
     
@@ -83,6 +128,9 @@ const authSlice = createSlice({
 
             }
             name()
+        },
+        updateGeneral: (state,action)=>{
+            
         },
         setProduct: (state, action)=>{
             
