@@ -71,20 +71,25 @@ router.get('/getReviews/:id', async(req, res)=>{
 
 router.post('/updateProfile', async(req, res)=>{
 
-    let image = await db.images.create({
-        id: req.body.imageName,
-        image: req.body.URL
-      })
-
-    console.log(req.body);
+    let user = await db.users.findAll({where: {id: req.body.ID}})
+    console.log(req.body.conpressedFileURL, "check", req.body.pic);
 
     switch(true){
 
-        case !(req.body.URL == ""):
-        
+        case !(req.body.conpressedFileURL == req.body.pic):
+            console.log("dont run");
+            let image = await db.images.create({
+                id: req.body.imageName,
+                image: req.body.URL
+              });
        
-
     }
+
+
+
+    console.log(req.body);
+
+
 
     // await db.users.update({},{where:{id: ID}})
 

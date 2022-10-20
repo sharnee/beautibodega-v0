@@ -13,6 +13,7 @@ import {authActions} from '../../slice/AuthSlice';
 const EditProfile = () => {
 
     const user = useSelector((state:{auth: {user: any}}) => state.auth.user)
+    const pic = useSelector((state:{auth: {pic: string}}) => state.auth.pic)
 
     const [general, setGeneral] = useState<boolean>(true)
 
@@ -26,7 +27,7 @@ const EditProfile = () => {
 
     useEffect(() => {
       
-        
+        setconpressedFileURL(pic)
 
     }, [])
     
@@ -42,7 +43,7 @@ const EditProfile = () => {
               setCompressedFile(compressdResult)
               setconpressedFileURL(URL.createObjectURL(compressdResult))
               console.log(conpressedFileURL);
-              console.log(compressdResult);
+              console.log(compressdResult, "compressedFile");
               
   
             } //setting compressedFile as the compressed file so can be use by the click handler
@@ -55,9 +56,10 @@ const EditProfile = () => {
         e.preventDefault() 
         console.log(tags);
         const ID = user.id
-
+        console.log(conpressedFileURL);
         // if (compressedFile == null) return;
-
+        if(conpressedFileURL == pic){return dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name}))}
+        console.log("pls dont run");
         let imageName = uuidv4()
   
         const imageRef = ref(storage, `images/${ imageName }`)
@@ -65,7 +67,7 @@ const EditProfile = () => {
         let URL = await getDownloadURL(snapshot.ref)
   
         console.log('right befoire dispatch')
-        dispatch(authActions.updateProfile({imageName, URL, ID, tags, compressedFile, name}))
+        dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name}))
 
       }
 
@@ -78,12 +80,12 @@ const EditProfile = () => {
         <form onSubmit={generalSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <img className="w-20 h-20 rounded-full m-5" src={conpressedFileURL} alt="image description"/>
+                    <img className="w-20 h-20 rounded-full m-5 border-gray-700" src={conpressedFileURL} alt="image description"/>
                     {/* <div className="rounded-full p-5 m-3 text-center bg-gray-300">round this, this is for the profile image</div> */}
                     <input type="file" onChange={fileSelectedHandler}/> 
                 </div>
                 <div className=''>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">{name}</label>
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Name</label>
                     <input type="text" id="name" onChange={e=>{setName(e.target.value)}} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={user.name} />
                 </div>
                 <div>
