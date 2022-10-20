@@ -2,6 +2,9 @@ import React, {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import loginImg from '../assets/login.jpg'
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+
+import {authActions} from '../slice/AuthSlice';
 
 import './css/Shop.css'
 
@@ -18,6 +21,8 @@ const Shop = () => {
     const[hair, setHair] = useState(true)
     const[nails, setNails] = useState(true)
     const[skin, setSkin] = useState(true)
+
+    const dispatch = useDispatch();
     
       
     useEffect(() => {
@@ -127,20 +132,20 @@ const Shop = () => {
                     <input type="range" min="1" max="100" value={price.toString()} className="slider" onChange={e=>setPrice(parseInt(e.target.value))}></input>
                 </div>
                 <div className="dropdown-item">
-                    <div>SKIN</div>
-                    <input type="checkbox" checked onChange={()=>setSkin(skin ? false : true)}/>
+                    <div>HIDE SKIN</div>
+                    <input type="checkbox" onChange={()=>setSkin(skin ? false : true)}/>
                 </div>
                 <div className="dropdown-item">
-                    <div>MAKEUP</div>
-                    <input type="checkbox" checked onChange={()=>setMakeup(makeup ? false : true)}/>
+                    <div>HIDE MAKEUP</div>
+                    <input type="checkbox" onChange={()=>setMakeup(makeup ? false : true)}/>
                 </div>
                 <div className="dropdown-item">
-                    <div>HAIR</div>
-                    <input type="checkbox" checked onChange={()=>setHair(hair ? false : true)}/>
+                    <div>HIDE HAIR</div>
+                    <input type="checkbox" onChange={()=>setHair(hair ? false : true)}/>
                 </div>
                 <div className="dropdown-item">
-                    <div>NAILS</div>
-                    <input type="checkbox" checked onChange={()=>setNails(nails ? false : true)}/>
+                    <div>HIDE NAILS</div>
+                    <input type="checkbox" onChange={()=>setNails(nails ? false : true)}/>
                 </div>
             </div>
             :
@@ -161,6 +166,9 @@ const Shop = () => {
         </div>
 
         <div className="shopContainer"> 
+
+
+        {skin ? 
 
             <div>
                 <div className="categoryTop">
@@ -207,6 +215,9 @@ const Shop = () => {
                 </div>
 
             </div>
+            :
+            <></>
+        }
 
         {makeup ? 
             <div>
@@ -259,7 +270,7 @@ const Shop = () => {
             <></>
         }
 
-
+        {hair ?
             <div>
                 <div className="categoryTop">
                     <h3>Shop</h3>
@@ -305,7 +316,13 @@ const Shop = () => {
                 </div>
                 
             </div>
+            :
+            <></>
 
+        }
+
+
+        {nails ?
             <div>
                 <div className="categoryTop">
                     <h3>Shop</h3>
@@ -320,9 +337,11 @@ const Shop = () => {
                         {obj.product_type == 'nails' && obj.price <= price ? 
                             <div className="product">
                                 <>
-                                    <img src={obj.image.image}/>
-                                    <p>{obj.name}</p>
-                                    <p>${obj.price}</p>
+                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
+                                        <img src={obj.image.image}/>
+                                        <p>{obj.name}</p>
+                                        <p>${obj.price}</p>
+                                    </Link>
                                 </>
                                 
                             </div>
@@ -351,6 +370,9 @@ const Shop = () => {
                 </div>
 
             </div>
+            :
+            <></>
+        }
 
         </div>
 
