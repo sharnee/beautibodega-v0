@@ -29,9 +29,15 @@ router.post('/login', passport.authenticate('local', {session:false}), async (re
     console.log(req.body)
     let { email } = req.body
     let user = await db.users.findAll({where: {email: email}})
-    console.log(user)
+    // console.log(user, "user1")
+    // console.log(user[0].dataValues, "dataValues")
+    // console.log(user[0], "user 0")
+    console.log(user[0].dataValues.profile_picture, "userpic")
+    let profilePic = await db.images.findByPk(user[0].dataValues.profile_picture)
+    console.log(profilePic, "userpic2");
+    console.log(user, "user2")
 
-    res.json({token: token(req.user), user: user})
+    res.json({token: token(req.user), user: user, profilePic: profilePic.dataValues.image})
 })
 
 module.exports = router;

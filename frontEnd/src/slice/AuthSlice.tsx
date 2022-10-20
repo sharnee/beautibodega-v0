@@ -7,6 +7,7 @@ const authSlice = createSlice({
         token: "",
         error: "",
         user: {},
+        pic: "",
         product: [],
         cart:[]
     },
@@ -95,11 +96,14 @@ const authSlice = createSlice({
                     // console.log(response)
                     let jwt = action.payload.data.token
                     let user = action.payload.data.user[0]
+                    let pic = action.payload.data.profilePic
 
+                    console.log(pic)
                     console.log(action.payload.data.user);
                     console.log(jwt)
                     // console.log(user[0]);
-                    
+                    state.pic = pic
+
                     state.user = user
 
                     // console.log(state.user);
