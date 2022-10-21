@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 const BasicLayout = (props: any) => {
   return (
-    <div className=' bg-olive '>
+    <div className=' bg-greenish '>
 
         <div className=' '>
 

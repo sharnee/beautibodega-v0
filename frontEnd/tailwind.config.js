@@ -11,7 +11,8 @@ module.exports = {
         'newPink': '#B93997',
         'newOrange': '#DF5F47',
         'tan': '#BCBB6E',
-        'beige':'#F1EFE6'
+        'beige':'#F1EFE6',
+        'greenish':'#7A8F7F'
       },
     },
   },
