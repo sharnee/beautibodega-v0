@@ -1,7 +1,10 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -75,16 +78,16 @@ const Sidebar = () => {
   </div>
                 </li>
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white pl-5 text-sm hover:underline" aria-current="page">Home</a>
+                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-5 text-sm hover:underline" aria-current="page">Home</a>
                 </li>
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Company</a>
+                    <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>
                 </li >
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Team</a>
+                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Products</a>
                 </li>
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Features</a>
+                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</a>
                 </li>
             </ul>
         </div>

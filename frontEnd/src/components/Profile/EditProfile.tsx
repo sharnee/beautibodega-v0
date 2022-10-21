@@ -98,7 +98,7 @@ const EditProfile = () => {
   return (
     <div>
 
-        <label className='p-3' onClick={()=>setGeneral(true)}>General</label> <label className='p-3' onClick={()=>setGeneral(false)}>Security</label>
+        <label className='cursor-pointer p-3 underline' onClick={()=>navagate('/profile')}>Back</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(true)}>General</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(false)}>Security</label> 
 
         {general?
         <form onSubmit={generalSubmit}>
