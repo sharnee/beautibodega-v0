@@ -5,6 +5,8 @@ import axios from 'axios'
 
 import {authActions} from '../slice/AuthSlice';
 
+import { LoginDB } from '../slice/UserSlice';
+
 
 import loginImg from '../assets/login.jpg'
 
@@ -20,12 +22,13 @@ export default function Login() {
     const handleSubmit = async (e: any)=>{
     
         e.preventDefault()
-        await axios.post('/login', {email: email, password: password})
-        .then(response =>{
-            console.log(response);
-            dispatch(authActions.login(response))
-            navigate("/")
-        })
+        dispatch(LoginDB({email, password}))
+        // await axios.post('/login', {email: email, password: password})
+        // .then(response =>{
+        //     console.log(response);
+        //     dispatch(authActions.login(response))
+        //     navigate("/")
+        // })
         
         // // this might cause trouble with async... if it does we can do 2 disbatchs as a work around
     
