@@ -11,6 +11,7 @@ const authSlice = createSlice({
         user: {},
         pic: "",
         product: [],
+        editProduct: [],
         cart:{},
         // shopFilters:{
         //     makeup: true,
@@ -18,6 +19,7 @@ const authSlice = createSlice({
         //     nails: true,
         //     skin: true
         // }
+
     },
     reducers: {
         loadUserToken: (state,action)=>{
@@ -25,6 +27,9 @@ const authSlice = createSlice({
         },
         error: (state,action)=>{
             state.error = action.payload
+        },
+        setEditProduct: (state,action)=>{
+            state.editProduct = action.payload
         },
         signUp: (state,action)=>{
             async function name() {
@@ -97,13 +102,13 @@ const authSlice = createSlice({
             }
             name()
         },
-        handleDelete: (state, action)=>{
+        editProduct: (state, action)=>{
             async function name() {
                 try {
 
-                    let response = await axios.post('/uploadProduct', action.payload)
+                    let response = await axios.post('/editProduct', action.payload)
 
-                    alert("Product successfully added!")
+                    alert("Product successfully edited!")
 
                 } catch (error) {
 
@@ -114,6 +119,20 @@ const authSlice = createSlice({
                    
                     
 
+                }
+            }
+            name()
+        },
+        handleDelete: (state, action)=>{
+            async function name() {
+                try {
+
+                    let response = await axios.post('/deleteProduct', action.payload)
+
+                } catch (error) {
+
+                    console.log(error);
+                   
                 }
             }
             name()

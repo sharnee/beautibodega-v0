@@ -47,6 +47,104 @@ router.post('/uploadProduct', async(req, res)=>{
         })
     
 })
+router.post('/editProduct', async(req, res)=>{
+
+        let {changedPhoto, id, brand, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
+
+    
+        price = parseFloat(price);
+        salesPrice= parseFloat(salesPrice);
+        quantity= parseFloat(quantity);
+
+        
+        if(changedPhoto == true){
+            
+            let image = await db.images.create({
+                id: imageName,
+                image: imageURL
+            })
+
+        }
+    
+        let product = await db.products.update({
+            name,
+            price,
+            sales_price: salesPrice,
+            description,
+            quantity,
+            instructions,
+            ingredients,
+            product_type: category,
+            images: imageName,
+            thumbnail: imageName
+    
+        }, {
+            where: {
+                id: id
+            }
+        })
+
+        let updateBrand = await db.brands.update({
+            products: brand.products + id + ', '
+        }, {
+            where: {
+                products : brand.products
+            }
+        })
+    
+})
+
+router.post('/deleteProduct', async(req, res)=>{
+
+     let {product, user} = req.body
+
+     console.log(user);
+     console.log(product);
+     
+     const brand = await db.brands.findOne({where: {
+        admin_user : user.id
+    }});
+
+    let products = brand.products.split(', ')
+
+    console.log(products);
+
+    let newArr: any = []
+
+    products.forEach((obj: any)=>{
+
+        let productString = ""
+
+        if(obj == product.id || obj == ''){
+
+            let index = products.indexOf(product.id)
+            products.splice(index, 1)
+
+        }
+    })
+
+    let productString = ''
+
+    products.forEach((obj:any)=>{
+        
+        productString = productString + obj + ', '
+    })
+
+
+    let updateBrand = await db.brands.update({
+        products: productString
+    }, {
+        where: {
+            products : brand.products
+        }
+    })
+
+     let del = await db.products.destroy({
+        where: {
+            id : product.id
+        }
+     })
+})
 
 router.post('/uploadImage', async(req, res)=>{
 
