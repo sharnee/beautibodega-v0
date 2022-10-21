@@ -17,7 +17,7 @@ const EditProfile = () => {
 
     
 
-    const user = useSelector((state:{auth: {user: any}}) => state.auth.user)
+    const user = useSelector((state:{user: {user: any}}) => state.user.user)
     const pic = useSelector((state:{auth: {pic: string}}) => state.auth.pic)
 
     const [general, setGeneral] = useState<boolean>(true)
