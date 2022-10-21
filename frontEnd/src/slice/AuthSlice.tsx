@@ -12,7 +12,14 @@ const authSlice = createSlice({
         pic: "",
         product: [],
         editProduct: [],
-        cart:{}
+        cart:{},
+        // shopFilters:{
+        //     makeup: true,
+        //     hair: true,
+        //     nails: true,
+        //     skin: true
+        // }
+
     },
     reducers: {
         loadUserToken: (state,action)=>{

@@ -27,12 +27,13 @@ const EditProfile = () => {
 
     const [compressedFile, setCompressedFile] = useState< File | Blob | any>()
     const [conpressedFileURL, setconpressedFileURL] = useState("/default-placeholder-image.png")
+    const [oldTags, setOldTags] = useState("")
 
     const dispatch = useDispatch()
     const navagate = useNavigate()
 
     useEffect(() => {
-      
+        if(!user.tags == null){setTags(user.tags.split(","))}
         setconpressedFileURL(pic)
         setName(user.name)
 
@@ -57,6 +58,10 @@ const EditProfile = () => {
         })
         
     }
+
+    // const removeTag = (tag:string)=>{
+    //     setTags(tags.filter((e:string) => e !== tag))
+    // }
 
     const generalSubmit = async(e:any) =>{
 
@@ -93,7 +98,7 @@ const EditProfile = () => {
   return (
     <div>
 
-        <label className='p-3' onClick={()=>setGeneral(true)}>General</label> <label className='p-3' onClick={()=>setGeneral(false)}>Security</label>
+        <label className='cursor-pointer p-3 underline' onClick={()=>navagate('/profile')}>Back</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(true)}>General</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(false)}>Security</label> 
 
         {general?
         <form onSubmit={generalSubmit}>
@@ -117,7 +122,10 @@ const EditProfile = () => {
                         {key.toString()}
                         <div>
                         {Tags[key].map((tag:string)=>{
-                            return <button type="button" onClick={()=>setTags([...tags, tag])} className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{tag}</button>
+                            return <div>{tags.includes(tag) ? 
+                            <button type="button" onClick={()=>setTags(tags.filter((e:string) => e !== tag))} className="rounded-full m-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-sm px-3 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">{tag}</button>
+                             : 
+                             <button type="button" onClick={()=>setTags([...tags, tag])} className="rounded-full m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{tag}</button>}</div>
                         })}
                         </div>
                         </div>

@@ -205,7 +205,11 @@ router.get('/getBrands/:id', async(req, res)=>{
 
     const brandID = req.params.id
 
+    console.log(brandID)
+
     const products = await db.brands.findByPk(brandID)
+
+    console.log(products, "inside getbrand")
 
     res.send(products)
 })
