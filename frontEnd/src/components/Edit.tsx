@@ -12,27 +12,34 @@ import { Link } from 'react-router-dom'
 import './css/Admin.css'
 
 
-function Adminforms() {
+function Edit() {
 
   const user = useSelector((state:{user: {user: any}}) => state.user.user)
-
+  const product = useSelector((state:{auth: {editProduct: any}}) => state.auth.editProduct)
+  
   console.log(user)
+  console.log(product);
 
   const [brand, setBrand] = useState<any>('')
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [salesPrice, setSalesPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [category, setCategory] = useState("");
+  const [id, setId] = useState<any>(product.id)
+  const [imageURL, setImageURL] = useState<any>('')
+  const [imageName, setImageName] = useState<any>(product.thumbnail)
+
+  const [name, setName] = useState(product.name);
+  const [price, setPrice] = useState(String(product.price));
+  const [salesPrice, setSalesPrice] = useState(String(product.sales_price));
+  const [description, setDescription] = useState(product.description);
+  const [quantity, setQuantity] = useState(product.quantity);
+  const [instructions, setInstructions] = useState(product.instructions);
+  const [ingredients, setIngredients] = useState(product.ingredients);
+  const [category, setCategory] = useState(product.product_type);
 
   const [originalFile, setOriginalFile] = useState<File | Blob>()
   const [originalFileURL, setOriginalFileURL] = useState("")
   const [compressedFile, setCompressedFile] = useState< File | Blob >()
   const [conpressedFileURL, setconpressedFileURL] = useState("")
+  const [changedPhoto, setChangedPhoto] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -54,6 +61,17 @@ function Adminforms() {
 
     getBrand()
 
+    const getImage = async() => {
+
+        let getImage = await axios.get(`/getImage/${imageName}`)
+
+        console.log(getImage);
+
+        setImageURL(getImage.data.image)
+    }
+
+    getImage()
+
   }, [])
 
   console.log(brand);
@@ -71,24 +89,28 @@ function Adminforms() {
 
   const handleSubmit = async(e: any) => {
 
+
     e.preventDefault()
     
-    if (compressedFile == null) return;
+    if (compressedFile == null)
 
-    let imageName = uuidv4()
+    if(changedPhoto && compressedFile != null){
 
-    const imageRef = ref(storage, `images/${ imageName }`)
-    let snapshot = await uploadBytes(imageRef, compressedFile);
-    let imageURL = await getDownloadURL(snapshot.ref)
-
+        setImageName(uuidv4())
+    
+        const imageRef = ref(storage, `images/${ imageName }`)
+        let snapshot = await uploadBytes(imageRef, compressedFile);
+        setImageURL(await getDownloadURL(snapshot.ref)) 
+    }
       
-    dispatch(authActions.uploadProduct({imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
-
+    dispatch(authActions.editProduct({changedPhoto, id, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
 
 
   }
 
   const fileSelectedHandler = (e: any) =>{
+
+    setChangedPhoto(true)
     console.log(e.target.files[0]) // looking at file uploaded
     setOriginalFile(e.target.files[0])
     setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
@@ -230,7 +252,7 @@ const fileUploadHandler = () =>{
   <div className='p-12 flex justify-center '>
   <a className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
               onClick={handleSubmit}>
-              <span className="ml-2 leading-none pt-3"> Add New Product</span>
+              <span className="ml-2 leading-none pt-3"> Edit Product </span>
           </a>
 
 
@@ -303,4 +325,4 @@ const fileUploadHandler = () =>{
   )
 }
 
-export default Adminforms
+export default Edit

@@ -23,6 +23,7 @@ import SignUpA from './components/SignUpAdmin';
 import Admin from './components/Admin';
 import Adminproducts from './components/Adminproducts';
 import Adminforms from './components/Adminformscopy';
+import Edit from './components/Edit';
 
 import Shop from './components/Shop';
 import Product from './components/Product';
@@ -67,6 +68,7 @@ root.render(
               <Route path="/admin" element={<AAuth><Admin /></AAuth>}/>
               <Route path="/adminforms" element={<Adminforms />}/>
               <Route path="/adminproducts" element={<Adminproducts />}/>
+              <Route path="/editproducts" element={<Edit />}/>
 
             </Routes>
           {/* </BaseLayout> */}

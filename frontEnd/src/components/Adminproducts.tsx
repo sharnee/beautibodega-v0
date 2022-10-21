@@ -7,6 +7,7 @@ import { ref, uploadBytes, listAll, getDownloadURL }from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 import {authActions} from '../slice/AuthSlice';
 import Compressor from 'compressorjs';
+import { Link } from 'react-router-dom'
 
 import './css/Admin.css'
 import { setConstantValue } from 'typescript';
@@ -19,18 +20,10 @@ function Adminproducts() {
     const [selectedProducts, setSelectedProducts] = useState<any>([])
     
     const user = useSelector((state:{user: {user: any}}) => state.user.user)
+
+    const dispatch = useDispatch()
     
     useEffect(() => {
-
-        function sleep(milliseconds: any) {
-
-            const date = Date.now();
-            let currentDate = null;
-            do {
-                currentDate = Date.now();
-            } while (currentDate - date < milliseconds);
-        
-        }
           
     
         const getBrand = async() =>{
@@ -42,6 +35,8 @@ function Adminproducts() {
             let image = await axios.get(`getImage/${brand_res.data.logo}`)
             
             brand_res.data['image'] = image.data
+
+            console.log(brand_res.data)
             
             setBrand( brand_res.data )
             
@@ -77,6 +72,19 @@ function Adminproducts() {
 
       const handleDelete = () =>{
         
+        for(let i = 0; i < selectedProducts.length; i++){
+            
+            for(let j = 0; j < brandProducts.length; j++){
+
+                if(brandProducts[j].data.name == selectedProducts[i]){
+
+                    dispatch(authActions.handleDelete({user, product: brandProducts[j].data}))
+
+                    break
+                }
+            }
+
+        }
       }
 
       const selectObj = (e: any) => {
@@ -84,8 +92,6 @@ function Adminproducts() {
         let arr = [...selectedProducts]
 
         if(selectedProducts.includes(e.target.id)){
-
-            console.log("haha")
 
             let index = selectedProducts.indexOf(e.target.id)
 
@@ -107,6 +113,8 @@ function Adminproducts() {
         }
       }
     
+
+      console.log(brandProducts)
 
 
 
@@ -161,12 +169,21 @@ function Adminproducts() {
 <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white ">
   Products
-  <p className="mt-1 text-sm font-normal flex justify-end text-gray-500 dark:text-gray-400">       <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-2 border border-blue-500 hover:border-transparent rounded">
-       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-</svg>
+  <p className="mt-1 text-sm font-normal flex justify-end text-gray-500 dark:text-gray-400">      
+  
+<Link to="/adminforms">
 
-</button></p>
+    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-2 border border-blue-500 hover:border-transparent rounded">
+       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg>
+    </button>
+
+</Link>
+
+</p>
+
+
 </caption>
 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
   <tr>
@@ -216,7 +233,7 @@ function Adminproducts() {
                     {obj.data.quantity}
                 </td>
                 <td className="py-4 px-6">
-                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <Link onClick={()=>dispatch(authActions.setEditProduct(obj.data))} to="/editProducts" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                 </td>
             </tr>
         </>
