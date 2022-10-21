@@ -223,6 +223,14 @@ router.get('/getReviews/:id', async(req, res)=>{
     res.send(reviews)
 })
 
+router.get('/getCreators', async(req, res)=>{
+
+    let creators = await db.users.findAll({where: {role: 'Influencer'}})
+    console.log(creators, "creators in get creators");
+    res.send(creators)
+
+})
+
 router.post('/getProfile', async(req, res)=>{
 
     console.log(req.body, "in backend getprofile");
@@ -253,7 +261,7 @@ router.post('/updateProfile', async(req, res)=>{
         case (true):
             console.log(req.body.tags.toString());
             let splitTags = req.body.tags.toString()
-            await db.users.update({name: req.body.name, tags: splitTags}, {where:{id: req.body.ID}})
+            await db.users.update({name: req.body.name, tags: splitTags, role: req.body.role}, {where:{id: req.body.ID}})
        
     }
 

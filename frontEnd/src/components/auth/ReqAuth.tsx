@@ -9,7 +9,7 @@ const ReqAuth = (props: any) => {
 
     useEffect(() => {
 
-        if(!token){
+        if(token == ""){
             navigate('/login')
         }
 

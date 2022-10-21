@@ -27,7 +27,7 @@ export default function Login() {
         // .then(response =>{
         //     console.log(response);
         //     dispatch(authActions.login(response))
-        //     navigate("/")
+        navigate("/")
         // })
         
         // // this might cause trouble with async... if it does we can do 2 disbatchs as a work around

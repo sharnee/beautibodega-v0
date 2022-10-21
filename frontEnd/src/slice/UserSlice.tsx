@@ -2,13 +2,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
+    console.log(data)
     console.log(data, "inside get profile slice");
+    console.log(data);
     const {ID} = data
     return axios.post('/getProfile',{ID: ID} )
 })
 
 
 export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{
+    console.log(data , "login data");
     const {email, password} = data
     return axios.post('/login',{email: email, password: password} )
     
