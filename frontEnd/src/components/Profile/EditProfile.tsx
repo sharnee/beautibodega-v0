@@ -18,7 +18,7 @@ const EditProfile = () => {
     
 
     const user = useSelector((state:{user: {user: any}}) => state.user.user)
-    const pic = useSelector((state:{auth: {pic: string}}) => state.auth.pic)
+    const pic = useSelector((state:{user: {pic: string}}) => state.user.pic)
 
     const [general, setGeneral] = useState<boolean>(true)
 
@@ -28,17 +28,25 @@ const EditProfile = () => {
     const [compressedFile, setCompressedFile] = useState< File | Blob | any>()
     const [conpressedFileURL, setconpressedFileURL] = useState("/default-placeholder-image.png")
     const [oldTags, setOldTags] = useState("")
+    const [role, setRole] = useState(user.role)
 
     const dispatch = useDispatch()
     const navagate = useNavigate()
 
     useEffect(() => {
-        if(!user.tags == null){setTags(user.tags.split(","))}
+        if(user.tags !== null){
+            console.log("inside set tags");
+            setTags(user.tags.split(","))
+        }
+        console.log(pic, "pic")
         setconpressedFileURL(pic)
         setName(user.name)
 
     }, [])
     
+
+    console.log(user.tags, "user.tags");
+    console.log(tags,"tags")
 
     const fileSelectedHandler = (e: any) =>{
         console.log(e.target.files[0]) // looking at file uploaded
@@ -71,7 +79,11 @@ const EditProfile = () => {
         console.log(conpressedFileURL);
         // if (compressedFile == null) return;
         if(conpressedFileURL == pic){
-            dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name}))
+            console.log("did not change pic");
+            dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name, role}))
+            console.log(ID, "id")
+            dispatch(getProfile({ID}))
+            navagate('/profile')
 
         }
         else{
@@ -86,19 +98,21 @@ const EditProfile = () => {
 
         // let response = await axios.post('/uploadImage', action.payload)
         
-        dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name}))
-
-
-        }
+        dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name, role}))
+        console.log(ID, "id");
         dispatch(getProfile({ID}))
         navagate('/profile')
+
+        }
+        console.log("getProfile")
+
 
       }
 
   return (
     <div>
 
-        <label className='cursor-pointer p-3 underline' onClick={()=>navagate('/profile')}>Back</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(true)}>General</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(false)}>Security</label> 
+        <label className='cursor-pointer p-3 underline' onClick={()=>navagate('/profile')}>Back</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(true)}>General</label> <label className='p-3 cursor-pointer underline' onClick={()=>setGeneral(false)}>Security</label> <button type="button" className="m-3 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={()=>setRole("Influencer")}>Register as Influencer</button>
 
         {general?
         <form onSubmit={generalSubmit}>

@@ -7,19 +7,20 @@ const Profile = () => {
   const user = useSelector((state:{user: {user: any}}) => state.user.user)
   const pic = useSelector((state:{user: {pic: string}}) => state.user.pic)
 
-  console.log(user.name);
+  const [tags, setTags] = useState([])
+
 
   // const [tags, setTags] = useState<any>(user.tags.split(","))
-  const tags = user.tags.split(",")
-
 
   const navigate = useNavigate();
-// useEffect(() => {
-//   console.log(user.tags, "userTags")
-//   // if(!user.tags == null){setTags(user.tags.split(","))}
+useEffect(() => {
+  if(user.tags != null || user.tags != undefined){
+    console.log("get out");
+    setTags(user.tags.split(","))
+  }
   
 
-// }, [])
+}, [])
 
 // console.log(tags, "tags after");
 
@@ -35,25 +36,25 @@ const Profile = () => {
         </div>
 
         <div className='flex flex-row'>
-        {tags.map((tag:any)=>{return<span className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">{tag}</span>})}
+        {tags? tags.map((tag:any)=>{return<span className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">{tag}</span>}): null}
         </div>
 
         <div className='p-1 pb-5 pt-5'>
           <p className="text-base ...">Shop Your</p>
           <p className="text-xl ...">Holy-Grails</p>
-          <div>oops... there seem to be nothere here</div>
+          <div>oops... There doesn't seem to be anything here</div>
         </div>
 
         <div className='p-1 pb-5 pt-5'>
           <p className="text-base ...">Shop Your</p>
           <p className="text-xl ...">Favorite Brands</p>
-          <div>oops... there seem to be nothere here</div>
+          <div>oops... There doesn't seem to be anything here</div>
         </div>
 
         <div className='p-1 pb-5 pt-5'>
           <p className="text-base ...">See Your</p>
           <p className="text-xl ...">Best Reviews</p>
-          <div>oops... there seem to be nothere here</div>
+          <div>oops... There doesn't seem to be anything here</div>
         </div>
 
 
