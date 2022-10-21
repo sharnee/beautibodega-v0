@@ -4,7 +4,7 @@ import React from 'react'
 function Adminforms() {
   return (
     <>
-<div className="flex w-screen h-[100vh] text-gray-700 bg-beige bg-cover">
+<div className="flex w-screen h-[100vh] text-gray-700 font-Caslon font-light bg-beige bg-cover">
 
 <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
     <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
@@ -36,11 +36,11 @@ function Adminforms() {
 
 <div className="flex-grow py-6 overflow-auto bg-beige pt-20">
 <div className="grid grid-cols-5   gap-6">
-<div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-<div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-<div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-<div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-<div className="h-20 col-span-1 bg-white border border-gray-300"></div>
+<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Total Sales</div>
+<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Online Sessions</div>
+<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Returning Customers</div>
+<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Abandon Cart</div>
+<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Sales Today</div>
 
 
 </div>
