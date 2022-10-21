@@ -1,11 +1,43 @@
 import express, { Express, Request, Response, Router } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 var FormData = require('form-data');
+const Api404Error = require('./api404error')
 
 
 const router = Router();
 
 let db = require('../models')
+
+router.post('/uploadProduct', async(req, res)=>{
+
+        let {imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
+        
+    
+        price = parseFloat(price);
+        salesPrice= parseFloat(salesPrice);
+        quantity= parseFloat(quantity);
+    
+        let image = await db.images.create({
+            id: imageName,
+            image: imageURL
+          })
+    
+        let product = await db.products.create({
+            id: uuidv4(),
+            name,
+            price,
+            sales_price: salesPrice,
+            description,
+            quantity,
+            instructions,
+            ingredients,
+            category,
+            images: imageName,
+            thumbnail: imageName
+    
+        })
+    
+})
 
 router.post('/uploadImage', async(req, res)=>{
 

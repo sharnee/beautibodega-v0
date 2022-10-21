@@ -70,6 +70,27 @@ const authSlice = createSlice({
             }
             name()
         },
+        uploadProduct: (state, action)=>{
+            async function name() {
+                try {
+
+                    let response = await axios.post('/uploadProduct', action.payload)
+
+                    alert("Product successfully added!")
+
+                } catch (error) {
+
+                    alert("Product was not added!" +
+                    "\n" + error)
+
+                    console.log(error);
+                   
+                    
+
+                }
+            }
+            name()
+        },
         updateProfile: (state,action)=>{
             async function name() {
                 try {
