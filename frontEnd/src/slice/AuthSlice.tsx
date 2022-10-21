@@ -12,7 +12,7 @@ const authSlice = createSlice({
         pic: "",
         product: [],
         editProduct: [],
-        cart:{},
+        cart:[],
         // shopFilters:{
         //     makeup: true,
         //     hair: true,
@@ -207,6 +207,33 @@ const authSlice = createSlice({
         setCart: (state: any, action: any)=>{
 
             state.cart = [...state.cart, action.payload]
+        },
+        setCartQuantity: (state: any, action: any)=>{
+
+            for(let i = 0; i < state.cart.length; i++){
+
+
+
+                if(state.cart[i].name == action.payload.name){
+
+                  
+                    state.cart[i].quantityInCart = action.payload.quantity
+                }
+
+                break
+            }
+        },
+        deleteCartItem: (state: any, action: any)=>{
+
+            for(let i = 0; i < state.cart.length; i++){
+
+                if(state.cart[i].name == action.payload.name){
+
+                    state.cart.splice(i, 1)
+                }
+
+                break
+            }
         }
     },
 

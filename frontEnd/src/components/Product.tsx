@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { authActions } from "../slice/AuthSlice";
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux';
 
@@ -9,7 +10,24 @@ const Product = () => {
 
   const product = useSelector((state:{auth: {product: any}}) => state.auth.product)
 
+  const dispatch = useDispatch()
+
   const [quantity, setQuantity] = useState(1)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+
+  }, [])
+
+  const handleAddCart = () => {
+    
+    let productAltered = {...product}
+
+    productAltered['quantityInCart'] = quantity
+
+    dispatch(authActions.setCart(productAltered))
+  }
+  
 
   console.log(product)
 
@@ -33,7 +51,7 @@ const Product = () => {
             </div>
             
             <div className="add_to_cart_cont">
-              <button className="add_to_cart">Add To Cart</button>
+              <button onClick={handleAddCart} className="add_to_cart">Add To Cart</button>
             </div>
 
             <h2 className="sub_header">Description:</h2>
