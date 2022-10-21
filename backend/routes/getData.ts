@@ -69,9 +69,20 @@ router.get('/getReviews/:id', async(req, res)=>{
     res.send(reviews)
 })
 
-router.post('/updateProfile', async(req, res)=>{
+router.post('/getProfile', async(req, res)=>{
+
+    console.log(req.body, "in backend getprofile");
 
     let user = await db.users.findAll({where: {id: req.body.ID}})
+    let profilePic = await db.images.findByPk(user[0].dataValues.profile_picture)
+
+    res.json({user: user, profilePic: profilePic.dataValues.image})
+    
+})
+
+router.post('/updateProfile', async(req, res)=>{
+
+   
     console.log(req.body.conpressedFileURL, "check", req.body.pic);
 
     switch(true){
@@ -91,8 +102,7 @@ router.post('/updateProfile', async(req, res)=>{
             await db.users.update({name: req.body.name, tags: splitTags}, {where:{id: req.body.ID}})
        
     }
-    user = await db.users.findAll({where: {id: req.body.ID}})
-    res.json({user: user, profilePic: req.body.imageName})
+
 
     console.log(req.body);
 
