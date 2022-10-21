@@ -1,11 +1,52 @@
 import express, { Express, Request, Response, Router } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 var FormData = require('form-data');
+const Api404Error = require('./api404error')
 
 
 const router = Router();
 
 let db = require('../models')
+
+router.post('/uploadProduct', async(req, res)=>{
+
+        let {brand, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
+        
+        let id = uuidv4()
+    
+        price = parseFloat(price);
+        salesPrice= parseFloat(salesPrice);
+        quantity= parseFloat(quantity);
+    
+        let image = await db.images.create({
+            id: imageName,
+            image: imageURL
+          })
+    
+        let product = await db.products.create({
+            id,
+            name,
+            price,
+            sales_price: salesPrice,
+            description,
+            quantity,
+            instructions,
+            ingredients,
+            product_type: category,
+            images: imageName,
+            thumbnail: imageName
+    
+        })
+
+        let updateBrand = await db.brands.update({
+            products: brand.products + id + ', '
+        }, {
+            where: {
+                products : brand.products
+            }
+        })
+    
+})
 
 router.post('/uploadImage', async(req, res)=>{
 
@@ -17,6 +58,17 @@ router.post('/uploadImage', async(req, res)=>{
       })
 
 
+})
+
+router.get('/getBrandByAdmin/:id', async(req, res)=>{
+
+    const userID = req.params.id
+
+    const brand = await db.brands.findOne({where: {
+        admin_user : userID
+    }});
+
+    res.send(brand)
 })
 
 router.get('/getImage/:id', async(req, res)=>{
