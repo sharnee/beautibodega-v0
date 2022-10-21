@@ -26,6 +26,8 @@ const Shop = () => {
     
       
     useEffect(() => {
+
+        window.scrollTo(0, 0)
         
         async function fetchData(){
             let allProductData = await axios.get('/getAllProducts');
@@ -184,9 +186,11 @@ const Shop = () => {
                         {obj.product_type == 'skin' && obj.price <= price ? 
                             <div className="product">
                                 <>
-                                    <img src={obj.image.image}/>
-                                    <p>{obj.name}</p>
-                                    <p>${obj.price}</p>
+                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
+                                            <img src={obj.image.image}/>
+                                            <p>{obj.name}</p>
+                                            <p>${obj.price}</p>
+                                    </Link>
                                 </>
                                 
                             </div>
@@ -234,9 +238,11 @@ const Shop = () => {
                         {obj.product_type == 'makeup' && obj.price <= price ? 
                             <div className="product">
                                 <>
-                                    <img src={obj.image.image}/>
-                                    <p>{obj.name}</p>
-                                    <p>${obj.price}</p>
+                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
+                                            <img src={obj.image.image}/>
+                                            <p>{obj.name}</p>
+                                            <p>${obj.price}</p>
+                                    </Link>
                                 </>
                                 
                             </div>
@@ -285,9 +291,11 @@ const Shop = () => {
                         {obj.product_type == 'hair' && obj.price <= price ? 
                             <div className="product">
                                 <>
-                                    <img src={obj.image.image}/>
-                                    <p>{obj.name}</p>
-                                    <p>${obj.price}</p>
+                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
+                                            <img src={obj.image.image}/>
+                                            <p>{obj.name}</p>
+                                            <p>${obj.price}</p>
+                                    </Link>
                                 </>
                                 
                             </div>

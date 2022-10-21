@@ -44,7 +44,7 @@ function Edit() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     const getBrand = async() =>{
 
       let id: any = user.id

@@ -24,6 +24,7 @@ import Admin from './components/Admin';
 import Adminproducts from './components/Adminproducts';
 import Adminforms from './components/Adminformscopy';
 import Edit from './components/Edit';
+import Cart from './components/Cart';
 
 import Creators from './components/Creators';
 
@@ -53,7 +54,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
 
-        <Router>
+        <Router >
           {/* <BaseLayout> */}
             <Routes>
               
@@ -72,6 +73,7 @@ root.render(
               <Route path="/adminforms" element={<Adminforms />}/>
               <Route path="/adminproducts" element={<Adminproducts />}/>
               <Route path="/editproducts" element={<Edit />}/>
+              <Route path="/cart" element={<Auth><BL><Cart /></BL></Auth>}/>
 
             </Routes>
           {/* </BaseLayout> */}

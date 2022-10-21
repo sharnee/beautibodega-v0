@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.productDiv{
+    display:flex;
+    justify-content: space-evenly;
+    height: auto;
+    outline: solid gray 1px;
+    padding: 5%;
+    margin: 10px 0 10px 0;
+}
+
+.quantity_selector1{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.quant_button1{
+    background-color: gray;
+    width: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.quant1{
+    margin-left: 1px;
+    width: 18px;
+    text-align: center;
+    outline: solid black 1px;
+}
+
+.priceDiv{
+    font-weight: 450;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.productName{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+._container{
+    padding: 10px 0 10px 0;
+    height:100vh;
+}
+
+.imag{
+    margin-right: 50px;
+    width:100px;
+    height: 100px;
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.09)
+
+}
+
+.close{
+    font-weight: 600;
+    font-size: 30px;
+    padding-left: 5px;
+    color: red;
+}
+
+.emptyMsg{
+    padding-top: 50%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
