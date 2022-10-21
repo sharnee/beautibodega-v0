@@ -8,24 +8,24 @@ function Adminforms() {
 
 <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
     <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
-      <p></p>
+      <img src="placeholderAssets/MissJessiesLogo.png" alt="" />
     </a>
     <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
+        <p>Products</p>
     </a>
     <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-      <p></p>
+      <p>Customers</p>
     </a>
     <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
+        <p>Analytics</p>
     </a>
     <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
+        <p>Orders</p>
     </a>
     <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
+        <p>Beauti Aisle</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
         <p></p>
     </a>
 </div>

@@ -5,7 +5,7 @@ const Sidebar = () => {
 
   return (
     <>
-    <div className=''>
+    <div className='font-Caslon'>
 
 <nav className="text-white border-gray-200  rounded bg-black">
     <div className="py-3 px-4 mx-auto max-w-screen-xl  md:px-6">
@@ -22,7 +22,7 @@ const Sidebar = () => {
   ) : (
     <svg
       onClick={() => setShowSidebar(!showSidebar)}
-      className=" z-30 flex items-center cursor-pointer top-35 relative left-10"
+      className=" z-30 flex items-center cursor-pointer top-30 relative left-10"
       fill="#2563EB"
       viewBox="0 0 100 40"
       width="40"
@@ -40,37 +40,41 @@ const Sidebar = () => {
     }`}
     
   >
-<div className="container  w-[220px] h-full rounded-tr-[100px]">
-    <div className="mt-10 bg-gray-200 rounded-tr-[100px] ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
-    <div className=" bg-gray-200 ">Hello</div>
-    <div className=" bg-white ">Hello</div>
+<div className="container  w-[220px] text-xl h-full rounded-tr-[100px]">
+<div className="flex flex-col  w-72   border-gray-300">
+    <a className="flex items-center w-full h-16 " href="#">
+      <img src="Beauty_Bodega.png" className="pt-16 pl-10 w-1/2 " alt="" />
+    </a>
+    <div className=""><hr className="relative top-16 p-0.5 rounded-lg w-[200px] bg-black "/></div>
+    <a className=" flex-shrink-0 w-10 h-10 mt-20  rounded hover:bg-gray-300" href="/shop">
+        <p>Shop</p>
+    </a>
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="/brands">
+        <p>Brands</p>
+    </a>
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+        <p>Profile</p>
+    </a>
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+        <p></p>
+    </a>
+
+
+</div>
 </div>
   </div>
                 </li>
-                <li className='mt-1.5'>
-                    <a href="#" className="text-gray-900 dark:text-white pl-5  hover:underline" aria-current="page">Home</a>
+                <li className='mt-2'>
+                    <a href="#" className="text-gray-900 dark:text-white pl-5 text-sm hover:underline" aria-current="page">Home</a>
                 </li>
-                <li className='mt-1.5'>
-                    <a href="#" className="text-gray-900 dark:text-white hover:underline">Company</a>
+                <li className='mt-2'>
+                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Company</a>
                 </li >
-                <li className='mt-1.5'>
-                    <a href="#" className="text-gray-900 dark:text-white hover:underline">Team</a>
+                <li className='mt-2'>
+                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Team</a>
                 </li>
-                <li className='mt-1.5'>
-                    <a href="#" className="text-gray-900 dark:text-white hover:underline">Features</a>
+                <li className='mt-2'>
+                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Features</a>
                 </li>
             </ul>
         </div>
