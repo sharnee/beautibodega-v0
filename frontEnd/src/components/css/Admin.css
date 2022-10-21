@@ -1,0 +1,13 @@
+.background{
+    overflow: auto;
+}
+.background_main{
+    overflow: auto;
+}
+
+@media only screen 
+and (max-device-width : 1200px) {
+    .background_main{
+        width: 100%;
+    }
+}

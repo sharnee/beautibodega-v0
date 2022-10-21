@@ -55,6 +55,16 @@ const Sidebar = () => {
     <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p>Profile</p>
     </a>
+
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+        <p></p>
+    </a>
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+        <p></p>
+    </a>
+    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+        <p></p>
+    </a>
     <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p></p>
     </a>
