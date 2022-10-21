@@ -11,7 +11,13 @@ const authSlice = createSlice({
         user: {},
         pic: "",
         product: [],
-        cart:{}
+        cart:{},
+        // shopFilters:{
+        //     makeup: true,
+        //     hair: true,
+        //     nails: true,
+        //     skin: true
+        // }
     },
     reducers: {
         loadUserToken: (state,action)=>{
