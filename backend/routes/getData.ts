@@ -10,8 +10,9 @@ let db = require('../models')
 
 router.post('/uploadProduct', async(req, res)=>{
 
-        let {imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
+        let {brand, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
         
+        let id = uuidv4()
     
         price = parseFloat(price);
         salesPrice= parseFloat(salesPrice);
@@ -23,7 +24,7 @@ router.post('/uploadProduct', async(req, res)=>{
           })
     
         let product = await db.products.create({
-            id: uuidv4(),
+            id,
             name,
             price,
             sales_price: salesPrice,
@@ -31,10 +32,18 @@ router.post('/uploadProduct', async(req, res)=>{
             quantity,
             instructions,
             ingredients,
-            category,
+            product_type: category,
             images: imageName,
             thumbnail: imageName
     
+        })
+
+        let updateBrand = await db.brands.update({
+            products: brand.products + id + ', '
+        }, {
+            where: {
+                products : brand.products
+            }
         })
     
 })
@@ -49,6 +58,17 @@ router.post('/uploadImage', async(req, res)=>{
       })
 
 
+})
+
+router.get('/getBrandByAdmin/:id', async(req, res)=>{
+
+    const userID = req.params.id
+
+    const brand = await db.brands.findOne({where: {
+        admin_user : userID
+    }});
+
+    res.send(brand)
 })
 
 router.get('/getImage/:id', async(req, res)=>{

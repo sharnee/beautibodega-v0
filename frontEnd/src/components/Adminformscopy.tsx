@@ -15,7 +15,9 @@ function Adminforms() {
 
   const user = useSelector((state:{user: {user: any}}) => state.user.user)
 
-  const [brand, setBrand] = useState("")
+  console.log(user)
+
+  const [brand, setBrand] = useState<any>('')
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -33,6 +35,39 @@ function Adminforms() {
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+
+    const getBrand = async() =>{
+
+      let id: any = user.id
+
+      let brand_res: any = await axios.get(`/getBrandByAdmin/${id}`)
+
+      let image = await axios.get(`getImage/${brand_res.data.logo}`)
+
+      brand_res.data['image'] = image.data
+
+      setBrand( brand_res.data )
+
+    }
+
+    getBrand()
+
+  }, [])
+
+  console.log(brand);
+
+  function sleep(milliseconds: any) {
+
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+
+}
+  
+
   const handleSubmit = async(e: any) => {
 
     e.preventDefault()
@@ -45,8 +80,12 @@ function Adminforms() {
     let snapshot = await uploadBytes(imageRef, compressedFile);
     let imageURL = await getDownloadURL(snapshot.ref)
 
+    console.log(imageURL)
+
+    console.log('hello')
+
       
-      dispatch(authActions.uploadProduct({imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category}))
+    dispatch(authActions.uploadProduct({imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
 
 
 
@@ -56,6 +95,12 @@ function Adminforms() {
     console.log(e.target.files[0]) // looking at file uploaded
     setOriginalFile(e.target.files[0])
     setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
+
+    sleep(1000)
+
+    console.log(originalFile);
+
+    fileUploadHandler()
 
 }
 
@@ -161,7 +206,6 @@ const fileUploadHandler = () =>{
           <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
             image
             <input type="file" onChange={fileSelectedHandler}/>
-            <button onClick={fileUploadHandler}>Upload</button>
           </label>
           <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
             Instructions
@@ -205,16 +249,38 @@ const fileUploadHandler = () =>{
 
       <div className="flex flex-col flex-grow p-4 overflow-auto">
           <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
+            {brand != "" ? 
+                <span className="leading-none">
+                  {brand.brand_name}
+                </span>
+            :
+            <></>      
+            }
           </a>
           <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
+          {brand != "" ? 
+                <span className="leading-none">
+                  {brand.brand_name}
+                </span>
+            :
+            <></>      
+            }
           </a>
           <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
+          {brand != "" ? 
+                <span className="leading-none">
+                  {brand.description}
+                </span>
+            :
+            <></>      
+            }
           </a>
           <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
+          {brand != "" ? 
+              <img src={brand.image.image} />
+            :
+            <></>      
+            }
           </a>
           <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
               <span className="leading-none"></span>
