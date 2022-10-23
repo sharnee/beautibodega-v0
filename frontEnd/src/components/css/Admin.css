@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
+.main-table-ap{
+    background-color:white;
+    width: 100%;
+    overflow:scroll;
+}
+
+.top-boxes-ap{
+    overflow: auto;
+}
+
 .background{
     overflow: auto;
 }
@@ -5,9 +18,27 @@
     overflow: auto;
 }
 
-@media only screen 
-and (max-device-width : 1200px) {
+.brand-info{
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    box-sizing:border-box;
+    padding: 4%;
+    max-width: 15%;
+}
+
+.brand-info img{
+    padding: 4%;
+}
+.brand-info div{
+    padding: 4%;
+    font-family:'Times New Roman', Times, serif, serif;
+    font-weight: 550;
+}
+
+@media (max-device-width : 1200px) {
     .background_main{
         width: 100%;
     }
 }
+

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.brandPicCont_bl{
+    width: 45%;
+    justify-content: space-around;
+    flex-direction:column;
+    margin: 0 2.5% 0 2.5%;
+}
+
+.brandCont_bl{
+
+    margin: 5% 0 5% 0;
+    justify-content: left;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.brandPicture_bl{
+    display: flex;
+    align-items: left;
+    width: 100%;
+    outline: solid rgba(0, 0, 0, 0.548);
+    outline-width: 1px;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+.brand-name-bl{
+    color: rgba(0, 0, 0, 0.428);
+    font-size: 14px;
+}
+
+.brandPicture_bl img{
+    width: 220px;
+    height: 80px;
+    padding: 10% 20% 10% 20%;
+}
