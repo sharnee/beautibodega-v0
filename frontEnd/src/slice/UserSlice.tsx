@@ -13,8 +13,8 @@ export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
 export const updateProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     
     console.log(data, "inside get update profile slice");
-    const {ID, tags, conpressedFileURL, pic, name, role} = data
-    return axios.post('/updateProfile',{ID, tags, conpressedFileURL, pic, name, role} )
+    const {ID, tags, conpressedFileURL, pic, name, role, imageName, URL} = data
+    return axios.post('/updateProfile',{ID, tags, conpressedFileURL, pic, name, role, imageName, URL} )
 })
 
 export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{

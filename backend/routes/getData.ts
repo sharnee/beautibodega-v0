@@ -210,6 +210,30 @@ router.get('/getBrands/:id', async(req, res)=>{
     res.send(products)
 })
 
+router.get('/getFrontPage', async(req, res)=>{
+//i hate this, this is ass
+
+    // let cache: any[] = []
+
+    const brands = await db.brands.findAll({where: {popular_brand: true}})
+    // console.log(brands)
+    // brands.map((brand:any)=>{
+    //     db.images.findByPk(brand.logo).then((image:any)=> {
+    //         console.log(image.dataValues.image)
+    //         cache.push(image.dataValues.image)
+    //     })
+    //     console.log(cache, "cache")
+    // })
+    
+    // db.images.findByPk({where: {id: brands.logo}})
+
+    // const data = await db.sequelize.query('SELECT * FROM brands, images WHERE brands.popular_brand = true AND images.id = brands.logo')
+
+    // console.log("first")
+    // console.log(data)
+    res.send(brands)
+})
+
 router.get('/getReviews/:id', async(req, res)=>{
 
     const ID = req.params.id
@@ -246,7 +270,7 @@ router.post('/updateProfile', async(req, res)=>{
     switch(true){
 
         case !(req.body.conpressedFileURL == req.body.pic):
-            console.log("update profile pic in update profile");
+            console.log("update profile pic in update profile", req.body.imageName, "image name", req.body.URL, "image url");
             let image = await db.images.create({
                 id: req.body.imageName,
                 image: req.body.URL

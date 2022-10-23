@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const Profile = () => {
+
+  let { id } = useParams();
 
   const user = useSelector((state:{user: {user: any}}) => state.user.user)
   const pic = useSelector((state:{user: {pic: string}}) => state.user.pic)
