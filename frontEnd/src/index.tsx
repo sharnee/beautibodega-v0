@@ -26,6 +26,7 @@ import Adminforms from './components/Adminformscopy';
 import Edit from './components/Edit';
 import Cart from './components/Cart';
 import Brands from './components/BrandsList'
+import Brand from './components/Brand'
 
 import Creators from './components/Creators';
 
@@ -76,6 +77,7 @@ root.render(
               <Route path="/editproducts" element={<AAuth><Edit /></AAuth>}/>
               <Route path="/cart" element={<Auth><BL><Cart /></BL></Auth>}/>
               <Route path="/brands" element={<Auth><BL><Brands /></BL></Auth>}/>
+              <Route path="/brand" element={<Auth><BL><Brand /></BL></Auth>}/>
 
             </Routes>
           {/* </BaseLayout> */}

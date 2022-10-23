@@ -10,6 +10,7 @@ const authSlice = createSlice({
         error: "",
         user: {},
         pic: "",
+        brand: [],
         product: [],
         editProduct: [],
         cart:[],
@@ -203,6 +204,10 @@ const authSlice = createSlice({
         setProduct: (state, action)=>{
             
             state.product = action.payload
+        },
+        setBrand: (state, action)=>{
+            
+            state.brand = action.payload
         },
         setCart: (state: any, action: any)=>{
 

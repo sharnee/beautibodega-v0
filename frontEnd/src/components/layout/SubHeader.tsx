@@ -1,6 +1,9 @@
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
 
+import { Link } from "react-router-dom";
+
+
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -45,19 +48,19 @@ const Sidebar = () => {
   >
 <div className="container  w-[220px] text-xl h-full rounded-tr-[100px]">
 <div className="flex flex-col  w-72   border-gray-300">
-    <a className="flex items-center w-full h-16 " href="#">
+    <Link className="flex items-center w-full h-16 " to="#">
       <img src="Beauty_Bodega.png" className="pt-16 pl-10 w-1/2 " alt="" />
-    </a>
+    </Link>
     <div className=""><hr className="relative top-16 p-0.5 rounded-lg w-[200px] bg-black "/></div>
-    <a className=" flex-shrink-0 w-10 h-10 mt-20  rounded hover:bg-gray-300" href="/shop">
+    <Link className=" flex-shrink-0 w-10 h-10 mt-20  rounded hover:bg-gray-300" to="/shop">
         <p>Shop</p>
-    </a>
-    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="/brands">
+    </Link>
+    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/brands">
         <p>Brands</p>
-    </a>
-    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+    </Link>
+    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="">
         <p>Profile</p>
-    </a>
+    </Link>
 
     <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p></p>
@@ -84,10 +87,10 @@ const Sidebar = () => {
                     <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>
                 </li >
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Products</a>
+                    <Link to="/shop" className="text-gray-900 dark:text-white text-sm hover:underline">Products</Link>
                 </li>
                 <li className='mt-2'>
-                    <a href="#" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</a>
+                    <a href="/brands" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</a>
                 </li>
             </ul>
         </div>

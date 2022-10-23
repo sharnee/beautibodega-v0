@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 import {authActions} from '../slice/AuthSlice';
 
-import './css/Shop.css'
+import './css/Brands.css'
 
 const Brands = () => {
 
@@ -17,10 +17,10 @@ const Brands = () => {
     const [filter, setFilter] = useState(false);
     const [sort, setSort] = useState(false);
 
-    const[makeup, setMakeup] = useState(true)
-    const[hair, setHair] = useState(true)
-    const[nails, setNails] = useState(true)
-    const[skin, setSkin] = useState(true)
+    // const[makeup, setMakeup] = useState(true)
+    // const[hair, setHair] = useState(true)
+    // const[nails, setNails] = useState(true)
+    // const[skin, setSkin] = useState(true)
 
     const dispatch = useDispatch();
     
@@ -79,6 +79,7 @@ const Brands = () => {
     console.log("brands", brandImageArr);
     console.log("Products with images", productImageArr);
 
+
     const openFilter = (e: any) => {
 
         e.preventDefault();
@@ -107,12 +108,13 @@ const Brands = () => {
 
     }
 
+
   return (
     <>
         <div className="flex pageTop">
             <div>
                 <h3>Shop</h3>
-                <h1>The Boedga</h1>
+                <h1>Bodega Brands</h1>
             </div>
 
             <div>
@@ -127,24 +129,7 @@ const Brands = () => {
              {filter ? 
              <div className="dropdown-content">
                 <div className="dropdown-item">
-                    <div>PRICE {price}: </div>
-                    <input type="range" min="1" max="100" value={price.toString()} className="slider" onChange={e=>setPrice(parseInt(e.target.value))}></input>
-                </div>
-                <div className="dropdown-item">
-                    <div>HIDE SKIN</div>
-                    <input type="checkbox" onChange={()=>setSkin(skin ? false : true)}/>
-                </div>
-                <div className="dropdown-item">
-                    <div>HIDE MAKEUP</div>
-                    <input type="checkbox" onChange={()=>setMakeup(makeup ? false : true)}/>
-                </div>
-                <div className="dropdown-item">
-                    <div>HIDE HAIR</div>
-                    <input type="checkbox" onChange={()=>setHair(hair ? false : true)}/>
-                </div>
-                <div className="dropdown-item">
-                    <div>HIDE NAILS</div>
-                    <input type="checkbox" onChange={()=>setNails(nails ? false : true)}/>
+                    To Be Added
                 </div>
             </div>
             :
@@ -166,219 +151,30 @@ const Brands = () => {
 
         <div className="shopContainer"> 
 
+        <div className="flex brandCont_bl">
 
-        {skin ? 
+                {brandImageArr.map((obj: any) => {
 
-            <div>
-                <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Skin</h1>
-                </div>
+                    return (<>
 
-                <div className="flex products">
-                {productImageArr.map((obj:any)=>{
+                    <Link onClick={()=>dispatch(authActions.setBrand(obj))} className="flex brandPicCont_bl" to="/brand">
 
-                    return(
-                        <>
-                        {obj.product_type == 'skin' && obj.price <= price ? 
-                            <div className="product">
-                                <>
-                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
-                                            <p>{obj.name}</p>
-                                            <p>${obj.price}</p>
-                                    </Link>
-                                </>
-                                
+                            <div className="brandPicture_bl">
+
+                                <img src={obj.image.image}/>
+
                             </div>
-                            : <></>}
-                        </>
-                    );
+
+                            <p className="brand-name-bl">{obj.brand_name}</p>
+
+                    </Link>
+
+
+                    </>);
+
                 })}
-                
-                </div>
-
-                <div className ="flex brandCont">
-                    <div className="brandPicture">
-                        {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[0].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                    <div className="brandPicture">
-                    {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                </div>
-
-            </div>
-            :
-            <></>
-        }
-
-        {makeup ? 
-            <div>
-                <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Makeup</h1>
-                </div>
-
-               <div className="flex products">
-                {productImageArr.map((obj:any)=>{
-
-                    return(
-                        <>
-                        {obj.product_type == 'makeup' && obj.price <= price ? 
-                            <div className="product">
-                                <>
-                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
-                                            <p>{obj.name}</p>
-                                            <p>${obj.price}</p>
-                                    </Link>
-                                </>
-                                
-                            </div>
-                            : <></>}
-                        </>
-                    );
-                })}
-                
-                </div>
-
-                <div className ="flex brandCont">
-                    <div className="brandPicture">
-                        {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                    <div className="brandPicture">
-                    {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[2].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                </div>
-
-            </div> 
-
-            :
-            <></>
-        }
-
-        {hair ?
-            <div>
-                <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Hair</h1>
-                </div>
-
-                <div className="flex products">
-                {productImageArr.map((obj:any)=>{
-
-                    return(
-                        <>
-                        {obj.product_type == 'hair' && obj.price <= price ? 
-                            <div className="product">
-                                <>
-                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
-                                            <p>{obj.name}</p>
-                                            <p>${obj.price}</p>
-                                    </Link>
-                                </>
-                                
-                            </div>
-                            : <></>}
-                        </>
-                    );
-                })}
-                
-                </div>
-
-                <div className ="flex brandCont">
-                    <div className="brandPicture">
-                        {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[2].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                    <div className="brandPicture">
-                    {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[0].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                </div>
-                
-            </div>
-            :
-            <></>
-
-        }
-
-
-        {nails ?
-            <div>
-                <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Nails</h1>
-                </div>
-
-                <div className="flex products">
-                {productImageArr.map((obj:any)=>{
-
-                    return(
-                        <>
-                        {obj.product_type == 'nails' && obj.price <= price ? 
-                            <div className="product">
-                                <>
-                                    <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                        <img src={obj.image.image}/>
-                                        <p>{obj.name}</p>
-                                        <p>${obj.price}</p>
-                                    </Link>
-                                </>
-                                
-                            </div>
-                            : <></>}
-                        </>
-                    );
-                })}
-                
-                </div>
-
-                <div className ="flex brandCont">
-                    <div className="brandPicture">
-                        {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[0].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                    <div className="brandPicture">
-                    {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
-                        :
-                        <></>
-                    }
-                    </div>
-                </div>
-
-            </div>
-            :
-            <></>
-        }
-
+        </div>
+       
         </div>
 
 

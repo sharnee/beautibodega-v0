@@ -19,10 +19,6 @@ module.exports = {
       },
       logo: {
         type: Sequelize.STRING,
-        // references: {
-        //   model: 'images',
-        //   key: 'id'
-        // }
       },
       products: {
         type: Sequelize.STRING(9999999)
@@ -43,11 +39,16 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       founder: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'users',
-          key: 'id'
-        }
+        type: Sequelize.STRING,
+      },
+      email: {
+        type: Sequelize.STRING,
+      },
+      phone: {
+        type: Sequelize.STRING,
+      },
+      websiteURL: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
