@@ -246,7 +246,7 @@ router.post('/updateProfile', async(req, res)=>{
     switch(true){
 
         case !(req.body.conpressedFileURL == req.body.pic):
-            console.log("update profile pic in update profile");
+            console.log("update profile pic in update profile", req.body.imageName, "image name", req.body.URL, "image url");
             let image = await db.images.create({
                 id: req.body.imageName,
                 image: req.body.URL
