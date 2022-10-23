@@ -215,7 +215,7 @@ router.get('/getFrontPage', async(req, res)=>{
 
     // let cache: any[] = []
 
-    const brands = await db.brands.findAll({where: {popular_brand: true}})
+    // const brands = await db.brands.findAll({where: {popular_brand: true}})
     // console.log(brands)
     // brands.map((brand:any)=>{
     //     db.images.findByPk(brand.logo).then((image:any)=> {
@@ -227,11 +227,11 @@ router.get('/getFrontPage', async(req, res)=>{
     
     // db.images.findByPk({where: {id: brands.logo}})
 
-    // const data = await db.sequelize.query('SELECT * FROM brands, images WHERE brands.popular_brand = true AND images.id = brands.logo')
+    const data = await db.sequelize.query('SELECT * FROM brands, images WHERE brands.popular_brand = true AND images.id = brands.logo')
 
     // console.log("first")
-    // console.log(data)
-    res.send(brands)
+    console.log(data[0])
+    res.send(data[0])
 })
 
 router.get('/getReviews/:id', async(req, res)=>{

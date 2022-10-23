@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     brand_name: DataTypes.STRING,
     admin_user: DataTypes.STRING,
     description: DataTypes.STRING(10000),
-    logo: DataTypes.STRING,
+    logo: DataTypes.UUID,
     products: DataTypes.STRING(9999999),
     collections: DataTypes.STRING(9999999),
     featured_products: DataTypes.STRING(9999999),
