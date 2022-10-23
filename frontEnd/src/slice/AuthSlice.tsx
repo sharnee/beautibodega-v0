@@ -224,15 +224,20 @@ const authSlice = createSlice({
             }
         },
         deleteCartItem: (state: any, action: any)=>{
+            
 
             for(let i = 0; i < state.cart.length; i++){
 
+
                 if(state.cart[i].name == action.payload.name){
 
+                    console.log('fuck you again')
+
                     state.cart.splice(i, 1)
+                    
+                    break
                 }
 
-                break
             }
         }
     },

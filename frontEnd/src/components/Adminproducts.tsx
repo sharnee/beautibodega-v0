@@ -90,6 +90,8 @@ function Adminproducts() {
                 }
             }
         }
+
+        window.location.reload();
       }
 
       const selectObj = (e: any) => {

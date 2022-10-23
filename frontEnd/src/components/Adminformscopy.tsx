@@ -96,6 +96,8 @@ function Adminforms() {
 
     alert('Your product has been successfully added!')
 
+    window.location.reload();
+
   }
 
 //   const fileSelectedHandler = (e: any) =>{
