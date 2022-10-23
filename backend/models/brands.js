@@ -26,7 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     popular_brand: DataTypes.BOOLEAN,
     video_link: DataTypes.STRING,
     verified: DataTypes.BOOLEAN,
-    founder: DataTypes.UUID
+    founder: DataTypes.STRING,
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    websiteURL: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'brands',

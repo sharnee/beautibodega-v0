@@ -50,6 +50,9 @@ const authSlice = createSlice({
             }
             name()
         },
+        logout: (state,action)=>{
+            state.user = {}
+        },
         signUpA: (state,action)=>{
             async function name() {
                 try {

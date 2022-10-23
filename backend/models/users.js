@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     following: DataTypes.STRING(10485760),
     role: DataTypes.STRING,
     reviews: DataTypes.STRING(10000),
-    tags: DataTypes.STRING(10000)
+    tags: DataTypes.STRING(10000),
+    postIDs: DataTypes.STRING(999999)
   }, {
     sequelize,
     modelName: 'users',

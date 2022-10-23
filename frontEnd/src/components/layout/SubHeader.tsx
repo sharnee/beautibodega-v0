@@ -61,8 +61,11 @@ const Sidebar = () => {
     <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="">
         <p>Profile</p>
     </Link>
+    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/logout">
+        <p >Logout</p>
+    </Link>
 
-    <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
+    {/* <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p></p>
     </a>
     <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
@@ -73,7 +76,7 @@ const Sidebar = () => {
     </a>
     <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p></p>
-    </a>
+    </a> */}
 
 
 </div>
