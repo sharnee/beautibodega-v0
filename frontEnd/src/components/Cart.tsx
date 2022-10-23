@@ -15,6 +15,7 @@ const Cart = () => {
     const dispatch = useDispatch()
 
     const [empty, setEmpty] = useState(false)
+    const [total, setTotal] = useState(0)
     const [reload, setReload] = useState(false)
 
     const [copy, setCopy] = useState<any>([])
@@ -29,8 +30,25 @@ const Cart = () => {
 
         setCopy([...cart])
 
+        const setTotalCost = () => {
+
+            let runningTotal = 0
+
+            cart.forEach((obj: any)=>{
+
+                runningTotal += obj.price * obj.quantityInCart
+            })
+
+            setTotal(runningTotal)
+        }
+
+        setTotalCost()
+
       
     }, [])
+
+    console.log(cart);
+    console.log(total)
 
     
   return (
@@ -83,6 +101,10 @@ const Cart = () => {
                 </div>
         );
     })}
+
+    <div className="check-total-sc">
+        Total: {total}
+    </div>
 
     </div>
     </>

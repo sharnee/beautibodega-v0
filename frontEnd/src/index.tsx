@@ -25,6 +25,9 @@ import Adminproducts from './components/Adminproducts';
 import Adminforms from './components/Adminformscopy';
 import Edit from './components/Edit';
 import Cart from './components/Cart';
+import Brands from './components/BrandsList'
+import Brand from './components/Brand'
+import Logout from './components/auth/Logout'
 
 import Creators from './components/Creators';
 
@@ -70,10 +73,13 @@ root.render(
               <Route path="/signup" element={<SignUp />}/>
               <Route path="/4da244d5-d9db-4563-a0f4-097087d8b337" element={<SignUpA />}/>
               <Route path="/admin" element={<AAuth><Admin /></AAuth>}/>
-              <Route path="/adminforms" element={<Adminforms />}/>
-              <Route path="/adminproducts" element={<Adminproducts />}/>
-              <Route path="/editproducts" element={<Edit />}/>
+              <Route path="/adminforms" element={<AAuth><Adminforms /></AAuth>}/>
+              <Route path="/adminproducts" element={<AAuth><Adminproducts /></AAuth>}/>
+              <Route path="/editproducts" element={<AAuth><Edit /></AAuth>}/>
               <Route path="/cart" element={<Auth><BL><Cart /></BL></Auth>}/>
+              <Route path="/brands" element={<Auth><BL><Brands /></BL></Auth>}/>
+              <Route path="/brand" element={<Auth><BL><Brand /></BL></Auth>}/>
+              <Route path="/logout" element={<BL><Logout /></BL>}/>
 
             </Routes>
           {/* </BaseLayout> */}

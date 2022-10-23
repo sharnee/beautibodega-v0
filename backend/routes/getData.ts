@@ -83,14 +83,6 @@ router.post('/editProduct', async(req, res)=>{
                 id: id
             }
         })
-
-        let updateBrand = await db.brands.update({
-            products: brand.products + id + ', '
-        }, {
-            where: {
-                products : brand.products
-            }
-        })
     
 })
 
@@ -115,17 +107,21 @@ router.post('/deleteProduct', async(req, res)=>{
 
         let productString = ""
 
-        if(obj == product.id || obj == ''){
+        if(obj == product.id || obj == ""){
 
-            let index = products.indexOf(product.id)
+            let index = products.indexOf(obj)
             products.splice(index, 1)
 
         }
     })
 
+    console.log(products)
+
     let productString = ''
 
     products.forEach((obj:any)=>{
+
+        console.log(obj)
         
         productString = productString + obj + ', '
     })

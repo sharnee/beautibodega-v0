@@ -49,6 +49,9 @@ module.exports = {
       reviews: {
         type: Sequelize.STRING(10000)
       },
+      postIDs: {
+        type: Sequelize.STRING(999999)
+      },
       tags: {
         type: Sequelize.STRING(10000)
       },

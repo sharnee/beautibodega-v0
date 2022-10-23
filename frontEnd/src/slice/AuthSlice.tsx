@@ -10,6 +10,7 @@ const authSlice = createSlice({
         error: "",
         user: {},
         pic: "",
+        brand: [],
         product: [],
         editProduct: [],
         cart:[],
@@ -48,6 +49,9 @@ const authSlice = createSlice({
                 }
             }
             name()
+        },
+        logout: (state,action)=>{
+            state.user = {}
         },
         signUpA: (state,action)=>{
             async function name() {
@@ -204,6 +208,10 @@ const authSlice = createSlice({
             
             state.product = action.payload
         },
+        setBrand: (state, action)=>{
+            
+            state.brand = action.payload
+        },
         setCart: (state: any, action: any)=>{
 
             state.cart = [...state.cart, action.payload]
@@ -224,15 +232,20 @@ const authSlice = createSlice({
             }
         },
         deleteCartItem: (state: any, action: any)=>{
+            
 
             for(let i = 0; i < state.cart.length; i++){
 
+
                 if(state.cart[i].name == action.payload.name){
 
+                    console.log('fuck you again')
+
                     state.cart.splice(i, 1)
+                    
+                    break
                 }
 
-                break
             }
         }
     },
