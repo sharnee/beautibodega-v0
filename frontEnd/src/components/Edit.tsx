@@ -23,8 +23,8 @@ function Edit() {
   const [brand, setBrand] = useState<any>('')
 
   const [id, setId] = useState<any>(product.id)
-  const [imageURL, setImageURL] = useState<any>('')
-  const [imageName, setImageName] = useState<any>(product.thumbnail)
+  // const [imageURL, setImageURL] = useState<any>('')
+  const [OrgimageName, setImageName] = useState<any>(product.thumbnail)
 
   const [name, setName] = useState(product.name);
   const [price, setPrice] = useState(String(product.price));
@@ -35,8 +35,6 @@ function Edit() {
   const [ingredients, setIngredients] = useState(product.ingredients);
   const [category, setCategory] = useState(product.product_type);
 
-  const [originalFile, setOriginalFile] = useState<File | Blob>()
-  const [originalFileURL, setOriginalFileURL] = useState("")
   const [compressedFile, setCompressedFile] = useState< File | Blob >()
   const [conpressedFileURL, setconpressedFileURL] = useState("")
   const [changedPhoto, setChangedPhoto] = useState(false)
@@ -61,30 +59,20 @@ function Edit() {
 
     getBrand()
 
-    const getImage = async() => {
+    // const getImage = async() => {
 
-        let getImage = await axios.get(`/getImage/${imageName}`)
+    //     let getImage = await axios.get(`/getImage/${imageName}`)
 
-        console.log(getImage);
+    //     console.log(getImage);
 
-        setImageURL(getImage.data.image)
-    }
+    //     setImageURL(getImage.data.image)
+    // }
 
-    getImage()
+    // getImage()
 
   }, [])
 
   console.log(brand);
-
-  function sleep(milliseconds: any) {
-
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-
-}
   
 
   const handleSubmit = async(e: any) => {
@@ -92,40 +80,52 @@ function Edit() {
 
     e.preventDefault()
     
-    if (compressedFile == null)
+    // if (compressedFile == null){
+
+    //   alert( 'Product not submitted: \n\nThe Selected image has been rejected, or no image has been chosen. please select a different file!' )
+
+    //   return;
+    // } 
+
+    if( isNaN(parseFloat(quantity)) || isNaN(parseFloat(salesPrice)) || isNaN(parseFloat(price)) || parseFloat(quantity) % 1 != 0){
+
+      alert( 'Product not submitted: \n\nPrice, sales price, or quantity has been set as a non-numeric value, or quantity is a decimal value.' )
+
+      return;
+    }
 
     if(changedPhoto && compressedFile != null){
 
-        setImageName(uuidv4())
+      console.log('your mom')
+
+        let imageName = (uuidv4())
     
         const imageRef = ref(storage, `images/${ imageName }`)
         let snapshot = await uploadBytes(imageRef, compressedFile);
-        setImageURL(await getDownloadURL(snapshot.ref)) 
-    }
+        let imageURL = await getDownloadURL(snapshot.ref)
+
+        dispatch(authActions.editProduct({changedPhoto, id, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
+        
+        alert('Your product has been successfully edited!')
+
+    } else {
+
+      dispatch(authActions.editProduct({changedPhoto, id, OrgimageName, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
       
-    dispatch(authActions.editProduct({changedPhoto, id, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
+      alert('Your product has been successfully edited!')
+    }
+
+
+      
 
 
   }
 
-  const fileSelectedHandler = (e: any) =>{
+const fileUploadHandler = (e:any) =>{
 
-    setChangedPhoto(true)
-    console.log(e.target.files[0]) // looking at file uploaded
-    setOriginalFile(e.target.files[0])
-    setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
-
-    sleep(1000)
-
-    console.log(originalFile);
-
-    fileUploadHandler()
-
-}
-
-const fileUploadHandler = () =>{
-  if (!originalFile) throw new Error('Failed to retrive file');
-  new Compressor(originalFile, {
+  setChangedPhoto(true)
+ 
+  new Compressor(e.target.files[0], {
       quality: 0.6,
       maxWidth: 400,
       success: (compressdResult)=>{ 
@@ -140,189 +140,170 @@ const fileUploadHandler = () =>{
 }
 
 
-  return (
-    <>
+return (
+  <>
 <div className="flex w-screen h-[100vh] text-gray-700 bg-beige bg-cover">
 
 
-  <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
+<div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
 
-      <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
-        <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-  </div>
-
-
-  <div className="overflow-x-auto relative  shadow-md sm:rounded-lg px-5  w-3/4">
-  <div className="flex flex-col flex-grow">
-
-  <div className="flex-grow py-6 overflow-auto bg-beige pt-20">
-  <div className="grid grid-cols-5   gap-6">
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-
-
-  </div>
-  </div>
-  </div>
-
-  <div className=" bg-white background">
-
-  <div className="grid grid-cols-3 gap-4 background">
-
-    <div className="h-20 col-span-3 bg-white">
-      <div className="bg-blue-400 w-96 h-20 "></div>
-    </div>
-
-
-    <div className='h-full col-span-1 bg-white background_main'>
-      <div className=" pl-20 mb-8">
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Product Name
-            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={name} onChange={e=>setName(e.target.value)}></input>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Price
-            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={price} onChange={e=>setPrice(e.target.value)}></input>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Sales Price
-            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={salesPrice} onChange={e=>setSalesPrice(e.target.value)}></input>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Description
-            <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={description} onChange={e=>setDescription(e.target.value)}></textarea>
-          </label>
-      </div>
-    </div>
-
-    <div className='h-full col-span-1 bg-white background'>
-      <div className=" pl-20 mb-8">
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Quantitiy
-            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={quantity} onChange={e=>setQuantity(e.target.value)}></input>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            image
-            <input type="file" onChange={fileSelectedHandler}/>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Instructions
-            <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={instructions} onChange={e=>setInstructions(e.target.value)}></textarea>
-          </label>
-      </div>
-    </div>
-    
-    <div className='h-full col-span-1 bg-white background'>
-      <div className=" pl-20 mb-8">
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Categories
-            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={category} onChange={e=>setCategory(e.target.value)}></input>
-          </label>
-          <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
-            Ingredients
-            <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={ingredients} onChange={e=>setIngredients(e.target.value)}></textarea>
-          </label>
-      </div>
-    </div>
-
-  </div>
-
-  <div className='p-12 flex justify-center '>
-  <a className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
-              onClick={handleSubmit}>
-              <span className="ml-2 leading-none pt-3"> Edit Product </span>
-          </a>
-
-
-  <a className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
-              onClick={handleSubmit}>
-  <Link to="/adminproducts">
-              <span className="ml-2 leading-none pt-3"> Go To Products Page</span>
-  </Link>
-          </a>
-
-  
-  </div>
-
-  </div>
-  </div>
-
-  <div className=" left-1/2 -ml-0.5 w-0.5 h-5/6 bg-gray-500 mt-16"></div>
-  <div className="flex flex-col w-72   border-gray-300">
-
-
-      <div className="flex flex-col flex-grow p-4 overflow-auto">
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            {brand != "" ? 
-                <span className="leading-none">
-                  {brand.brand_name}
-                </span>
-            :
-            <></>      
-            }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-          {brand != "" ? 
-                <span className="leading-none">
-                  {brand.brand_name}
-                </span>
-            :
-            <></>      
-            }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-          {brand != "" ? 
-                <span className="leading-none">
-                  {brand.description}
-                </span>
-            :
-            <></>      
-            }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-          {brand != "" ? 
-              <img src={brand.image.image} />
-            :
-            <></>      
-            }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
-          </a>
-
-      </div>
-
+<div className="flex items-center justify-center flex-shrink-0 w-full h-16 p-10">
+{brand != "" ? 
+  <img src={brand.image.image} />
+  :
+  <></>
+}
   </div>
 
 
 </div>
-    </>
-  )
+
+
+<div className="overflow-x-auto relative  shadow-md sm:rounded-lg px-5  w-3/4">
+<div className="flex flex-col flex-grow">
+
+<div className="flex-grow py-6 overflow-auto bg-beige pt-20">
+<div className="grid grid-cols-5 gap-6">
+              <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Total Sales: (Currently for display purposes only)</div>
+              <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Online Sessions: <div>(Currently for display purposes only)</div></div>
+              <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Returning Customers: <div>(Currently for display purposes only)</div></div>
+              <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Abandon Cart: <div>(Currently for display purposes only)</div></div>
+              <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Sales Today: <div>(Currently for display purposes only)</div></div>
+          </div>
+</div>
+</div>
+
+<div className=" bg-white background">
+
+<div className="grid grid-cols-3 gap-4 background pt-20">
+
+
+  <div className='h-full col-span-1 bg-white background_main'>
+    <div className=" pl-20 mb-8">
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Product Name
+          <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={name} onChange={e=>setName(e.target.value)}></input>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Price
+          <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={price} onChange={e=>setPrice(e.target.value)}></input>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Sales Price
+          <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={salesPrice} onChange={e=>setSalesPrice(e.target.value)}></input>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Description
+          <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={description} onChange={e=>setDescription(e.target.value)}></textarea>
+        </label>
+    </div>
+  </div>
+
+  <div className='h-full col-span-1 bg-white background'>
+    <div className=" pl-20 mb-8">
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Quantitiy
+          <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={quantity} onChange={e=>setQuantity(e.target.value)}></input>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          image
+          <input type="file" onChange={fileUploadHandler}/>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Instructions
+          <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={instructions} onChange={e=>setInstructions(e.target.value)}></textarea>
+        </label>
+    </div>
+  </div>
+  
+  <div className='h-full col-span-1 bg-white background'>
+    <div className=" pl-20 mb-8">
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Categories
+          <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-1 px-4 mt-2 block w-72  appearance-none leading-normal" type="input" value={category} onChange={e=>setCategory(e.target.value)}></input>
+        </label>
+        <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
+          Ingredients
+          <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 mt-2 block w-72 appearance-none leading-normal" value={ingredients} onChange={e=>setIngredients(e.target.value)}></textarea>
+        </label>
+    </div>
+  </div>
+
+</div>
+
+<div className='p-12 flex justify-center '>
+<div className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
+            onClick={handleSubmit}>
+            <span className="ml-2 leading-none pt-3"> Confirm Edit</span>
+</div>
+
+
+
+<Link to="/adminproducts" className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300">
+            <span className="ml-2 leading-none pt-3"> Go To Products Page</span>
+</Link>
+
+
+
+</div>
+
+</div>
+</div>
+
+
+
+
+    <div className="brand-info">
+
+       
+        <div className="" >
+          {brand != "" ? 
+              <span className="\">
+                {brand.brand_name}
+              </span>
+          :
+          <></>      
+          }
+        </div>
+
+        
+        
+        <div className="" >
+        {brand != "" ? 
+              <span className="">
+                {brand.founder}
+              </span>
+          :
+          <></>      
+          }
+        </div>
+        <div className="" >
+        {brand != "" ? 
+              <span className="">
+                {brand.email}
+              </span>
+          :
+          <></>      
+          }
+        </div>
+        <div className="" >
+        {brand != "" ? 
+              <span className="">
+                {brand.verified}
+              </span>
+          :
+          <></>      
+          }
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+  </>
+)
 }
 
 export default Edit

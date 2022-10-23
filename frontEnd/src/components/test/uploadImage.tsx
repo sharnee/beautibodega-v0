@@ -48,6 +48,8 @@ const UploadImage = () => {
         setOriginalFile(e.target.files[0])
         setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
 
+        console.log(originalFile);
+
         
     }
 

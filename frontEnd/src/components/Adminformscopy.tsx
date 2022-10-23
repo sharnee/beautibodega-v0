@@ -29,8 +29,6 @@ function Adminforms() {
   const [ingredients, setIngredients] = useState("");
   const [category, setCategory] = useState("");
 
-  const [originalFile, setOriginalFile] = useState<File | Blob>()
-  const [originalFileURL, setOriginalFileURL] = useState("")
   const [compressedFile, setCompressedFile] = useState< File | Blob >()
   const [conpressedFileURL, setconpressedFileURL] = useState("")
 
@@ -73,7 +71,19 @@ function Adminforms() {
 
     e.preventDefault()
     
-    if (compressedFile == null) return;
+    if (compressedFile == null){
+
+      alert( 'Product not submitted: \n\nThe Selected image has been rejected, or no image has been chosen. please select a different file!' )
+
+      return;
+    } 
+
+    if( isNaN(parseFloat(quantity)) || isNaN(parseFloat(salesPrice)) || isNaN(parseFloat(price)) || parseFloat(quantity) % 1 != 0){
+
+      alert( 'Product not submitted: \n\nPrice, sales price, or quantity has been set as a non-numeric value, or quantity is a decimal value.' )
+
+      return;
+    }
 
     let imageName = uuidv4()
 
@@ -84,26 +94,18 @@ function Adminforms() {
       
     dispatch(authActions.uploadProduct({imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category, brand}))
 
-
+    alert('Your product has been successfully added!')
 
   }
 
-  const fileSelectedHandler = (e: any) =>{
-    console.log(e.target.files[0]) // looking at file uploaded
-    setOriginalFile(e.target.files[0])
-    setOriginalFileURL(URL.createObjectURL(e.target.files[0]))
+//   const fileSelectedHandler = (e: any) =>{
 
-    sleep(1000)
+//     fileUploadHandler(e.target.files[0])
+// }
 
-    console.log(originalFile);
+const fileUploadHandler = (e: any) =>{
 
-    fileUploadHandler()
-
-}
-
-const fileUploadHandler = () =>{
-  if (!originalFile) throw new Error('Failed to retrive file');
-  new Compressor(originalFile, {
+  new Compressor(e.target.files[0], {
       quality: 0.6,
       maxWidth: 400,
       success: (compressdResult)=>{ 
@@ -125,27 +127,15 @@ const fileUploadHandler = () =>{
 
   <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
 
-      <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
-        <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
-      <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300" href="#">
-          <p></p>
-      </a>
+  <div className="flex items-center justify-center flex-shrink-0 w-full h-16 p-10">
+  {brand != "" ? 
+    <img src={brand.image.image} />
+    :
+    <></>
+  }
+    </div>
+
+
   </div>
 
 
@@ -153,15 +143,13 @@ const fileUploadHandler = () =>{
   <div className="flex flex-col flex-grow">
 
   <div className="flex-grow py-6 overflow-auto bg-beige pt-20">
-  <div className="grid grid-cols-5   gap-6">
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-  <div className="h-20 col-span-1 bg-white border border-gray-300"></div>
-
-
-  </div>
+  <div className="grid grid-cols-5 gap-6">
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Total Sales: (Currently for display purposes only)</div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Online Sessions: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Returning Customers: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Abandon Cart: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Sales Today: <div>(Currently for display purposes only)</div></div>
+            </div>
   </div>
   </div>
 
@@ -199,7 +187,7 @@ const fileUploadHandler = () =>{
           </label>
           <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
             image
-            <input type="file" onChange={fileSelectedHandler}/>
+            <input type="file" onChange={fileUploadHandler}/>
           </label>
           <label className="block text-gray-700 text-sm font-bold pr-16 mb-2">
             Instructions
@@ -247,6 +235,7 @@ const fileUploadHandler = () =>{
 
       <div className="brand-info">
 
+         
           <div className="" >
             {brand != "" ? 
                 <span className="\">
@@ -256,10 +245,13 @@ const fileUploadHandler = () =>{
             <></>      
             }
           </div>
+
+          
+          
           <div className="" >
           {brand != "" ? 
                 <span className="">
-                  {brand.description}
+                  {brand.founder}
                 </span>
             :
             <></>      
@@ -267,12 +259,24 @@ const fileUploadHandler = () =>{
           </div>
           <div className="" >
           {brand != "" ? 
-
-              <img src={brand.image.image} />
+                <span className="">
+                  {brand.email}
+                </span>
             :
             <></>      
             }
           </div>
+          <div className="" >
+          {brand != "" ? 
+                <span className="">
+                  {brand.verified}
+                </span>
+            :
+            <></>      
+            }
+          </div>
+
+          
 
       </div>
 

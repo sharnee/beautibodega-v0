@@ -71,12 +71,18 @@ function Adminproducts() {
       }, [])
 
       const handleDelete = () =>{
+
+        console.log('clicked');
         
         for(let i = 0; i < selectedProducts.length; i++){
             
             for(let j = 0; j < brandProducts.length; j++){
 
+                console.log('in the for loop')
+
                 if(brandProducts[j].data.name == selectedProducts[i]){
+
+                    console.log('in the if statement');
 
                     dispatch(authActions.handleDelete({user, product: brandProducts[j].data}))
 
@@ -121,10 +127,16 @@ function Adminproducts() {
     <>
 <div className="flex w-screen h-[100vh] text-gray-700 bg-beige bg-cover font-Caslon font-light">
 <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
-    <div className="flex items-center justify-center flex-shrink-0 w-full h-16 ">
-      <img src="placeholderAssets/MissJessiesLogo.png" alt="" />
+    <div className="flex items-center justify-center flex-shrink-0 w-full h-16 p-10">
+    {brand != "" ? 
+    <img src={brand.image.image} />
+    :
+    <></>
+  }
     </div>
 </div>
+
+{/* <button onClick={()=> console.log(selectedProducts)}>Test</button> */}
 
 <div className=" left-1/2 -ml-0.5 w-0.5 h-5/6 bg-gray-500 mt-16"></div>
 
@@ -208,6 +220,9 @@ function Adminproducts() {
                     {obj.data.sales_price}
                 </td>
                 <td className="py-4 px-6">
+                    {obj.data.product_type}
+                </td>
+                <td className="py-4 px-6">
                     {obj.data.quantity}
                 </td>
                 <td className="py-4 px-6">
@@ -223,10 +238,11 @@ function Adminproducts() {
 
 </table>
 <div className='p-12 flex justify-center '>
-<a className=" flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
-            href="#">
-            <span onClick={handleDelete} className="ml-2 leading-none pt-3"> Delete Selected Products</span>
-        </a>
+
+<div onClick={handleDelete} className=" flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300">
+        <span onClick={handleDelete} className="ml-2 leading-none pt-3"> Delete Selected Products</span>
+</div>
+
         </div>
 
 </div>
@@ -238,7 +254,8 @@ function Adminproducts() {
 
     <div className="brand-info">
 
-    <div className="" >
+    
+          <div className="" >
             {brand != "" ? 
                 <span className="\">
                   {brand.brand_name}
@@ -247,10 +264,13 @@ function Adminproducts() {
             <></>      
             }
           </div>
+
+          
+          
           <div className="" >
           {brand != "" ? 
                 <span className="">
-                  {brand.description}
+                  {brand.founder}
                 </span>
             :
             <></>      
@@ -258,8 +278,18 @@ function Adminproducts() {
           </div>
           <div className="" >
           {brand != "" ? 
-
-              <img src={brand.image.image} />
+                <span className="">
+                  {brand.email}
+                </span>
+            :
+            <></>      
+            }
+          </div>
+          <div className="" >
+          {brand != "" ? 
+                <span className="">
+                  {brand.verified}
+                </span>
             :
             <></>      
             }
