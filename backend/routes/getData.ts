@@ -246,7 +246,7 @@ router.post('/updateProfile', async(req, res)=>{
     switch(true){
 
         case !(req.body.conpressedFileURL == req.body.pic):
-            console.log("dontrun");
+            console.log("update profile pic in update profile");
             let image = await db.images.create({
                 id: req.body.imageName,
                 image: req.body.URL
@@ -255,11 +255,16 @@ router.post('/updateProfile', async(req, res)=>{
             await db.users.update({profile_picture: req.body.imageName}, {where:{id: req.body.ID}})
 
         case (true):
-            console.log(req.body.tags.toString());
+            console.log(req.body.tags.toString(), "update profile data in update profile");
             let splitTags = req.body.tags.toString()
             await db.users.update({name: req.body.name, tags: splitTags, role: req.body.role}, {where:{id: req.body.ID}})
        
     }
+    console.log("update profile sending infor back for state")
+    let user = await db.users.findAll({where: {id: req.body.ID}})
+    let profilePic = await db.images.findByPk(user[0].dataValues.profile_picture)
+
+    res.json({user: user, profilePic: profilePic.dataValues.image})
 
 
     console.log(req.body);
