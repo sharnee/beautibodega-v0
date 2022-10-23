@@ -116,9 +116,6 @@ const Shop = () => {
             </div>
 
             <div>
-                <div className="pageTop">
-                    <img width="75px" src="shoppingBag.png" alt=""/>
-                </div>
             </div>
 
         </div>

@@ -83,7 +83,6 @@ function Adminproducts() {
                     break
                 }
             }
-
         }
       }
 
@@ -122,51 +121,30 @@ function Adminproducts() {
     <>
 <div className="flex w-screen h-[100vh] text-gray-700 bg-beige bg-cover font-Caslon font-light">
 <div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
-    <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
+    <div className="flex items-center justify-center flex-shrink-0 w-full h-16 ">
       <img src="placeholderAssets/MissJessiesLogo.png" alt="" />
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p>Products</p>
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-      <p>Customers</p>
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p>Analytics</p>
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p>Orders</p>
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p>Beauti Aisle</p>
-    </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
-        <p></p>
-    </a>
+    </div>
 </div>
+
 <div className=" left-1/2 -ml-0.5 w-0.5 h-5/6 bg-gray-500 mt-16"></div>
 
 <div className="overflow-x-auto relative  shadow-md sm:rounded-lg px-5  w-3/4">
-<div className="flex flex-col flex-grow">
 
-<div className="flex-grow py-6 overflow-auto bg-beige pt-20">
-<div className="grid grid-cols-5   gap-6">
-<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Total Sales</div>
-<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Online Sessions</div>
-<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Returning Customers</div>
-<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Abandon Cart</div>
-<div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300">Sales Today</div>
+    <div className="flex flex-col flex-grow">
+        <div className="flex-grow py-6 overflow-auto bg-beige pt-20">
+            <div className="grid grid-cols-5 gap-6">
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Total Sales: (Currently for display purposes only)</div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Online Sessions: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Returning Customers: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Abandon Cart: <div>(Currently for display purposes only)</div></div>
+                <div className="h-20 col-span-1 pl-5 pt-4 bg-white border border-gray-300 flex flex-col top-boxes-ap">Sales Today: <div>(Currently for display purposes only)</div></div>
+            </div>
+        </div>
+    </div>
 
-
-</div>
-</div>
-</div>
-
-<div className="grid grid-cols-4 gap-3 ">
-
-<div className="col-span-1  bg-white"></div>
-<div className="col-span-3 left-0 bg-white">
-<table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
+<div className=" ">
+<div className="main-table-ap">
+<table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 overflow-auto">
 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white ">
   Products
   <p className="mt-1 text-sm font-normal flex justify-end text-gray-500 dark:text-gray-400">      
@@ -256,32 +234,39 @@ function Adminproducts() {
 </div>
 
 <div className=" left-1/2 -ml-0.5 w-0.5 h-5/6 bg-gray-500 mt-16"></div>
-<div className="flex flex-col w-72   border-gray-300">
 
 
-    <div className="flex flex-col flex-grow p-4 overflow-auto">
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
-        <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-            <span className="leading-none"></span>
-        </a>
+    <div className="brand-info">
+
+    <div className="" >
+            {brand != "" ? 
+                <span className="\">
+                  {brand.brand_name}
+                </span>
+            :
+            <></>      
+            }
+          </div>
+          <div className="" >
+          {brand != "" ? 
+                <span className="">
+                  {brand.description}
+                </span>
+            :
+            <></>      
+            }
+          </div>
+          <div className="" >
+          {brand != "" ? 
+
+              <img src={brand.image.image} />
+            :
+            <></>      
+            }
+          </div>
 
     </div>
 
-</div>
 
 
 </div>

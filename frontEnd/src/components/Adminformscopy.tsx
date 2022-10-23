@@ -167,11 +167,7 @@ const fileUploadHandler = () =>{
 
   <div className=" bg-white background">
 
-  <div className="grid grid-cols-3 gap-4 background">
-
-    <div className="h-20 col-span-3 bg-white">
-      <div className="bg-blue-400 w-96 h-20 "></div>
-    </div>
+  <div className="grid grid-cols-3 gap-4 background pt-20">
 
 
     <div className='h-full col-span-1 bg-white background_main'>
@@ -228,18 +224,17 @@ const fileUploadHandler = () =>{
   </div>
 
   <div className='p-12 flex justify-center '>
-  <a className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
+  <div className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
               onClick={handleSubmit}>
               <span className="ml-2 leading-none pt-3"> Add New Product</span>
-          </a>
+  </div>
 
 
-  <a className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
-              onClick={handleSubmit}>
-  <Link to="/adminproducts">
+
+  <Link to="/adminproducts" className=" m-10 flex justify-center object-bottom w-80 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300">
               <span className="ml-2 leading-none pt-3"> Go To Products Page</span>
   </Link>
-          </a>
+  
 
   
   </div>
@@ -247,58 +242,42 @@ const fileUploadHandler = () =>{
   </div>
   </div>
 
-  <div className=" left-1/2 -ml-0.5 w-0.5 h-5/6 bg-gray-500 mt-16"></div>
-  <div className="flex flex-col w-72   border-gray-300">
 
 
-      <div className="flex flex-col flex-grow p-4 overflow-auto">
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+
+      <div className="brand-info">
+
+          <div className="" >
             {brand != "" ? 
-                <span className="leading-none">
+                <span className="\">
                   {brand.brand_name}
                 </span>
             :
             <></>      
             }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+          </div>
+          <div className="" >
           {brand != "" ? 
-                <span className="leading-none">
-                  {brand.brand_name}
-                </span>
-            :
-            <></>      
-            }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-          {brand != "" ? 
-                <span className="leading-none">
+                <span className="">
                   {brand.description}
                 </span>
             :
             <></>      
             }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+          </div>
+          <div className="" >
           {brand != "" ? 
+
               <img src={brand.image.image} />
             :
             <></>      
             }
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
-          </a>
-          <a className="flex items-center  h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-              <span className="leading-none"></span>
-          </a>
+          </div>
 
       </div>
 
   </div>
 
-
-</div>
     </>
   )
 }
