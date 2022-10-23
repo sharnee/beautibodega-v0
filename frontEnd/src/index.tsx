@@ -65,7 +65,7 @@ root.render(
               <Route path="/product" element={<BL><Product /></BL>}/>
               <Route path="/" element={<BL><App /></BL>}/>
               <Route path="/upload" element={<BL><Upload /></BL>}/>
-              <Route path="/profile" element={<Auth><BL><Profile /></BL></Auth>}/>
+              <Route path="/profile/:id" element={<Auth><BL><Profile /></BL></Auth>}/>
               <Route path="/editprofile" element={<Auth><BL><EditProfile /></BL></Auth>}/>
               <Route path="/creators" element={<BL><Creators /></BL>}/>
               <Route path="/testData" element={<TestData />}/>
