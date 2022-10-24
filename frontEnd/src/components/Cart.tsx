@@ -96,7 +96,7 @@ const Cart = () => {
                     <button onClick={
                         ()=>{dispatch(authActions.deleteCartItem({name: obj.name}))
 
-                        window.location.reload();
+                        // window.location.reload();
 
                     }
                         } className="close">x</button>
