@@ -64,7 +64,7 @@ const Shop = () => {
 
            for(let i = 0; i < images.data.length; i++){
 
-                cache[`${images.data[i].id}`] = images.data[i]
+                cache[images.data[i].id] = images.data[i]
 
            }
 
@@ -74,12 +74,12 @@ const Shop = () => {
 
                 if(type == 'product'){
 
-                    data[i]['image'] = cache[`${data[i].thumbnail}`]
+                    data[i]['image'] = cache[data[i].thumbnail]
                     newArr.push(data[i])
 
                 } else if (type == 'brand'){
                     
-                    data[i]['image'] = cache[`${data[i].logo}`]
+                    data[i]['image'] = cache[data[i].logo]
                     newArr.push(data[i])
                 }
            }

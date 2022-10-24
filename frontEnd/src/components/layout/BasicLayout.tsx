@@ -3,6 +3,8 @@ import SeachHeader from './SeachHeader';
 import SubHeader from './SubHeader';
 import Footer from './Footer';
 
+import '../css/BL.css'
+
 const BasicLayout = (props: any) => {
   return (
     <div className=' bg-greenish '>
@@ -14,7 +16,7 @@ const BasicLayout = (props: any) => {
             
 
         </div>
-        <div className='container mx-auto px-4 bg-white'>
+        <div className='mx-auto px-4 bg-white BL'>
         {props.children}
         </div>
         <Footer/>
