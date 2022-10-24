@@ -2,13 +2,13 @@
 import axios from 'axios'
 
 
-export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
-    console.log(data)
-    console.log(data, "inside get profile slice");
-    console.log(data);
-    const {ID} = data
-    return axios.post('/getProfile',{ID: ID} )
-})
+// export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{ //outdated
+//     console.log(data)
+//     console.log(data, "inside get profile slice");
+//     console.log(data);
+//     const {ID} = data
+//     return axios.post('/getProfile',{ID: ID} )
+// })
 
 export const updateProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     
