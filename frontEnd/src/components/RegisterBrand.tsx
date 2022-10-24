@@ -78,7 +78,7 @@ export default function RegisterBrand() {
 
             dispatch(authActions.signUpBrand({logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin: user.id}))
 
-            navigate('/adminproducts')
+            navigate('/')
         }
     
       }
@@ -89,14 +89,8 @@ export default function RegisterBrand() {
 
         <div className=' flex flex-col justify-center lg:pl-52 '>
             <div className='max-w-[500px] w-full mx-auto rounded-lg  pt-24 px-8'>
-                <h2 className='text-2xl  font-semibold font-Caslon text-center'>Welcome to Beauti Bodega</h2>
-                <h3 className='text-md  text-center  pb-12 font-light '>Please enter your details</h3>
-                <button className='w-full my-5 py-3 bg-gradient-to-t from-newPink to-newOrange hover:bg-blue-500 text-white  rounded-md'>Sign in with Instagram</button>
-                <div className=" flex py-5 justify-center  items-center">
-            <div className=" border-t w-20 border-tan"></div>
-                <span className=" mx-4 text-gray-400 text-sm">or</span>
-                <div className=" border-t w-20 border-tan"></div>
-            </div>
+                <h2 className='text-2xl  font-semibold font-Caslon text-center pb-10'>Welcome to Beauti Bodega</h2>
+                
             <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label>Brand Name</label>
                     <input name="email" className='rounded-lg border-2 border-zinc-500 mt-2 p-2 focus:border-gray-200 ' type="text" onChange={(e)=>setBrandName(e.target.value)}/>

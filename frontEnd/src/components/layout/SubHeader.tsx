@@ -6,20 +6,35 @@ import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
+
+  const token = useSelector((state: {user: {token: string}}) => state.user.token)
+  // const user = useSelector((state:{user: {user: any}}) => state.user)
+
   const [showSidebar, setShowSidebar] = useState(false);
+  const [loggedin, setLoggedin] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
 
   const user = useSelector((state:{user: any}) => state.user)
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    
-    if(user.token != ""){
-      setLoggedIn(true)
+    console.log(token)
+    if(token != ""){
+      setLoggedin(true)
     }
 
+    if(user.user.role === "Business" || user.user.role === "Super Admin"){
+      setIsAdmin(true)
+    }
+    
+
   }, [])
+
+  console.log(loggedin)
+  console.log(isAdmin)
   
 
   return (
@@ -61,18 +76,65 @@ const Sidebar = () => {
   >
 <div className="container  w-[325px] text-xl h-full rounded-tr-[100px]">
 
-    <Link className="absolute  top-0 left-0  " to="#">
+    <div className="absolute  top-0 left-0  ">
       <img src="placeholderAssets/bb-menu.jpeg" className=" w-[325px] rounded-tr-[100px] rounded-bl-[100px] h-[100px] opacity-70 object-cover" alt="" />
-    </Link>
+    </div>
     <div className='absolute top-32 left-5 '>
     <ul className="w-72 text-sm font-medium text-gray-900 bg-white   ">
-      {loggedIn ?<li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate(`/profile/${user.user.secondary_id}`)}>Your Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-  </svg></li> : null}
-    {loggedIn ? <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/editprofile')}> Edit Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li> : null}
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/cart')}>Your Cart   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+
+  {loggedin && !isAdmin ? 
+
+  <>
+  
+    <Link to={`/profile/${user.user.secondary_id}`}>
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/editprofile">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Edit Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/registerbrand">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Register A Brand<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+
+
+  </>
+  
+  :
+<></>
+}
+  {loggedin && isAdmin ? 
+
+  <>
+  
+    <Link to={`/profile/${user.user.secondary_id}`}>
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/editprofile">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Edit Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/adminproducts">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Brand Page<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+
+  </>
+  
+  :
+<></>
+}
+
+<li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/cart')}>Your Cart   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 </svg></li>
     <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/shop')}>Shop   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
@@ -85,16 +147,38 @@ const Sidebar = () => {
   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 </svg></li>
 
-
-
-
 </ul> 
-
 <ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
-  {loggedIn ? 
-  <li className="flex py-2 px-4 w-full  border-b border-gray-200 " onClick={()=>navigate('/logout')}>Sign Out   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-5 h-5  absolute left-64"></svg></li> 
-  : <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/signin')}>Sign In   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-5 h-5  absolute left-64"></svg></li>}
+
+{!loggedin ? 
+
+<>
+
+  <Link to="/login">
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Login<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg></li>
+  </Link>
+  <Link to="/signup">
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Register<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg></li>
+  </Link>
+       
+</>
+
+: 
+<>
+<Link to="/logout">
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Sign Out<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg></li>
+  </Link>
+</>
+}
+
 </ul>
+
 </div>
 
     {/* <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
@@ -116,16 +200,16 @@ const Sidebar = () => {
   </div>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-3 text-sm hover:underline" aria-current="page">Home</a>
+                    <Link to="/" className="text-gray-900 dark:text-white pl-3 text-sm hover:underline" aria-current="page">Home</Link>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>
+                    <Link to="/creators" className="text-gray-900 dark:text-white text-sm hover:underline">Creators</Link>
                 </li >
                 <li className='mt-2'>
                     <Link to="/shop" className="text-gray-900 dark:text-white text-sm hover:underline">Products</Link>
                 </li>
                 <li className='mt-2'>
-                    <a href="/brands" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</a>
+                    <Link to="/brands" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</Link>
                 </li>
             </ul>
         </div>
