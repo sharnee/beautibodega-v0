@@ -53,12 +53,14 @@ const Sidebar = () => {
     </Link>
     <div className='absolute top-32 left-5 '>
     <ul className="w-72 text-sm font-medium text-gray-900 bg-white   ">
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <Link to="/">
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
+    </svg></li>
+  </Link>
+        <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg></li>
     <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 </svg></li>

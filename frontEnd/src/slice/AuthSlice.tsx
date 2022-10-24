@@ -257,7 +257,6 @@ const authSlice = createSlice({
 
                 if(state.cart[i].name == action.payload.name){
 
-                    console.log('fuck you again')
 
                     state.cart.splice(i, 1)
                     

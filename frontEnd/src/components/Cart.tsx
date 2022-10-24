@@ -16,7 +16,6 @@ const Cart = () => {
 
     const [empty, setEmpty] = useState(false)
     const [total, setTotal] = useState(0)
-    const [reload, setReload] = useState(false)
 
     const [copy, setCopy] = useState<any>([])
     
