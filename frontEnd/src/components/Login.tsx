@@ -85,7 +85,7 @@ export default function Login() {
             
         </div>
         <div className='hidden sm:block'>
-            <img className='w-3/4 h-full py-20' src={loginImg} alt="" />
+            <img className='w-3/4 h-full py-20' src='placeholderAssets/Login-1.png' alt="" />
         </div>
     </div>
   )

@@ -17,19 +17,7 @@ const Footer = () => {
   </div>
 
   <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-      <div>
-        <p className="font-medium">
-
-
-
-        </p>
-
-        <ul className="mt-8 space-y-2 text-sm">
-
-        </ul>
-
-        <div className="mt-16 flex gap-3">
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
 
 
 
@@ -38,7 +26,7 @@ const Footer = () => {
 
 
           <a
-            className="rounded-lg border border-white/25 w-screen p-2 hover:opacity-75"
+            className="rounded-lg border border-white/25 w-3/4 p-1 hover:opacity-75"
             href=""
             target="_blank"
             rel="noreferrer"
@@ -59,7 +47,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            className="rounded-lg border border-white/25 w-1/2 p-2 hover:opacity-75"
+            className="rounded-lg border border-white/25 w-3/4 p-2 hover:opacity-75"
             href=""
             target="_blank"
             rel="noreferrer"
@@ -80,7 +68,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            className="rounded-lg border border-white/25 w-1/2 p-2 hover:opacity-75"
+            className="rounded-lg border border-white/25 w-3/4 p-2 hover:opacity-75"
             href=""
             target="_blank"
             rel="noreferrer"
@@ -101,7 +89,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            className="rounded-lg border w-1/2 border-white/25 p-2 hover:opacity-75"
+            className="rounded-lg border w-3/4 border-white/25 p-2 hover:opacity-75"
             href=""
             target="_blank"
             rel="noreferrer"
@@ -125,23 +113,11 @@ const Footer = () => {
 
 
 
-        </div>
-      </div>
+
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <p className="font-medium">Support</p>
 
-          <nav
-            aria-label="Footer Nav"
-            className="mt-4 flex flex-col space-y-2 text-sm text-gray-300"
-          >
-            <a className="hover:opacity-75" href=""> Contact </a>
-            <a className="hover:opacity-75" href=""> FAQs </a>
-            <a className="hover:opacity-75" href=""> Live Chat </a>
-            <a className="hover:opacity-75" href=""> Forums </a>
-          </nav>
-        </div>
+
 
         <div>
           <p className="font-medium">Products</p>

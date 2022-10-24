@@ -106,7 +106,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-        Total: {total}
+        Total: ${total}
     </div>
 
     </div>
