@@ -13,8 +13,8 @@ import axios from 'axios'
 export const updateProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     
     console.log(data, "inside get update profile slice");
-    const {ID, tags, conpressedFileURL, pic, name, role, imageName, URL} = data
-    return axios.post('/updateProfile',{ID, tags, conpressedFileURL, pic, name, role, imageName, URL} )
+    const {ID, tags, conpressedFileURL, pic, name, role, imageName, URL, following, follower, otherID} = data
+    return axios.post('/updateProfile',{ID, tags, conpressedFileURL, pic, name, role, imageName, URL, following, follower, otherID} )
 })
 
 export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{
@@ -25,7 +25,7 @@ export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{
 })
 
 const userSlice = createSlice({ 
-    name: 'auth',
+    name: 'user',
     initialState: {
         token: "",
         error: "",
@@ -39,6 +39,12 @@ const userSlice = createSlice({
         },
         error: (state,action)=>{
             state.error = action.payload
+        },
+        logout: (state, action)=>{
+
+            state.token = ""
+            state.user = {}
+
         },
         login: (state,action)=>{
 
@@ -120,6 +126,6 @@ const userSlice = createSlice({
     }
  })
 
- export const authActions = userSlice.actions
+ export const userActions = userSlice.actions
 
  export default userSlice.reducer

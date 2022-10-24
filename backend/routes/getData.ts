@@ -340,6 +340,10 @@ router.post('/updateProfile', async(req, res)=>{
 
    
     console.log(req.body.conpressedFileURL, "check", req.body.pic);
+    console.log(req.body.follower, "follower")
+    console.log(req.body.following, "following")
+    console.log(req.body.otherID, "otherID");
+    console.log(req.body.ID, "ID");
 
     switch(true){
 
@@ -352,10 +356,24 @@ router.post('/updateProfile', async(req, res)=>{
               
             await db.users.update({profile_picture: req.body.imageName}, {where:{id: req.body.ID}})
 
-        case (true):
+        case(req.body.follower !== undefined):
+        console.log("in req.body.follower case");
+        let splitFollowers = req.body.follower.toString()
+        console.log(splitFollowers);
+        await db.users.update({followers: splitFollowers},{where: {id: req.body.otherID}})
+        
+        case(req.body.following !== undefined):
+        console.log("in req.body.following case");
+        let splitFollowing = req.body.following.toString()
+        await db.users.update({following: splitFollowing}, {where:{id: req.body.ID}})
+
+        case (req.body.tags):
+            if(typeof req.body.tags === undefined){
+            console.log(req.body.tags,"in req.body.tags case");
             console.log(req.body.tags.toString(), "update profile data in update profile");
             let splitTags = req.body.tags.toString()
             await db.users.update({name: req.body.name, tags: splitTags, role: req.body.role}, {where:{id: req.body.ID}})
+            }
        
     }
     console.log("update profile sending infor back for state")
@@ -372,6 +390,18 @@ router.post('/updateProfile', async(req, res)=>{
     // await db.users.update({},{where:{id: ID}})
 
 })
+
+// router.get('/updateFollow', async(req, res)=>{
+
+//     const products = await db.products.findAll({})
+
+//     await db.users.update({following: req.body.name}, {where:{id: req.body.yourID}})
+//     await db.users.update({followers: req.body.name}, {where:{id: req.body.otherID}})
+
+//     let user = await db.users.findAll({where: {id: req.body.yourID}})
+
+//     res.json({user: user})
+// })
 
 module.exports = router;
 
