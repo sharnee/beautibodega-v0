@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
-import { useSelector } from "react-redux";
+import {useSelector, useDispatch} from 'react-redux';
 
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,9 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [loggedin, setLoggedin] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  const user = useSelector((state:{user: any}) => state.user)
 
   const navigate = useNavigate();
 
@@ -150,6 +153,7 @@ const Sidebar = () => {
   :
 <></>
 }
+
 
 </ul> 
 

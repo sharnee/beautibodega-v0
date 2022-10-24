@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
@@ -51,6 +50,9 @@ const authSlice = createSlice({
             name()
         },
         logout: (state,action)=>{
+            
+            localStorage.token = "";
+            state.token = ""
             state.user = {}
         },
         signUpA: (state,action)=>{
@@ -138,9 +140,6 @@ const authSlice = createSlice({
                     "\n" + error)
 
                     console.log(error);
-                   
-                    
-
                 }
             }
             name()
