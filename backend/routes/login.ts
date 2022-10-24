@@ -40,5 +40,7 @@ router.post('/login', passport.authenticate('local', {session:false}), async (re
     res.json({token: token(req.user), user: user, profilePic: profilePic.dataValues.image})
 })
 
+
+
 module.exports = router;
 
