@@ -64,18 +64,20 @@ const Footer = () => {
         </div>
     </div>
 
-    <div className="mt-12 border-t border-tan pt-12">
-      <div
-        className="text-sm text-gray-300 sm:flex sm:items-center sm:justify-between"
-      >
-        <div className="flex gap-3">
-          <a className="hover:opacity-75" href=""> Privacy Policy </a>
-          <a className="hover:opacity-75" href=""> Terms & Conditions </a>
-          <a className="hover:opacity-75" href=""> Returns Policy </a>
-        </div>
+    <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <div>
+        <p className="font-medium">
 
-  <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+
+
+        </p>
+
+        <ul className="mt-8 space-y-2 text-sm">
+
+        </ul>
+
+        <div className="mt-16 flex gap-3">
 
 
 
@@ -167,42 +169,10 @@ const Footer = () => {
               />
             </svg>
           </a>
-
-
-
-
-
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
-
-
-        <div>
-          <p className="font-medium">Products</p>
-
-          <nav className="mt-4 flex flex-col space-y-2 text-sm text-gray-300">
-            <a className="hover:opacity-75" href=""> Home </a>
-            <a className="hover:opacity-75" href=""> Creators </a>
-            <a className="hover:opacity-75" href=""> Products </a>
-            <a className="hover:opacity-75" href=""> Brands </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-
-    <div className="mt-12 border-t border-tan pt-12">
-      <div
-        className="text-sm text-gray-300 sm:flex sm:items-center sm:justify-between"
-      >
-        <div className="flex gap-3">
-          <a className="hover:opacity-75" href=""> Privacy Policy </a>
-          <a className="hover:opacity-75" href=""> Terms & Conditions </a>
-          <a className="hover:opacity-75" href=""> Returns Policy </a>
-        </div>
-
-        <p className="mt-4 sm:mt-0">&copy; 2022 Beauti Bodega.</p>
-      </div>
-
+          </div>
+          </div>
+          </div>
+          </div>
 </footer>
 
 
