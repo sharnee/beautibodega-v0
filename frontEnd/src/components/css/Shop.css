@@ -108,11 +108,14 @@
 .brandCont{
     margin: 10% 0 10% 0;
     justify-content: space-around;
+    background-color: rgba(128, 128, 128, 0.067);
 }
 
 
 .brandPicture {
+    background-color: white;
     display: flex;
+    justify-content:center;
     align-items: center;
     max-width: 300px;
     width: 40%;
@@ -133,8 +136,10 @@
 
     .brandCont{
         margin: 2% 0 2% 0;
+        padding-top: 2%;
         padding-bottom: 2%;
         border-bottom: 3px solid #C4C4C4;
+        border-top: 3px solid #C4C4C4;
     }
 
     .categoryTop{
@@ -142,6 +147,7 @@
     }
 
     .pageTop{
+        padding-top: 2%;
         justify-content:center
     }
 
@@ -152,11 +158,13 @@
     }
     .pageTop h3{
         font-size: 20px;
+        
 
     }
     
     .categoryTop h1{
         font-size: 40px;
+        margin-bottom: 2%;
 
     }
     .categoryTop h3{
@@ -167,9 +175,6 @@
     .product {
         min-width: 200px;
         margin: 10px 4% 10px 4%;
-    }
-    .products {
-        border-bottom: 3px solid #C4C4C4;
     }
     
     .product img{
