@@ -44,7 +44,7 @@ useEffect(() => {
         
         <h2 className='text-2xl'><strong>Profile</strong></h2>
         <div className='flex flex-row'>
-        <img className="p-1 w-10 h-10 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 m-1 cursor-pointer" src={user.profilePic} alt="Bordered avatar" onClick={()=>navigate("/editprofile")}/>
+        <img className="w-10 h-10 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 m-1 cursor-pointer" src={user.profilePic} alt="Bordered avatar" onClick={()=>navigate("/editprofile")}/>
         <div className='basis-1/4 p-3'>{user.user.name}</div>
         <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Following: {user.user.following ? tags.length : 0} </button>
         <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Followers: {user.user.followers ? tags.length : 0}</button>
