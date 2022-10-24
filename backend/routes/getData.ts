@@ -2,6 +2,7 @@ import express, { Express, Request, Response, Router } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 var FormData = require('form-data');
 const Api404Error = require('./api404error')
+const { QueryTypes } = require('sequelize');
 
 
 const router = Router();
@@ -208,6 +209,25 @@ router.get('/getImage/:id', async(req, res)=>{
     const image = await db.images.findByPk(imageID)
 
     res.send(image)
+})
+
+router.post('/getImages', async(req, res)=>{
+
+    const {imageArr} = req.body
+
+    let data: any= []
+
+    for(let i = 0; i < imageArr.length; i++){
+
+        const query = await db.images.findByPk(imageArr[i])
+
+        data.push(query)
+
+    }
+
+    // console.log(data[0][1]);
+
+    res.send(data)
 })
 
 router.get('/getAllProducts', async(req, res)=>{
