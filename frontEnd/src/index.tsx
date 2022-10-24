@@ -77,7 +77,8 @@ root.render(
               <Route path="/adminproducts" element={<AAuth><Adminproducts /></AAuth>}/>
               <Route path="/editproducts" element={<AAuth><Edit /></AAuth>}/>
               <Route path="/cart" element={<Auth><BL><Cart /></BL></Auth>}/>
-              <Route path="/brands" element={<Auth><BL><Brands /></BL></Auth>}/>
+              <Route path="/brands" element={<BL><Brands /></BL>}/>
+              <Route path="/brand" element={<BL><Brand /></BL>}/>
               <Route path="/brand" element={<Auth><BL><Brand /></BL></Auth>}/>
               <Route path="/logout" element={<BL><Logout /></BL>}/>
 

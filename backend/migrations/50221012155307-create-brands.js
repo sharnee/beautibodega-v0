@@ -18,7 +18,11 @@ module.exports = {
         type: Sequelize.STRING(10000)
       },
       logo: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
+        references: {
+          model: 'images',
+          key: 'id'
+        }
       },
       products: {
         type: Sequelize.STRING(9999999)

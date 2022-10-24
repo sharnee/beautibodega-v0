@@ -61,6 +61,9 @@ const Sidebar = () => {
     <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="">
         <p>Profile</p>
     </Link>
+    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/registerBrand">
+        <p>Register A Brand</p>
+    </Link>
     <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/logout">
         <p >Logout</p>
     </Link>

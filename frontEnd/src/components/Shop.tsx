@@ -201,14 +201,19 @@ const Shop = () => {
                 <div className ="flex brandCont">
                     <div className="brandPicture">
                         {brandImageArr.length > 0 ? 
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[0]))} to="/brand">
                         <img src={brandImageArr[0].image.image}/>
+                        
+                        </Link>
                         :
                         <></>
                     }
                     </div>
                     <div className="brandPicture">
                     {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
+                     <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[1]))} to="/brand">
+                         <img src={brandImageArr[1].image.image}/>
+                     </Link>
                         :
                         <></>
                     }
@@ -253,14 +258,18 @@ const Shop = () => {
                 <div className ="flex brandCont">
                     <div className="brandPicture">
                         {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[1]))} to="/brand">
+                            <img src={brandImageArr[1].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
                     </div>
                     <div className="brandPicture">
                     {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[2].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[2]))} to="/brand">
+                            <img src={brandImageArr[2].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
@@ -306,14 +315,18 @@ const Shop = () => {
                 <div className ="flex brandCont">
                     <div className="brandPicture">
                         {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[2].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[2]))} to="/brand">
+                            <img src={brandImageArr[2].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
                     </div>
                     <div className="brandPicture">
                     {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[0].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[0]))} to="/brand">
+                            <img src={brandImageArr[0].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
@@ -360,14 +373,18 @@ const Shop = () => {
                 <div className ="flex brandCont">
                     <div className="brandPicture">
                         {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[0].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[0]))} to="/brand">
+                            <img src={brandImageArr[0].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
                     </div>
                     <div className="brandPicture">
                     {brandImageArr.length > 0 ? 
-                        <img src={brandImageArr[1].image.image}/>
+                        <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[1]))} to="/brand">
+                            <img src={brandImageArr[1].image.image}/>
+                        </Link>
                         :
                         <></>
                     }
