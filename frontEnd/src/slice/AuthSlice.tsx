@@ -71,6 +71,24 @@ const authSlice = createSlice({
             }
             name()
         },
+        signUpBrand: (state,action)=>{
+            async function name() {
+                try {
+                    console.log(action.payload, "payload")
+                    let response = await axios.post('/registerBrand', action.payload)
+                    // console.log(response)
+                    // let jwt = response.data.token
+
+                    // state.token = jwt
+
+                } catch (error) {
+                   
+                    console.log(error);
+
+                }
+            }
+            name()
+        },
         uploadImage: (state,action)=>{
             async function name() {
                 try {

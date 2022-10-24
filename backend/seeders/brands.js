@@ -28,6 +28,12 @@ module.exports = {
       {
         id: uuidv4(),
         brand_name: 'MIELLE ORGANICS',
+        admin_user: 'd26d4a1f-f874-4096-90c4-358f659c27f4',
+        video_link: 'https://www.youtube.com/embed/IOvp_2x5ebc',
+        founder: 'Monique Rodriguez',
+        email: 'pr@mielleorganics.com.',
+        phone: '(800) 436-9165',
+        websiteURL: 'https://mielleorganics.com/',
         description: `Monique Rodriguez founded MIELLE in 2014 after her healthy, hair care regimen for her tailbone-length hair became somewhat of a craze among her social media followers. The company began on the back of one product, the Advanced Hair Formula, a unique proprietary blend of herbs, amino acids and minerals to support healthy hair, skin, nails, and immune system.`,
         logo:'7c9aa985-4c9b-475f-9209-eff99c76bc65',
         products: '41814b55-0985-49b5-8835-77761bce5bc1, 5fd6e991-97f4-4716-a074-ffc754f8cb9a, a32815c3-6739-4cfd-a8e2-a39b4cba2e03, 6f5b71c1-7035-490e-aae7-ca46af302e26, f4902170-8aa2-4c95-8efb-a5486d14d803, ',
