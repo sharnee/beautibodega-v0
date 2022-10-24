@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 const ReqAdminAuth = (props: any) => {
 
-    const role = useSelector((state:{auth: {user: {role: string}}}) => state.auth.user.role)
+    const role = useSelector((state:{user: {user: {role: string}}}) => state.user.user.role)
     const navigate = useNavigate()
 
     useEffect(() => {

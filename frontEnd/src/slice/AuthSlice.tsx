@@ -13,7 +13,7 @@ const authSlice = createSlice({
         brand: [],
         product: [],
         editProduct: [],
-        cart:[],
+        cart:[]
         // shopFilters:{
         //     makeup: true,
         //     hair: true,
