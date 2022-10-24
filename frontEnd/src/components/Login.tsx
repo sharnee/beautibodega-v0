@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
@@ -23,23 +23,31 @@ export default function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    useEffect(() => {
+        // if Object.keys()
+
+
+    }, [user])
+    
+
     const handleSubmit = async (e: any)=>{
     
         e.preventDefault()
         console.log("");
-        dispatch(LoginDB({email, password}))
+        dispatch(LoginDB({email, password})).then(()=>{
         // await axios.post('/login', {email: email, password: password})
         // .then(response =>{
         //     console.log(response);
         //     dispatch(authActions.login(response))
-        console.log(user)
+        console.log(user, "user in submit")
+        console.log(email)
         if(email === user.email){
             navigate("/")
         }
         else{
             setLoginError(true)
         }
-
+     })
         // 
         // })
         
