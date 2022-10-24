@@ -11,7 +11,7 @@ import {Tags} from '../../assets/Tags';
 
 
 import {authActions} from '../../slice/AuthSlice';
-import {getProfile} from '../../slice/UserSlice';
+import {updateProfile} from '../../slice/UserSlice';
 
 const EditProfile = () => {
 
@@ -79,15 +79,15 @@ const EditProfile = () => {
         console.log(conpressedFileURL);
         // if (compressedFile == null) return;
         if(conpressedFileURL == pic){
-            console.log("did not change pic");
-            dispatch(authActions.updateProfile({ID, tags, conpressedFileURL, pic, name, role}))
-            console.log(ID, "id")
-            dispatch(getProfile({ID}))
-            navagate('/profile')
+            console.log("did not change pic just profile detail (in submit)");
+            dispatch(updateProfile({ID, tags, conpressedFileURL, pic, name, role}))
+            // console.log(ID, "id")
+            // dispatch(getProfile({ID}))
+            
 
         }
         else{
-        console.log("pls dont run");
+        console.log("New pic and profile details (in submit)");
         let imageName = uuidv4()
   
         const imageRef = ref(storage, `images/${ imageName }`)
@@ -98,14 +98,14 @@ const EditProfile = () => {
 
         // let response = await axios.post('/uploadImage', action.payload)
         
-        dispatch(authActions.updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name, role}))
-        console.log(ID, "id");
-        dispatch(getProfile({ID}))
-        navagate('/profile')
+        dispatch(updateProfile({imageName, URL, ID, tags, conpressedFileURL, pic, name, role}))
+        // console.log(ID, "id");
+        // dispatch(getProfile({ID}))
+        
 
         }
-        console.log("getProfile")
-
+        console.log("updateProfile")
+        navagate('/profile')
 
       }
 

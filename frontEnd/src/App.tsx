@@ -6,16 +6,17 @@ import axios from 'axios';
 
 function App() {
 
-  const [brand, setBrand] = useState<any>({})
+  const [brands, setBrands] = useState<any>([])
   // const [brandPic, setBrandPic] = useState<any>()
 
   const navigate = useNavigate();
 
 useEffect( () => {
 
-  axios.get('/getBrands/7d462244-6dd8-4c16-a420-753ce5aee534')
+  axios.get('/getFrontPage')
   .then((response:any)=>{
-    setBrand(response.data)
+    setBrands(response.data)
+    console.log(brands,"brand")
   })
 
   // console.log(brand,"brand in use Effect")
@@ -35,7 +36,7 @@ useEffect( () => {
 
 }, [])
 
-console.log(brand,"brand")
+console.log(brands,"brand")
 
   return (
     <div className="bg-white">
@@ -51,14 +52,17 @@ console.log(brand,"brand")
     <div className='flex flex-row pt-3'>
 
     </div>
-    <a className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/placeholderAssets/Mielleproduct2.png" alt=""/>
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{brand.brand_name}</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{brand.description}</p>
-    </div>
-    <button type="button" className=" inline-flex items-center py-2 px-3 text-sm font-medium text-centerfocus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={()=>navigate("/shop")}>Visit The Shop</button>
-  </a>
+    {brands.map((brand:any)=>{
+          return <a className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+          <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={brand.image} alt=""/>
+          <div className="flex flex-col justify-between p-4 leading-normal">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{brand.brand_name}</h5>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{brand.description}</p>
+          </div>
+          <button type="button" className=" inline-flex items-center py-2 px-3 text-sm font-medium text-centerfocus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={()=>navigate("/shop")}>Visit The Shop</button>
+        </a>
+    })}
+
     </div>
   );
 }

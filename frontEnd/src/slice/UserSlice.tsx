@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+
 
 export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     console.log(data)
@@ -9,6 +10,12 @@ export const getProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     return axios.post('/getProfile',{ID: ID} )
 })
 
+export const updateProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
+    
+    console.log(data, "inside get update profile slice");
+    const {ID, tags, conpressedFileURL, pic, name, role, imageName, URL} = data
+    return axios.post('/updateProfile',{ID, tags, conpressedFileURL, pic, name, role, imageName, URL} )
+})
 
 export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{
     console.log(data , "login data");
@@ -94,13 +101,20 @@ const userSlice = createSlice({
             state.error = ''
 
         })
-        builder.addCase(getProfile.fulfilled, (state,action)=>{
-            console.log(action.payload , "login payload");
+        // builder.addCase(getProfile.fulfilled, (state,action)=>{
+        //     console.log(action.payload , "getProgile payload");
+        //     state.loading = false
+        //     state.user = action.payload.data.user[0]
+        //     state.pic = action.payload.data.profilePic
+        //     state.error = ''
+
+        // })
+        builder.addCase(updateProfile.fulfilled, (state, action)=>{
+            console.log(action.payload , "updateProfile payload");
             state.loading = false
             state.user = action.payload.data.user[0]
             state.pic = action.payload.data.profilePic
             state.error = ''
-
         })
 
     }
