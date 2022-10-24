@@ -78,7 +78,7 @@ export default function RegisterBrand() {
 
             dispatch(authActions.signUpBrand({logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin: user.id}))
 
-            navigate('/adminproducts')
+            navigate('/')
         }
     
       }
