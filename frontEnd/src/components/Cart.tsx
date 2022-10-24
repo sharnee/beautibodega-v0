@@ -106,11 +106,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-<<<<<<< HEAD
-        Total: ${total}
-=======
-        Total: {cartTotal.toFixed(2)}
->>>>>>> updates to shopping cart totals
+        Total: ${cartTotal.toFixed(2)}
     </div>
 
     </div>
