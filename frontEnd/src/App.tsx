@@ -40,13 +40,13 @@ console.log(brands,"brand")
 
   return (
     <div className="bg-white font-Caslon">
-    <div className="text-2xl py-2">Shop The Beauti Aisles</div> 
+    <div className="text-xl pt-5 pb-2">Shop The Beauti Aisles</div> 
 
     <div className='flex flex-row pt-3 pb-8 justify-center'>
-      <button type="button" className="" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-6.png" className="w-[100px] h-[100px] object-scale-down " alt="" />Shop Skin</button>
-      <button type="button" className="" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-9.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Beauti</button>
-      <button type="button" className="" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-2.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Hair</button>
-      <button type="button" className="" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-1.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Nails</button>
+      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-6.png" className="w-[100px] h-[100px] object-scale-down " alt="" />Shop Skin</button>
+      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-9.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Beauti</button>
+      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-2.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Hair</button>
+      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-1.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Nails</button>
 
 
     </div>
@@ -59,7 +59,7 @@ console.log(brands,"brand")
       <div>Easily shop the products your favorite creators use every day so you can live the lifestyle.</div>
 
         <div className="py-4">
-          <div className=" flex justify-center object-bottom w-96 h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
+          <div className=" flex justify-center object-bottom  h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
             >
             <span className="ml-2 leading-none pt-3"> Shop the Beauti Aisles</span>
         </div>
@@ -72,7 +72,7 @@ console.log(brands,"brand")
 
         </div>
         <div className="py-4">
-          <div className=" flex justify-center object-bottom w-96 h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
+          <div className=" flex justify-center object-bottom  h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
             >
             <span className="ml-2 leading-none pt-3"> Shop the Beauti Creators</span>
         </div>
