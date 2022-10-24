@@ -61,10 +61,10 @@ console.log(brands,"brand")
         <div className="py-4">
           <div className=" flex justify-center object-bottom  h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
             >
-            <span className="ml-2 leading-none pt-3"> Shop the Beauti Aisles</span>
+            <span className="ml-2 leading-none pt-3" onClick={()=>navigate('/shop')}> Shop the Beauti Aisles</span>
         </div>
         </div>
-        <div className='text-xl font-light'>Shop Our Top Creators</div>
+        <div className='text-xl font-light'onClick={()=>navigate('/creators')}>Shop Our Top Creators</div>
         <div className='flex pt-2 '>
         <img src="placeholderAssets/Social-Post-5.jpeg" className="  object-cover top-10  object-top w-[125px] h-[125px] p-1  rounded-xl" alt="" />
         <img src="placeholderAssets/IMG_1509.jpg" className="  object-cover top-10  object-top w-[125px] h-[125px] p-1 rounded-xl" alt="" />
