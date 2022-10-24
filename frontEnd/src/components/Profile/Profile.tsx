@@ -1,25 +1,38 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux';
 import {useNavigate, useParams} from 'react-router-dom';
+import axios from 'axios';
 
 const Profile = () => {
 
   let { id } = useParams();
 
-  const user = useSelector((state:{user: {user: any}}) => state.user.user)
-  const pic = useSelector((state:{user: {pic: string}}) => state.user.pic)
+  // const user = useSelector((state:{user: {user: any}}) => state.user.user)
+  // const pic = useSelector((state:{user: {pic: string}}) => state.user.pic)
 
   const [tags, setTags] = useState([])
+  const [user, setUser] = useState<any>({user:""})
 
 
   // const [tags, setTags] = useState<any>(user.tags.split(","))
 
   const navigate = useNavigate();
 useEffect(() => {
-  if(user.tags != null || user.tags != undefined){
-    console.log("get out");
-    setTags(user.tags.split(","))
-  }
+  axios.post('/getProfile',{ID: id} )
+  .then(profile=> {
+    console.log(profile.data)
+    setUser(profile.data)
+    if(profile.data.user.tags != null || profile.data.user.tags != undefined){
+      console.log("get out");
+      setTags(profile.data.user.tags.split(","))
+    }
+  })
+  
+
+  // if(user.tags != null || user.tags != undefined){
+  //   console.log("get out");
+  //   setTags(user.tags.split(","))
+  // }
   
 
 }, [])
@@ -31,10 +44,10 @@ useEffect(() => {
         
         <h2 className='text-2xl'><strong>Profile</strong></h2>
         <div className='flex flex-row'>
-        <img className="p-1 w-10 h-10 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 m-1 cursor-pointer" src={pic} alt="Bordered avatar" onClick={()=>navigate("/editprofile")}/>
-        <div className='basis-1/4 p-3'>{user.name}</div>
-        <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Following: {user.following ? user.following : 0} </button>
-        <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Followers: {user.followers ? user.followers : 0}</button>
+        <img className="p-1 w-10 h-10 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 m-1 cursor-pointer" src={user.profilePic} alt="Bordered avatar" onClick={()=>navigate("/editprofile")}/>
+        <div className='basis-1/4 p-3'>{user.user.name}</div>
+        <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Following: {user.user.following ? tags.length : 0} </button>
+        <button type="button" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Followers: {user.user.followers ? tags.length : 0}</button>
         </div>
 
         <div className='flex flex-row'>
@@ -42,21 +55,22 @@ useEffect(() => {
         </div>
 
         <div className='p-1 pb-5 pt-5'>
-          <p className="text-base ...">Shop Your</p>
+          <p className="text-base ...">The</p>
           <p className="text-xl ...">Holy-Grails</p>
-          <div>oops... There doesn't seem to be anything here</div>
+          {user.user.favorite_products ? null : <div>oops... There doesn't seem to be anything here</div>}
+          
         </div>
 
         <div className='p-1 pb-5 pt-5'>
-          <p className="text-base ...">Shop Your</p>
+          <p className="text-base ...">The</p>
           <p className="text-xl ...">Favorite Brands</p>
-          <div>oops... There doesn't seem to be anything here</div>
+          {user.user.favorite_brands ? null : <div>oops... There doesn't seem to be anything here</div>}
         </div>
 
         <div className='p-1 pb-5 pt-5'>
-          <p className="text-base ...">See Your</p>
+          <p className="text-base ...">The</p>
           <p className="text-xl ...">Best Reviews</p>
-          <div>oops... There doesn't seem to be anything here</div>
+          {user.user.reviews ? null : <div>oops... There doesn't seem to be anything here</div>}
         </div>
 
 
