@@ -35,19 +35,20 @@ export default function Login() {
     
         e.preventDefault()
         console.log("");
-        dispatch(LoginDB({email, password}))
+        dispatch(LoginDB({email, password})).then(()=>{
         // await axios.post('/login', {email: email, password: password})
         // .then(response =>{
         //     console.log(response);
         //     dispatch(authActions.login(response))
-        console.log(user)
+        console.log(user, "user in submit")
+        console.log(email)
         if(email === user.email){
             navigate("/")
         }
         else{
             setLoginError(true)
         }
-
+     })
         // 
         // })
         
