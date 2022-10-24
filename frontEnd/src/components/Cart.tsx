@@ -68,7 +68,7 @@ const Cart = () => {
                     <img className="imag" src={obj.image.image}/>
                     <div className="productName">
                         {obj.name}
-                    <div title={index} className="priceDiv"> ${obj.quantityInCart * obj.price}</div>
+                    <div title={index} className="priceDiv"> ${obj.quantityInCart * obj.price.toFixed(2)}</div>
                     </div>
                    
                     
@@ -77,7 +77,7 @@ const Cart = () => {
                         <button title={index} id='increase' onClick={
                             ()=>{dispatch(authActions.setCartQuantity({quantity: obj.quantityInCart + 1, name: obj.name}))
                             
-                            window.location.reload();
+                            // window.location.reload();
                         }
                         
                     } className="quant_button1">+</button>
@@ -87,7 +87,7 @@ const Cart = () => {
                     <button title={index} id='increase' onClick={
                         ()=>{dispatch(authActions.setCartQuantity({quantity: obj.quantityInCart - 1, name: obj.name}))
 
-                        window.location.reload();
+                        // window.location.reload();
                     }
                         
                         } className="quant_button1">-</button>
@@ -105,7 +105,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-        Total: {total}
+        Total: {total.toFixed(2)}
     </div>
 
     </div>

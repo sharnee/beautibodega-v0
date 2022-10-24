@@ -110,6 +110,9 @@ const Brand = () => {
             <h2 className="sub_header">Phone</h2>
             <div>{brand.phone}</div>
 
+            <h2 className="sub_header">Website</h2>
+            <a href={brand.websiteURL}>{brand.websiteURL}</a>
+
             <h2 className="sub_header">Products</h2>
             <div className="flex products">
                 {products.map((obj:any)=>{

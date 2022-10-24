@@ -35,11 +35,11 @@ const Product = () => {
 
   return (
     <>
-      <div className="container_">
+      <div className="font-Caslon container_">
             <h1 className="product_name">{product.name}</h1>
 
             <div className="image_div">
-              <img className="image" src={product.image.image}/>
+              <img className="image w-[100px] h-[100px] object-scale-down" src={product.image.image}/>
             </div>
 
             <div className="price">

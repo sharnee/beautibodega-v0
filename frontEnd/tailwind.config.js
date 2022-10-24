@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Caslon: ['Libre Caslon Text', "serif"],
+        Cursive: ['Satisfy', "cursive"],
        },
        colors: {
         'olive': '#7D7A3B',

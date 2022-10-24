@@ -140,7 +140,7 @@ const Sidebar = () => {
     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg></li>
     </Link>
-    <Link to="/register">
+    <Link to="/signup">
       <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Register<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg></li>
@@ -187,16 +187,16 @@ const Sidebar = () => {
   </div>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-3 text-sm hover:underline" aria-current="page">Home</a>
+                    <Link to="/" className="text-gray-900 dark:text-white pl-3 text-sm hover:underline" aria-current="page">Home</Link>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>
+                    <Link to="/creators" className="text-gray-900 dark:text-white text-sm hover:underline">Creators</Link>
                 </li >
                 <li className='mt-2'>
                     <Link to="/shop" className="text-gray-900 dark:text-white text-sm hover:underline">Products</Link>
                 </li>
                 <li className='mt-2'>
-                    <a href="/brands" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</a>
+                    <Link to="/brands" className="text-gray-900 dark:text-white text-sm hover:underline">Brands</Link>
                 </li>
             </ul>
         </div>

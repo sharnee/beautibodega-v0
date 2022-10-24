@@ -236,17 +236,22 @@ const authSlice = createSlice({
         },
         setCartQuantity: (state: any, action: any)=>{
 
+            console.log('in state');
+
             for(let i = 0; i < state.cart.length; i++){
 
-
+                console.log('in state');
+                console.log(state.cart[i].name);
+                console.log(action.payload.name)
 
                 if(state.cart[i].name == action.payload.name){
 
+                    console.log('in if')
                   
                     state.cart[i].quantityInCart = action.payload.quantity
+                    break
                 }
 
-                break
             }
         },
         deleteCartItem: (state: any, action: any)=>{
