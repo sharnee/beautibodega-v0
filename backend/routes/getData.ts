@@ -47,6 +47,42 @@ router.post('/uploadProduct', async(req, res)=>{
         })
     
 })
+
+router.post('/registerBrand', async(req, res)=>{
+
+        let {logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin} = req.body
+        
+        let id = uuidv4()
+    
+        let image = await db.images.create({
+            id: logoName,
+            image: imageURL
+          })
+    
+        let brand = await db.brands.create({
+            id,
+            brand_name: brandName,
+            admin_user: admin,
+            email,
+            founder,
+            description,
+            logo: logoName,
+            phone,
+            websiteURL,
+            video_link: videoLink
+    
+        })
+
+        let updateUser = await db.users.update({
+            role: 'Business'
+        }, {
+            where: {
+                id : admin
+            }
+        })
+    
+})
+
 router.post('/editProduct', async(req, res)=>{
 
         let {changedPhoto, id, brand, imageName, imageURL, name, price, salesPrice, description, quantity, instructions, ingredients, category} = req.body
@@ -201,17 +237,12 @@ router.get('/getBrands/:id', async(req, res)=>{
 
     const brandID = req.params.id
 
-    console.log(brandID)
+    const brands = await db.brands.findByPk(brandID)
 
-    const products = await db.brands.findByPk(brandID)
-
-    console.log(products, "inside getbrand")
-
-    res.send(products)
+    res.send(brands)
 })
 
 router.get('/getFrontPage', async(req, res)=>{
-//i hate this, this is ass
 
     // let cache: any[] = []
 

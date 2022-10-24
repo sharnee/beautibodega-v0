@@ -27,6 +27,7 @@ import Edit from './components/Edit';
 import Cart from './components/Cart';
 import Brands from './components/BrandsList'
 import Brand from './components/Brand'
+import RegisterBrand from './components/RegisterBrand'
 import Logout from './components/auth/Logout'
 
 import Creators from './components/Creators';
@@ -80,6 +81,7 @@ root.render(
               <Route path="/brands" element={<BL><Brands /></BL>}/>
               <Route path="/brand" element={<BL><Brand /></BL>}/>
               <Route path="/brand" element={<Auth><BL><Brand /></BL></Auth>}/>
+              <Route path="/registerbrand" element={<Auth><RegisterBrand /></Auth>}/>
               <Route path="/logout" element={<BL><Logout /></BL>}/>
 
             </Routes>
