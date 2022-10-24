@@ -43,10 +43,10 @@ console.log(brands,"brand")
     <div className="text-xl pt-5 pb-2">Shop The Beauti Aisles</div> 
 
     <div className='flex flex-row pt-3 pb-8 justify-center'>
-      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-6.png" className="w-[100px] h-[100px] object-scale-down " alt="" />Shop Skin</button>
-      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-9.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Beauti</button>
-      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-2.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Hair</button>
-      <button type="button" className="text-sm" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-1.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Nails</button>
+      <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-6.png" className="w-[100px] h-[100px] object-scale-down " alt="" />Shop Skin</button>
+      <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-9.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Makeup</button>
+      <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-2.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Hair</button>
+      <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Nail-Polish-Collection-Thumbnial.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Nails</button>
 
 
     </div>

@@ -134,11 +134,11 @@ const Brands = () => {
 
 
   return (
-    <>
+    <div className='font-Caslon'>
         <div className="flex pageTop">
             <div>
-                <h3>Shop</h3>
-                <h1>Bodega Brands</h1>
+            <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Bodega Brands</div>
             </div>
 
             <div>
@@ -147,8 +147,8 @@ const Brands = () => {
         </div>
 
         <div className="sortButtons">
-            <button onClick={openFilter} className="filterButton">FILTER</button>
-            <button onClick={openSort} className="sortButton">SORT</button>
+        <button onClick={openFilter} className="filterButton px-10 py-2 border-2 border-tan">FILTER</button>
+            <button onClick={openSort} className="sortButton px-12 py-2 border-2 border-tan">SORT</button>
 
              {filter ? 
              <div className="dropdown-content">
@@ -175,7 +175,7 @@ const Brands = () => {
 
         <div className="shopContainer"> 
 
-        <div className="flex brandCont_bl">
+        <div className="flex brandCont_bl pt-4">
 
                 {brandImageArr.map((obj: any) => {
 
@@ -202,7 +202,7 @@ const Brands = () => {
         </div>
 
 
-    </>
+    </div>
   )
 }
 

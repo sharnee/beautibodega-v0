@@ -135,11 +135,11 @@ const Shop = () => {
     }
 
   return (
-    <>
+    <div className='font-Caslon'>
         <div className="flex pageTop">
             <div>
-                <h3>Shop</h3>
-                <h1>The Boedga</h1>
+            <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">The Bodega</div>
             </div>
 
             <div>
@@ -148,8 +148,8 @@ const Shop = () => {
         </div>
 
         <div className="sortButtons">
-            <button onClick={openFilter} className="filterButton">FILTER</button>
-            <button onClick={openSort} className="sortButton">SORT</button>
+            <button onClick={openFilter} className="filterButton px-10 py-2 border-2 border-tan">FILTER</button>
+            <button onClick={openSort} className="sortButton px-12 py-2 border-2 border-tan">SORT</button>
 
              {filter ? 
              <div className="dropdown-content">
@@ -198,8 +198,8 @@ const Shop = () => {
 
             <div>
                 <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Skin</h1>
+                <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Skin</div>
                 </div>
 
                 <div className="flex products">
@@ -211,7 +211,7 @@ const Shop = () => {
                             <div className="product">
                                 <>
                                     <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
+                                            <img src={obj.image.image} className='image w-[100px] h-[100px] object-scale-down'/>
                                             <p>{obj.name}</p>
                                             <p>${obj.price}</p>
                                     </Link>
@@ -229,7 +229,7 @@ const Shop = () => {
                     <div className="brandPicture">
                         {brandImageArr.length > 0 ? 
                         <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[0]))} to="/brand">
-                        <img src={brandImageArr[0].image.image}/>
+                        <img src={brandImageArr[0].image.image} />
                         
                         </Link>
                         :
@@ -255,8 +255,8 @@ const Shop = () => {
         {makeup ? 
             <div>
                 <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Makeup</h1>
+                <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Makeup</div>
                 </div>
 
                <div className="flex products">
@@ -268,7 +268,7 @@ const Shop = () => {
                             <div className="product">
                                 <>
                                     <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
+                                            <img src={obj.image.image} className='image w-[100px] h-[100px] object-scale-down'/>
                                             <p>{obj.name}</p>
                                             <p>${obj.price}</p>
                                     </Link>
@@ -312,8 +312,8 @@ const Shop = () => {
         {hair ?
             <div>
                 <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Hair</h1>
+                <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Hair</div>
                 </div>
 
                 <div className="flex products">
@@ -325,7 +325,7 @@ const Shop = () => {
                             <div className="product">
                                 <>
                                     <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                            <img src={obj.image.image}/>
+                                            <img src={obj.image.image} className='image w-[100px] h-[100px] object-scale-down'/>
                                             <p>{obj.name}</p>
                                             <p>${obj.price}</p>
                                     </Link>
@@ -370,8 +370,8 @@ const Shop = () => {
         {nails ?
             <div>
                 <div className="categoryTop">
-                    <h3>Shop</h3>
-                    <h1>Nails</h1>
+                <div className="text-lg font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Nails</div>
                 </div>
 
                 <div className="flex products">
@@ -383,7 +383,7 @@ const Shop = () => {
                             <div className="product">
                                 <>
                                     <Link onClick={()=>dispatch(authActions.setProduct(obj))} to="/product">
-                                        <img src={obj.image.image}/>
+                                        <img src={obj.image.image} className='image w-[100px] h-[100px] object-scale-down'/>
                                         <p>{obj.name}</p>
                                         <p>${obj.price}</p>
                                     </Link>
@@ -398,7 +398,7 @@ const Shop = () => {
                 </div>
 
                 <div className ="flex brandCont">
-                    <div className="brandPicture">
+                    <div className="brandPicture items-center">
                         {brandImageArr.length > 0 ? 
                         <Link onClick={()=>dispatch(authActions.setBrand(brandImageArr[0]))} to="/brand">
                             <img src={brandImageArr[0].image.image}/>
@@ -426,7 +426,7 @@ const Shop = () => {
         </div>
 
 
-    </>
+    </div>
   )
 }
 

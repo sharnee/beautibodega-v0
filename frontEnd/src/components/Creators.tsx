@@ -33,15 +33,17 @@ const Creators = () => {
 
 
   return (
-    <div>Creators
+    <div className='font-Caslon'>
 
-    <div className='flex flex-row'>
+<div className="text-md font-light pt-5 ">Shop</div>
+<div className="text-3xl font-semibold ">Creators</div>
 
-    </div>
+<hr className="my-4  w-28 h-2 bg-tan "/>
+    <div className='flex pt-6'>
     {creators.map((creator:any)=>{
         return <div>
             {/* <p className="text-base ..." onClick={()=>handleClick(creator)}>{creator.name}<img src={creator.image} alt="" /></p> */}
-            <p className="text-base ..." onClick={()=>navigate(`/profile/${creator.secondary_id}`)}>{creator.name}<img src={creator.image} alt="" /></p>
+            <p className="text-base ..." onClick={()=>navigate(`/profile/${creator.secondary_id}`)}><div className='inline'><img src={creator.image} className="  object-cover top-10  object-top w-[125px] h-[125px] p-1  rounded-xl" alt="" /></div></p>
         {/* {modal ? 
         <div id="defaultModal"  className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -83,6 +85,21 @@ const Creators = () => {
         </div>
     })}
     </div>
+
+
+
+    <div className="text-xl pt-10 pb-2">Shop The Beauti Aisles</div> 
+
+<div className='flex flex-row pt-3 pb-8 justify-center'>
+  <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-6.png" className="w-[100px] h-[100px] object-scale-down " alt="" />Shop Skin</button>
+  <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-9.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Makeup</button>
+  <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Product-Image-2.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Hair</button>
+  <button type="button" className="text-xs" onClick={()=>navigate("/shop")}><img src="placeholderAssets/Nail-Polish-Collection-Thumbnial.png" className="w-[100px] h-[100px] object-scale-down" alt="" />Shop Nails</button>
+
+
+</div>
+    </div>
+    
     
   )
 }
