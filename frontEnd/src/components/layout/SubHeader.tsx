@@ -134,7 +134,18 @@ const Sidebar = () => {
 <></>
 }
 
-
+<li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/cart')}>Your Cart   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/shop')}>Shop   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/creators')}>Creators   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "onClick={()=>navigate('/brands')}>Brands   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
 
 </ul> 
 <ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
