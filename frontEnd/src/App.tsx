@@ -74,18 +74,26 @@ console.log(brands,"brand")
         <div className="py-4">
           <div className=" flex justify-center object-bottom  h-10 px-3 mt-auto text-sm font-medium bg-tan rounded hover:bg-gray-300"
             >
-            <span className="ml-2 leading-none pt-3"> Shop the Beauti Creators</span>
+            <span className="ml-2 leading-none pt-3" onClick={()=>navigate('/creators')}> Shop the Beauti Creators</span>
         </div>
-        <div className='text-xl font-light pt-8 pb-5'>Shop Our Top Brands</div>
+        <div className='text-xl font-light pt-8 pb-5'onClick={()=>navigate('/brands')}>Shop Our Top Brands</div>
         <div className='flex pb-4'>
-        <div className='text-xs text-light text-gray-700'>Hair <img src="placeholderAssets/Social-Post-5.jpeg" className="  object-cover top-10 pr-1 object-top w-[200px] h-[100px]   rounded-xl" alt="" /></div>
-        <div className='text-xs text-light text-gray-700'>Hair <img src="placeholderAssets/Social-Post-5.jpeg" className="  object-cover top-10 pr-1  object-top w-[200px] h-[100px]   rounded-xl" alt="" /></div>
+        <div className='h-[100px]'>
+        <div className='text-xs text-light text-gray-700 '>Tower 28 <img src="placeholderAssets/Tower28Logo.png" className="  object-cover top-10 pr-1 object-top w-[200px]   rounded-xl" alt="" /></div>
+        </div>
+        <div className='h-[100px]'>
+        <div className='text-xs text-light text-gray-700'>MIELLE <img src="placeholderAssets/MIELLE_Brandmark_2018-dark_410x.png" className="  object-cover top-10 pr-1  object-top w-[200px]   rounded-xl" alt="" /></div>
+        </div>
 
 
         </div>
         <div className='flex pb-6'>
-        <div className='text-xs text-light text-gray-700'>Hair <img src="placeholderAssets/Social-Post-5.jpeg" className="  object-cover top-10 pr-1 object-top w-[200px] h-[100px]   rounded-xl" alt="" /></div>
-        <div className='text-xs text-light text-gray-700'>Hair <img src="placeholderAssets/Social-Post-5.jpeg" className="  object-cover top-10 pr-1  object-top w-[200px] h-[100px]   rounded-xl" alt="" /></div>
+        <div className='h-[100px]'>
+        <div className='text-xs text-light text-gray-700'>Miss Jessies <img src="placeholderAssets/MissJessiesLogo.png" className="  object-cover top-10 pr-1 object-top w-[200px]   rounded-xl" alt="" /></div>
+        </div>
+        <div className='h-[100px]'>
+        <div className='text-xs text-light text-gray-700'>Cry Skin <img src="placeholderAssets/CaySkin.png" className="  object-cover top-10 pr-1  object-top w-[200px]  rounded-xl" alt="" /></div>
+        </div>
 
 
         </div>
