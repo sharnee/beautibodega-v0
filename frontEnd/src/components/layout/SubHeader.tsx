@@ -8,8 +8,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
 
   const token = useSelector((state: {user: {token: string}}) => state.user.token)
-  const role = useSelector((state:{user: {user: {role: string}}}) => state.user.user.role)
-  const user = useSelector((state:{user: {user: any}}) => state.user.user)
+  const user = useSelector((state:{user: {user: any}}) => state.user)
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [loggedin, setLoggedin] = useState(false)
@@ -17,13 +16,14 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
     console.log(token)
     if(token != ""){
       setLoggedin(true)
     }
 
-    if(role === "Business" || role === "Super Admin"){
+    if(user.user.role === "Business" || user.user.role === "Super Admin"){
       setIsAdmin(true)
     }
     
@@ -32,7 +32,6 @@ const Sidebar = () => {
 
   console.log(loggedin)
   console.log(isAdmin)
-  console.log(user.secondary_id);
   
 
   return (
@@ -156,7 +155,7 @@ const Sidebar = () => {
 
 {loggedin ? 
   <ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
-  <Link to={`/profile/${user.secondary_id}`}>
+  <Link to={`/profile/${user.user.secondary_id}`}>
         <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg></li>

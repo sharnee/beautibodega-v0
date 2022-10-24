@@ -89,7 +89,7 @@ export default function RegisterBrand() {
 
         <div className=' flex flex-col justify-center lg:pl-52 '>
             <div className='max-w-[500px] w-full mx-auto rounded-lg  pt-24 px-8'>
-                <h2 className='text-2xl  font-semibold font-Caslon text-center'>Welcome to Beauti Bodega</h2>
+                <h2 className='text-2xl  font-semibold font-Caslon text-center pb-10'>Welcome to Beauti Bodega</h2>
                 
             <div className='flex flex-col text-gray-500 py-2 text-sm'>
                     <label>Brand Name</label>
