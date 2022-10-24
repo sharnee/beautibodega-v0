@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom';
 
 const Creators = () => {
+
+    const navigate = useNavigate()
 
     const [creators, setCreators] = useState<any>([])
     const [currentCreator, setCurrentCreator] = useState<any>()
@@ -36,8 +39,10 @@ const Creators = () => {
 
     </div>
     {creators.map((creator:any)=>{
-        return <div><p className="text-base ..." onClick={()=>handleClick(creator)}>{creator.name}<img src={creator.image} alt="" /></p>
-        {modal ? 
+        return <div>
+            {/* <p className="text-base ..." onClick={()=>handleClick(creator)}>{creator.name}<img src={creator.image} alt="" /></p> */}
+            <p className="text-base ..." onClick={()=>navigate(`/profile/${creator.secondary_id}`)}>{creator.name}<img src={creator.image} alt="" /></p>
+        {/* {modal ? 
         <div id="defaultModal"  className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
            
@@ -74,7 +79,7 @@ const Creators = () => {
             </div>
         </div>
     </div>
-        : null}
+        : null} */}
         </div>
     })}
     </div>
