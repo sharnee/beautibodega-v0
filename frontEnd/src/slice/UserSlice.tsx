@@ -25,7 +25,7 @@ export const LoginDB:any = createAsyncThunk('user/loginDB', (data:any)=>{
 })
 
 const userSlice = createSlice({ 
-    name: 'auth',
+    name: 'user',
     initialState: {
         token: "",
         error: "",
@@ -39,6 +39,12 @@ const userSlice = createSlice({
         },
         error: (state,action)=>{
             state.error = action.payload
+        },
+        logout: (state, action)=>{
+
+            state.token = ""
+            state.user = {}
+
         },
         login: (state,action)=>{
 
@@ -120,6 +126,6 @@ const userSlice = createSlice({
     }
  })
 
- export const authActions = userSlice.actions
+ export const userActions = userSlice.actions
 
  export default userSlice.reducer

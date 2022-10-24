@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
@@ -19,9 +19,17 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false)
 
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+      
+        if(Object.keys(user).length > 0){
+            navigate("/")
+        }
+        
+    }, [user])
+    
 
     const handleSubmit = async (e: any)=>{
     
