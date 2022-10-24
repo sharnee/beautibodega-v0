@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
 
   const token = useSelector((state: {user: {token: string}}) => state.user.token)
-  const user = useSelector((state:{user: {user: any}}) => state.user)
+  // const user = useSelector((state:{user: {user: any}}) => state.user)
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [loggedin, setLoggedin] = useState(false)
