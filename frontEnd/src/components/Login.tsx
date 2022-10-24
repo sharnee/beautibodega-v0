@@ -77,7 +77,7 @@ export default function Login() {
                     <p className='flex items-center text-sm'><input className='mr-2' type="checkbox" /> Remember Me</p>
                     <p className='text-sm'>Forgot Password </p>  
                 </div>
-                <button className='w-full my-5 py-3 bg-olive shadow-lg  hover:bg-tan text-white  rounded-md' type="submit">Login</button>
+                <button className='w-full my-5 py-3 bg-olive shadow-lg  hover:bg-tan text-white  rounded-md' onClick={(e)=>handleSubmit(e)}>Login</button>
                 <div className="text-sm">Don't have an account? <Link to='/signup'><a className="text-gray-500 hover:text-blue-700 font-semibold">Sign Up</a></Link></div>
                 {loginError ? <div>LOGIN ERROR</div> : null }
                 
