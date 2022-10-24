@@ -11,6 +11,7 @@ import './css/Cart.css'
 const Cart = () => {
 
     const cart = useSelector((state:{auth: {cart: []}}) => state.auth.cart)
+    const cartTotal = useSelector((state:{auth: any}) => state.auth.cartTotal)
     
 
     const dispatch = useDispatch()
@@ -105,7 +106,11 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
+<<<<<<< HEAD
         Total: ${total}
+=======
+        Total: {cartTotal.toFixed(2)}
+>>>>>>> updates to shopping cart totals
     </div>
 
     </div>
