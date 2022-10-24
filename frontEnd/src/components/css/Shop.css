@@ -101,7 +101,8 @@
 .product p{
     text-align: center;
     color: rgba(0, 0, 0, 0.606);
-    font-size: small
+    font-size: small;
+    margin-bottom: 10%;
 }
 
 .brandCont{
@@ -113,6 +114,7 @@
 .brandPicture {
     display: flex;
     align-items: center;
+    max-width: 300px;
     width: 40%;
     outline: solid rgba(0, 0, 0, 0.548);
     outline-width: 1px;
@@ -121,6 +123,59 @@
 
 .brandPicture img{
     padding: 5%;
+}
+
+.container{
+    width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+
+    .brandCont{
+        margin: 2% 0 2% 0;
+        padding-bottom: 2%;
+        border-bottom: 3px solid #C4C4C4;
+    }
+
+    .categoryTop{
+        text-align: center;
+    }
+
+    .pageTop{
+        justify-content:center
+    }
+
+    .pageTop h1{
+        font-size: 40px;
+        text-align: center
+
+    }
+    .pageTop h3{
+        font-size: 20px;
+
+    }
+    
+    .categoryTop h1{
+        font-size: 40px;
+
+    }
+    .categoryTop h3{
+        font-size: 20px;
+
+    }
+
+    .product {
+        min-width: 200px;
+        margin: 10px 4% 10px 4%;
+    }
+    .products {
+        border-bottom: 3px solid #C4C4C4;
+    }
+    
+    .product img{
+        width: 200px;
+        height: 200px;
+    }
 }
 
 

@@ -26,24 +26,53 @@ const Brand = () => {
     const getProducts = async() =>{
 
         let products = brand.products.split(', ')
-        let productArr = []
+        let productsArr: any = []
+
     
         for(let i = 0; i < products.length; i++){
             
             if(products[i] != ''){
-    
-                let response = await axios.get(`/getProduct/${products[i]}`)
-                productArr.push(response.data)
+
+              productsArr.push(products[i])
             }
         }
 
-        for(let i = 0; i < productArr.length; i++){
+        let product = await axios.post('/getProductsForBrand', {productsArr})
+        let imageArr: any = []
 
-            let response = await axios.get(`/getImage/${productArr[i].thumbnail}`)
-            productArr[i]['image'] = response.data
+        for(let i = 0; i < product.data.length; i++){
+
+          imageArr.push(product.data[i].thumbnail)
+
         }
 
-        setProducts([...productArr])
+        console.log(imageArr);
+
+        let images = await axios.post('/getImages', {imageArr})
+
+        console.log(images);
+
+        let cache:any = {}
+
+        for(let i = 0; i < images.data.length; i++){
+        
+            cache[images.data[i].id] = images.data[i]
+        }
+
+        for(let i = 0; i < product.data.length; i++){
+
+          product.data[i]['image'] = cache[product.data[i].thumbnail]
+        }
+
+        setProducts([...product.data])
+
+        // for(let i = 0; i < productArr.length; i++){
+
+        //     let response = await axios.get(`/getImage/${productArr[i].thumbnail}`)
+        //     productArr[i]['image'] = response.data
+        // }
+
+        // setProducts([...productArr])
 
         
     }

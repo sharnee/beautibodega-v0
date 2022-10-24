@@ -37,13 +37,30 @@ router.post('/uploadProduct', async(req, res)=>{
     
         })
 
-        let updateBrand = await db.brands.update({
-            products: brand.products + id + ', '
-        }, {
-            where: {
-                products : brand.products
-            }
-        })
+        let brandProducts = await db.brands.findOne({where : {
+            products: brand.products
+        }})
+
+        if(brandProducts.products == null || brandProducts.products == "" || brandProducts.products == ', '){
+
+            let updateBrand = await db.brands.update({
+                products: id + ', '
+            }, {
+                where: {
+                    products : brand.products
+                }
+            })
+        } else {
+
+            let updateBrand = await db.brands.update({
+                products: brand.products + id + ', '
+            }, {
+                where: {
+                    products : brand.products
+                }
+            })
+        }
+
     
 })
 
