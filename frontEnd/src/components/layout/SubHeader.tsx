@@ -28,7 +28,7 @@ const Sidebar = () => {
   ) : (
     <svg
       onClick={() => setShowSidebar(!showSidebar)}
-      className=" z-30 flex items-center cursor-pointer top-30 relative left-10"
+      className=" z-30 flex items-center cursor-pointer top-30 relative left-8"
       fill="#2563EB"
       viewBox="0 0 100 40"
       width="40"
@@ -41,32 +41,56 @@ const Sidebar = () => {
   )}
 
   <div
-    className={` fixed left-0 top-0 w-[275px] bg-beige rounded-tr-[100px] p-10 pl-10 text-black  h-full z-40  ease-in-out duration-300 ${
+    className={` fixed left-0 top-0 w-[325px] bg-white rounded-tr-[100px] p-10 pl-10 text-black  h-full z-40  ease-in-out duration-300 ${
       showSidebar ? "translate-x-0 " : "translate-y-full"
     }`}
     
   >
-<div className="container  w-[220px] text-xl h-full rounded-tr-[100px]">
-<div className="flex flex-col  w-72   border-gray-300">
-    <Link className="flex items-center w-full h-16 " to="#">
-      <img src="Beauty_Bodega.png" className="pt-16 pl-10 w-1/2 " alt="" />
+<div className="container  w-[325px] text-xl h-full rounded-tr-[100px]">
+
+    <Link className="absolute  top-0 left-0  " to="#">
+      <img src="placeholderAssets/bb-menu.jpeg" className=" w-[325px] rounded-tr-[100px] rounded-bl-[100px] h-[100px] opacity-70 object-cover" alt="" />
     </Link>
-    <div className=""><hr className="relative top-16 p-0.5 rounded-lg w-[200px] bg-black "/></div>
-    <Link className=" flex-shrink-0 w-10 h-10 mt-20  rounded hover:bg-gray-300" to="/shop">
-        <p>Shop</p>
-    </Link>
-    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/brands">
-        <p>Brands</p>
-    </Link>
-    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="">
-        <p>Profile</p>
-    </Link>
-    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/registerBrand">
-        <p>Register A Brand</p>
-    </Link>
-    <Link className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" to="/logout">
-        <p >Logout</p>
-    </Link>
+    <div className='absolute top-32 left-5 '>
+    <ul className="w-72 text-sm font-medium text-gray-900 bg-white   ">
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+
+
+
+</ul> 
+
+<ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
+<li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-5 h-5  absolute left-64">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg></li>
+</ul>
+</div>
 
     {/* <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">
         <p></p>
@@ -82,12 +106,12 @@ const Sidebar = () => {
     </a> */}
 
 
-</div>
+
 </div>
   </div>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-5 text-sm hover:underline" aria-current="page">Home</a>
+                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-1 text-sm hover:underline" aria-current="page">Home</a>
                 </li>
                 <li className='mt-2'>
                     <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>

@@ -33,41 +33,68 @@ const Brands = () => {
             let allProductData = await axios.get('/getAllProducts');
             let allBrandsData = await axios.get('/getAllBrands');
             
-
+            console.log(allBrandsData.data)
             getImages(allProductData.data, 'product')
             getImages(allBrandsData.data, 'brand')
         }
 
         const getImages = async(data: any, type: any) => {
 
-            let arr:any = [];
+
+            let imageArr: any = []
 
             for(let i = 0; i < data.length; i++){
 
-                let image: any = {}
+                if(type == 'product'){
 
-                if(type == 'brand'){
+                    imageArr.push(data[i].thumbnail)
 
-                     image = await axios.get(`/getImage/${data[i].logo}`)
-    
-                } else if (type == 'product'){
-    
-                     image = await axios.get(`/getImage/${data[i].thumbnail}`)
+                } else if (type == 'brand'){
+                    
+                    imageArr.push(data[i].logo)
                 }
-
-                data[i]['image'] = image.data
-                arr.push(data[i])
 
             }
 
-            if(type == 'brand'){
+            let images = await axios.post('/getImages', { imageArr })
 
-                setBrandImageArr([...arr])
+            console.log(images)
+
+            let cache: any = {}
+
+           for(let i = 0; i < images.data.length; i++){
+
+                cache[`${images.data[i].id}`] = images.data[i]
+
+           }
+
+           let newArr: any = []
+
+           for(let i = 0; i < data.length; i++){
+
+                if(type == 'product'){
+
+                    data[i]['image'] = cache[`${data[i].thumbnail}`]
+                    newArr.push(data[i])
+
+                } else if (type == 'brand'){
+                    
+                    data[i]['image'] = cache[`${data[i].logo}`]
+                    newArr.push(data[i])
+                }
+           }
+
+           console.log(newArr);
+
+           if(type == 'brand'){
+
+                setBrandImageArr([...newArr])
 
             } else if (type == 'product'){
 
-                setProductImageArr([...arr])
+                setProductImageArr([...newArr])
             }
+
 
         }
 
@@ -75,9 +102,6 @@ const Brands = () => {
         
 
     }, [])
-
-    console.log("brands", brandImageArr);
-    console.log("Products with images", productImageArr);
 
 
     const openFilter = (e: any) => {
