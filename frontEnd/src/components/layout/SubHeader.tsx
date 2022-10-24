@@ -1,13 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
+
+  const token = useSelector((state: {user: {token: string}}) => state.user.token)
+  const role = useSelector((state:{user: {user: {role: string}}}) => state.user.user.role)
+  const user = useSelector((state:{user: {user: any}}) => state.user.user)
+
   const [showSidebar, setShowSidebar] = useState(false);
+  const [loggedin, setLoggedin] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(token)
+    if(token != ""){
+      setLoggedin(true)
+    }
+
+    if(role === "Business" || role === "Super Admin"){
+      setIsAdmin(true)
+    }
+    
+
+  }, [])
+
+  console.log(loggedin)
+  console.log(isAdmin)
+  console.log(user.secondary_id);
+  
 
   return (
     <>
@@ -48,50 +74,98 @@ const Sidebar = () => {
   >
 <div className="container  w-[325px] text-xl h-full rounded-tr-[100px]">
 
-    <Link className="absolute  top-0 left-0  " to="#">
+    <div className="absolute  top-0 left-0  ">
       <img src="placeholderAssets/bb-menu.jpeg" className=" w-[325px] rounded-tr-[100px] rounded-bl-[100px] h-[100px] opacity-70 object-cover" alt="" />
-    </Link>
+    </div>
     <div className='absolute top-32 left-5 '>
     <ul className="w-72 text-sm font-medium text-gray-900 bg-white   ">
-  <Link to="/">
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 "> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-    </svg></li>
-  </Link>
-        <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-    </svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-    <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
+
+  {loggedin && !isAdmin ? 
+
+  <>
+  
+    <Link to="/logout">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Logout<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/editprofile">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Edit Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/registerbrand">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Register A Brand<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
 
 
+  </>
+  
+  :
+<></>
+}
+  {loggedin && isAdmin ? 
+
+  <>
+  
+    <Link to="/logout">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Logout<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/editprofile">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Edit Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/adminproducts">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Brand Page<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+
+  </>
+  
+  :
+<></>
+}
+  {!loggedin ? 
+
+  <>
+  
+    <Link to="/login">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Login<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+    <Link to="/register">
+      <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Register<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg></li>
+    </Link>
+         
+  </>
+  
+  :
+<></>
+}
 
 </ul> 
 
-<ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
-<li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Profile   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-5 h-5  absolute left-64">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-</svg></li>
-</ul>
+{loggedin ? 
+  <ul className="absolute top-[600px] bg-greenish w-72 text-sm font-medium text-white   ">
+  <Link to={`/profile/${user.secondary_id}`}>
+        <li className="flex py-2 px-4 w-full  border-b border-gray-200 ">Your Profile<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-64">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg></li>
+  </Link>
+  </ul>
+:
+<></>
+}
+
 </div>
 
     {/* <a className=" flex-shrink-0 w-10 h-10 mt-2 rounded hover:bg-gray-300" href="#">

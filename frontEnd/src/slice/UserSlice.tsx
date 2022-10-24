@@ -40,6 +40,9 @@ const userSlice = createSlice({
         error: (state,action)=>{
             state.error = action.payload
         },
+        logout: (state,action)=>{
+            state.token = action.payload
+        },
         login: (state,action)=>{
 
             console.log("token timeout and forgot password needs to be setup")
@@ -120,6 +123,6 @@ const userSlice = createSlice({
     }
  })
 
- export const authActions = userSlice.actions
+ export const userActions = userSlice.actions
 
  export default userSlice.reducer
