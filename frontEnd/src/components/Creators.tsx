@@ -39,11 +39,11 @@ const Creators = () => {
 <div className="text-3xl font-semibold ">Creators</div>
 
 <hr className="my-4  w-28 h-2 bg-tan "/>
-    <div className='flex pt-6'>
+    <div className='grid grid-cols-3 gap-1 pt-6'>
     {creators.map((creator:any)=>{
-        return <div>
+        return <div className=''>
             {/* <p className="text-base ..." onClick={()=>handleClick(creator)}>{creator.name}<img src={creator.image} alt="" /></p> */}
-            <p className="text-base ..." onClick={()=>navigate(`/profile/${creator.secondary_id}`)}><div className='inline'><img src={creator.image} className="  object-cover top-10  object-top w-[125px] h-[125px] p-1  rounded-xl" alt="" /></div></p>
+            <p className="text-base ..." onClick={()=>navigate(`/profile/${creator.secondary_id}`)}><div className='inline'><img src={creator.image} className="  object-cover top-10 object-top w-[125px] h-[125px] p-1  col-span-1 rounded-xl" alt="" /></div></p>
         {/* {modal ? 
         <div id="defaultModal"  className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">

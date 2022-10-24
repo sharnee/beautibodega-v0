@@ -135,6 +135,7 @@ function Adminproducts() {
     :
     <></>
   }
+
     </div>
 </div>
 
@@ -165,7 +166,7 @@ function Adminproducts() {
   
 <Link to="/adminforms">
 
-    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-2 border border-blue-500 hover:border-transparent rounded">
+    <button className="  font-semibold hover:text-white py-2 px-2 border bg-olive hover:border-transparent rounded">
        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg>
