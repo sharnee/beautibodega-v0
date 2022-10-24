@@ -336,8 +336,10 @@ router.post('/getProfile', async(req, res)=>{
 
     console.log(req.body, "in backend getprofile");
 
-    let user = await db.users.findAll({where: {id: req.body.ID}})
+    let user = await db.users.findAll({where: {secondary_id: req.body.ID}})
     let profilePic = await db.images.findByPk(user[0].dataValues.profile_picture)
+
+    console.log("inside getProfile");
 
     res.json({user: user, profilePic: profilePic.dataValues.image})
     

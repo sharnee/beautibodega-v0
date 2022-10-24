@@ -88,7 +88,7 @@ const Brand = () => {
 
   return (
     <>
-      <div className="container_">
+      <div className="container_ font-Caslon">
             <h1 className="product_name">{brand.name}</h1>
 
             <div className="image_div_brand">

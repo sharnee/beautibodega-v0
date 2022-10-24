@@ -111,7 +111,7 @@ const Sidebar = () => {
   </div>
                 </li>
                 <li className='mt-2'>
-                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-1 text-sm hover:underline" aria-current="page">Home</a>
+                    <a onClick={()=>navigate('/')} className="text-gray-900 dark:text-white pl-3 text-sm hover:underline" aria-current="page">Home</a>
                 </li>
                 <li className='mt-2'>
                     <a onClick={()=>navigate('/profile')} className="text-gray-900 dark:text-white text-sm hover:underline">Creators</a>
