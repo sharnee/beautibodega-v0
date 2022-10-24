@@ -54,30 +54,30 @@ useEffect(() => {
 
 const handleFollow = ()=>{
 
-  if(check){
+  // if(check){
     
-    dispatch(updateProfile({following: [followers.filter((follower:string)=>follower != user.user[0].secondary_id)], follower: [user.user[0].following.filter((following: string)=>following != user.user[0].secondary_id)], otherID: user.user[0].id }))
-    // setFollowers(followers.filter((follower:string)=>follower != user.user.secondary_id))
-    setCheck(false)
-  }
-  else{
-    console.log(user.user[0].secondary_id, "secondary id");
-    if(yourUser.following == null){
-      if(user.user[0].follower == undefined){
-        dispatch(updateProfile({following: [user.user[0].secondary_id], follower: [yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
-      }
-      else{
-      dispatch(updateProfile({following: [user.user[0].secondary_id], follower: [...user.user[0].follower, yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
-      }
-    }
-    else{
-      console.log(user.user[0].id, "user.user[0].id")
-      dispatch(updateProfile({following: [...yourUser.following, user.user[0].secondary_id], follower: [...user.user[0].follower, yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
-    }
+  //   dispatch(updateProfile({following: [followers.filter((follower:string)=>follower != user.user[0].secondary_id)], follower: [user.user[0].following.filter((following: string)=>following != user.user[0].secondary_id)], otherID: user.user[0].id }))
+  //   // setFollowers(followers.filter((follower:string)=>follower != user.user.secondary_id))
+  //   setCheck(false)
+  // }
+  // else{
+  //   console.log(user.user[0].secondary_id, "secondary id");
+  //   if(yourUser.following == null){
+  //     if(user.user[0].follower == undefined){
+  //       dispatch(updateProfile({following: [user.user[0].secondary_id], follower: [yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
+  //     }
+  //     else{
+  //     dispatch(updateProfile({following: [user.user[0].secondary_id], follower: [...user.user[0].follower, yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
+  //     }
+  //   }
+  //   else{
+  //     console.log(user.user[0].id, "user.user[0].id")
+  //     dispatch(updateProfile({following: [...yourUser.following, user.user[0].secondary_id], follower: [...user.user[0].follower, yourUser.secondary_id], ID: yourUser.id, otherID: user.user[0].id}))
+  //   }
 
-    // setFollowers([...followers, user.user.secondary_id])
-    setCheck(true)
-  }
+  //   // setFollowers([...followers, user.user.secondary_id])
+  //   setCheck(true)
+  // }
 
 }
 

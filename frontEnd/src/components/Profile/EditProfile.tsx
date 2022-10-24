@@ -105,7 +105,8 @@ const EditProfile = () => {
 
         }
         console.log("updateProfile")
-        navagate('/profile')
+        // navagate(`/profile/${user.secondary_id}`)
+        navagate(`/`)
 
       }
 
