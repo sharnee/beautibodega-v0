@@ -84,11 +84,7 @@ const userSlice = createSlice({
 
             }
             name()
-        },
-        logout: (state,action)=>{
-            state.user = {}
-            state.token = ""
-        },
+        }
     },
     extraReducers: builder =>{
         builder.addCase(LoginDB.pending, state=>{
