@@ -10,7 +10,8 @@ import './css/Cart.css'
 
 const Cart = () => {
 
-    const cart = useSelector((state:{auth: {cart: any}}) => state.auth.cart)
+    const cart = useSelector((state:{auth: {cart: []}}) => state.auth.cart)
+    
 
     const dispatch = useDispatch()
 
@@ -21,6 +22,8 @@ const Cart = () => {
     
     
     useEffect(() => {
+        console.log(cart, "cart1")
+        console.log("first")
         window.scrollTo(0, 0)
     
         if(cart.length == 0){
@@ -46,7 +49,7 @@ const Cart = () => {
       
     }, [])
 
-    console.log(cart);
+    console.log(cart, "cart2");
     console.log(total)
 
     

@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 const ReqAuth = (props: any) => {
 
-    const token = useSelector((state: {auth: {token: string}}) => state.auth.token)
+    const token = useSelector((state: {user: {token: string}}) => state.user.token)
     const navigate = useNavigate()
 
     useEffect(() => {

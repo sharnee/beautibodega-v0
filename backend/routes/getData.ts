@@ -326,9 +326,17 @@ router.get('/getReviews/:id', async(req, res)=>{
 
 router.get('/getCreators', async(req, res)=>{
 
-    let creators = await db.users.findAll({where: {role: 'Influencer'}})
-    console.log(creators, "creators in get creators");
-    res.send(creators)
+    const data = await db.sequelize.query("SELECT * FROM users, images WHERE users.role = 'Influencer' AND images.id = users.profile_picture")
+
+    // const data = await db.sequelize.query("SELECT * FROM users LEFT OUTER JOIN images ON users.role = 'Influencer'")
+
+    // const data = await db.users.findAll({where: {role: 'Influencer'}, include: {model: db.images, as: db.users.profile_picture}})
+
+    console.log(data[0])
+
+    // let creators = await db.users.findAll({where: {role: 'Influencer'}})
+    // console.log(creators, "creators in get creators");
+    res.send(data[0])
 
 })
 
