@@ -1,0 +1,13 @@
+.shopping-cart-icon{
+position: absolute;
+top:0;
+right:-10px;
+background-color: rgb(251, 51, 51);
+border-radius: 50%;
+width:23px;
+color: white;
+}
+
+.cart-button{
+    position:relative;
+}

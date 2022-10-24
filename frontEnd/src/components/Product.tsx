@@ -26,6 +26,8 @@ const Product = () => {
     productAltered['quantityInCart'] = quantity
 
     dispatch(authActions.setCart(productAltered))
+
+    window.location.reload();
   }
   
 

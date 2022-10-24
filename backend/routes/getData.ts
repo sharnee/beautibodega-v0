@@ -1,7 +1,6 @@
 import express, { Express, Request, Response, Router } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 var FormData = require('form-data');
-const Api404Error = require('./api404error')
 
 
 const router = Router();
@@ -208,6 +207,40 @@ router.get('/getImage/:id', async(req, res)=>{
     const image = await db.images.findByPk(imageID)
 
     res.send(image)
+})
+
+router.post('/getImages', async(req, res)=>{
+
+    const {imageArr} = req.body
+
+    let data: any= []
+
+    for(let i = 0; i < imageArr.length; i++){
+
+        const query = await db.images.findByPk(imageArr[i])
+
+        data.push(query)
+
+    }
+
+    res.send(data)
+})
+router.post('/getProductsForBrand', async(req, res)=>{
+
+    const {productsArr} = req.body
+
+    let data: any= []
+
+    for(let i = 0; i < productsArr.length; i++){
+
+        const query = await db.products.findByPk(productsArr[i])
+
+        data.push(query)
+
+    }
+
+    res.send(data)
+
 })
 
 router.get('/getAllProducts', async(req, res)=>{
