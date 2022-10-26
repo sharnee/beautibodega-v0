@@ -6,18 +6,78 @@ const Footer = () => {
 
 <footer
   aria-label="Site Footer"
-  className="bg-grenish text-white lg:grid lg:grid-cols-5"
+  className="bg-grenish text-white lg:grid lg:grid-cols-5 m-1"
 >
-  <div className="hidden lg:relative lg:col-span-2 lg:block">
-    <img
-      alt="Art"
-      src="placeholderAssets/Login-2.png"
-      className="absolute inset-0 h-full w-full object-cover"
-    />
-  </div>
+<div className="md:flex md:justify-between ">
+        <div className="mb-6 md:mb-0">
+            <a className="flex items-center">
+                <img src="Beauty_Bodega.png" className="mr-3 h-8" alt="Logo" />
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Beauty Bodega</span>
+            </a>
+        </div>
+        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Shop</h2>
+                <ul className="text-gray-300 ">
+                    <li className="mb-4">
+                        <a  className="hover:underline">Beauty</a>
+                    </li>
+                    <li className="mb-4">
+                        <a  className="hover:underline">Hair</a>
+                    </li>
+                    <li className="mb-4">
+                        <a  className="hover:underline">Nails</a>
+                    </li>
+                    <li>
+                        <a  className="hover:underline">Skin</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                <ul className="text-gray-300">
+                    <li className="mb-4">
+                        <a  className="hover:underline ">Github</a>
+                    </li>
+                    <li>
+                        <a  className="hover:underline">Instagram</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Browse</h2>
+                <ul className="text-gray-300">
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline">Cart</a>
+                    </li>
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline">Products</a>
+                    </li>
+                    <li className="mb-4">
+                        <a href="#" className="hover:underline">Brands</a>
+                    </li>
+                    <li>
+                        <a href="#" className="hover:underline">Creators</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-  <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+    <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <div>
+        <p className="font-medium">
+
+
+
+        </p>
+
+        <ul className="mt-8 space-y-2 text-sm">
+
+        </ul>
+
+        <div className="mt-16 flex gap-3">
 
 
 
@@ -109,45 +169,10 @@ const Footer = () => {
               />
             </svg>
           </a>
-
-
-
-
-
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
-
-
-        <div>
-          <p className="font-medium">Products</p>
-
-          <nav className="mt-4 flex flex-col space-y-2 text-sm text-gray-300">
-            <a className="hover:opacity-75" href=""> Home </a>
-            <a className="hover:opacity-75" href=""> Creators </a>
-            <a className="hover:opacity-75" href=""> Products </a>
-            <a className="hover:opacity-75" href=""> Brands </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-
-    <div className="mt-12 border-t border-tan pt-12">
-      <div
-        className="text-sm text-gray-300 sm:flex sm:items-center sm:justify-between"
-      >
-        <div className="flex gap-3">
-          <a className="hover:opacity-75" href=""> Privacy Policy </a>
-          <a className="hover:opacity-75" href=""> Terms & Conditions </a>
-          <a className="hover:opacity-75" href=""> Returns Policy </a>
-        </div>
-
-        <p className="mt-4 sm:mt-0">&copy; 2022 Beauti Bodega.</p>
-      </div>
-
-
-    </div>
-  </div>
+          </div>
+          </div>
+          </div>
+          </div>
 </footer>
 
 

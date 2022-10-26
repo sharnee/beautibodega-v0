@@ -373,24 +373,24 @@ router.post('/updateProfile', async(req, res)=>{
               
             await db.users.update({profile_picture: req.body.imageName}, {where:{id: req.body.ID}})
 
-        case(req.body.follower !== undefined):
-        console.log("in req.body.follower case");
-        let splitFollowers = req.body.follower.toString()
-        console.log(splitFollowers);
-        await db.users.update({followers: splitFollowers},{where: {id: req.body.otherID}})
+        // case(req.body.follower !== undefined):
+        // console.log("in req.body.follower case");
+        // let splitFollowers = req.body.follower.toString()
+        // console.log(splitFollowers);
+        // await db.users.update({followers: splitFollowers},{where: {id: req.body.otherID}})
         
-        case(req.body.following !== undefined):
-        console.log("in req.body.following case");
-        let splitFollowing = req.body.following.toString()
-        await db.users.update({following: splitFollowing}, {where:{id: req.body.ID}})
+        // case(req.body.following !== undefined):
+        // console.log("in req.body.following case");
+        // let splitFollowing = req.body.following.toString()
+        // await db.users.update({following: splitFollowing}, {where:{id: req.body.ID}})
 
-        case (req.body.tags):
-            if(typeof req.body.tags === undefined){
+        case (true):
+            
             console.log(req.body.tags,"in req.body.tags case");
             console.log(req.body.tags.toString(), "update profile data in update profile");
             let splitTags = req.body.tags.toString()
             await db.users.update({name: req.body.name, tags: splitTags, role: req.body.role}, {where:{id: req.body.ID}})
-            }
+            
        
     }
     console.log("update profile sending infor back for state")
