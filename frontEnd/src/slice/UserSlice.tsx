@@ -10,6 +10,12 @@ import axios from 'axios'
 //     return axios.post('/getProfile',{ID: ID} )
 // })
 
+export const signupBrand:any = createAsyncThunk('user/registerBrand',(data:any)=>{
+    const {logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin} = data
+    return axios.post('/registerBrand', {logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin})
+})
+
+
 export const updateProfile:any = createAsyncThunk('user/getProfile', (data:any)=>{
     
     console.log(data, "inside get update profile slice");
@@ -41,6 +47,8 @@ const userSlice = createSlice({
             state.error = action.payload
         },
         logout: (state, action)=>{
+
+            console.log("is logout being read");
 
             state.token = ""
             state.user = {}
@@ -120,6 +128,11 @@ const userSlice = createSlice({
             state.loading = false
             state.user = action.payload.data.user[0]
             state.pic = action.payload.data.profilePic
+            state.error = ''
+        })
+        builder.addCase(signupBrand.fulfilled, (state, action)=>{
+            state.loading = false
+            state.user = action.payload.data.user[0]
             state.error = ''
         })
 

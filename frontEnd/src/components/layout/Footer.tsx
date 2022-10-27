@@ -81,7 +81,7 @@ const Footer = () => {
 
 
 
-
+       
 
 
 
@@ -129,7 +129,7 @@ const Footer = () => {
           </a>
           <a
             className="rounded-lg border border-white/25 w-3/4 p-2 hover:opacity-75"
-            href=""
+            href="https://github.com/Rkovl"
             target="_blank"
             rel="noreferrer"
           >Ryan Kovlaske

@@ -9,6 +9,8 @@ import {authActions} from '../slice/AuthSlice';
 import Compressor from 'compressorjs';
 import { Link, useNavigate } from 'react-router-dom'
 
+import { signupBrand } from '../slice/UserSlice';
+
 import loginImg from '../assets/login.jpg'
 
 export default function RegisterBrand() {
@@ -76,9 +78,11 @@ export default function RegisterBrand() {
             let snapshot = await uploadBytes(imageRef, logo);
             let imageURL = await getDownloadURL(snapshot.ref)
 
-            dispatch(authActions.signUpBrand({logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin: user.id}))
+            dispatch(signupBrand({logoName, imageURL, brandName, email, description, founder, phone, websiteURL, videoLink, admin: user.id})).then(()=>{
+                navigate('/')
+            })
 
-            navigate('/')
+            
         }
     
       }

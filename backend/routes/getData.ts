@@ -96,7 +96,9 @@ router.post('/registerBrand', async(req, res)=>{
                 id : admin
             }
         })
-    
+        
+        let user = await db.users.findAll({where: {id: admin}})
+        res.json({user:user})
 })
 
 router.post('/editProduct', async(req, res)=>{
