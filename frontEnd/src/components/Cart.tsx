@@ -11,6 +11,7 @@ import './css/Cart.css'
 const Cart = () => {
 
     const cart = useSelector((state:{auth: {cart: []}}) => state.auth.cart)
+    const cartTotal = useSelector((state:{auth: any}) => state.auth.cartTotal)
     
 
     const dispatch = useDispatch()
@@ -96,7 +97,7 @@ const Cart = () => {
                     <button onClick={
                         ()=>{dispatch(authActions.deleteCartItem({name: obj.name}))
 
-                        window.location.reload();
+                        // window.location.reload();
 
                     }
                         } className="close">x</button>
@@ -105,7 +106,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-        Total: {total.toFixed(2)}
+        Total: ${cartTotal.toFixed(2)}
     </div>
 
     </div>

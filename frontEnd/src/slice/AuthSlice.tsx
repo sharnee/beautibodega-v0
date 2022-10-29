@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-
 const authSlice = createSlice({ 
     name: 'auth',
     initialState: {
@@ -51,6 +50,9 @@ const authSlice = createSlice({
             name()
         },
         logout: (state,action)=>{
+            
+            localStorage.token = "";
+            state.token = ""
             state.user = {}
         },
         signUpA: (state,action)=>{
@@ -138,9 +140,6 @@ const authSlice = createSlice({
                     "\n" + error)
 
                     console.log(error);
-                   
-                    
-
                 }
             }
             name()
@@ -233,6 +232,11 @@ const authSlice = createSlice({
         setCart: (state: any, action: any)=>{
 
             state.cart = [...state.cart, action.payload]
+
+            state.cartTotal = state.cart.reduce((prev:any, product:any) =>{
+
+                return parseFloat(prev + product.quantityInCart * product.price)
+            }, 0)
         },
         setCartQuantity: (state: any, action: any)=>{
 
@@ -253,7 +257,21 @@ const authSlice = createSlice({
                 }
 
             }
+
+            state.cartTotal = state.cart.reduce((prev:any, product:any) =>{
+
+                return parseFloat(prev + product.quantityInCart * product.price)
+            }, 0)
         },
+        cartTotal: (state: any, action: any)=>{
+            
+        state.cartTotal = state.cart.reduce((prev:any, product:any) =>{
+
+            return parseFloat(prev + product.quantityInCart * product.price)
+        }, 0)
+            
+        },
+
         deleteCartItem: (state: any, action: any)=>{
             
 
@@ -269,6 +287,12 @@ const authSlice = createSlice({
                 }
 
             }
+
+
+            state.cartTotal = state.cart.reduce((prev:any, product:any) =>{
+
+                return parseFloat(prev + product.quantityInCart * product.price)
+            }, 0)
         }
     },
 

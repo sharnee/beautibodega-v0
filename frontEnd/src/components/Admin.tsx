@@ -6,26 +6,26 @@ function Admin() {
     <>
 <div className="flex w-screen h-[100vh] text-gray-700 font-Caslon font-light bg-beige bg-cover">
 
-<div className="flex flex-col items-center w-72 pb-4 overflow-auto  border-gray-300">
+<div className="flex flex-col items-center w-72 pb-4 overflow-auto pt-20 border-gray-300">
     <a className="flex items-center justify-center flex-shrink-0 w-full h-16 " href="#">
       <img src="placeholderAssets/MissJessiesLogo.png" alt="" />
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
         <p>Products</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
       <p>Customers</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
         <p>Analytics</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
         <p>Orders</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
         <p>Beauti Aisle</p>
     </a>
-    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+    <a className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded " href="#">
         <p></p>
     </a>
 </div>

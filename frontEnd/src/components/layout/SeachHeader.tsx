@@ -22,7 +22,7 @@ const SeachHeader = () => {
   return (
     <div className=' lg:justify-end p-1 flex font-Cursive '>
 
-<img src="Beauty_Bodega.png" alt="" className='w-[50px] h-[50px]'/>
+<img src="Beauty_Bodega.png" alt="Logo" className='w-[50px] h-[50px]'/>
 <div className="text-3xl font-semibold pt-3 px-10 ">Beauti Bodega</div>
         <Link to="/cart">
             <button className=' cart-button'>
