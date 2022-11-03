@@ -16,17 +16,17 @@ In a completed version of Beauty Bodega, there would be a 3rd primary role calle
 The ability for any shopper to switch their account status from a shopper to a brand admin or creator would be replaced with an application that would require a review to see if the applicant meets the requirements to be featured as a company or an influencer on Beauti Bodega.
 ## Tech Stack
 
-*TypeScript
-*Node.js
-*React
-*CSS
-*TailWind
-*Express.js
-*PostgreSQL
-*ElephantSQL
-*Firebase
-*Sequelize
-*Redux Toolkit
+* TypeScript
+* Node.js
+* React
+* CSS
+* TailWind
+* Express.js
+* PostgreSQL
+* ElephantSQL
+* Firebase
+* Sequelize
+* Redux Toolkit
 
 ## Minimum Viable Product
 
