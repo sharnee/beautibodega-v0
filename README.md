@@ -1,4 +1,4 @@
-#Beauti Bodega
+# Beauti Bodega
 
 ![Images](beauti_bodega.PNG)
 
