@@ -50,11 +50,11 @@ The ability for any shopper to switch their account status from a shopper to a b
 
 ## Dev Team
 
-[Austin Desana:](https://github.com/adesana)
+[Austin Desana](https://github.com/adesana)
 
-[Kipp Hulick:](https://github.com/kippHulick)
+[Kipp Hulick](https://github.com/kippHulick)
 
-[Ryan Kovlaske:](https://github.com/Rkovl)
+[Ryan Kovlaske](https://github.com/Rkovl)
 
-[Thomas Zimmerman:](https://github.com/clintwestwords)
+[Thomas Zimmerman](https://github.com/clintwestwords)
 
