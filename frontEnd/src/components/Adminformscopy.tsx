@@ -42,6 +42,8 @@ function Adminforms() {
 
       let brand_res: any = await axios.get(`/getBrandByAdmin/${id}`)
 
+      console.log(brand_res);
+
       let image = await axios.get(`getImage/${brand_res.data.logo}`)
 
       brand_res.data['image'] = image.data

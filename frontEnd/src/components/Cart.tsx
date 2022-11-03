@@ -106,7 +106,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-        Total: ${cartTotal.toFixed(2)}
+        Total: ${total.toFixed(2)}
     </div>
 
     </div>

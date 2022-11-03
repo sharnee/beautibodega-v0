@@ -1,6 +1,5 @@
 import express, { Express, Request, Response, Router } from 'express'
 import { v4 as uuidv4 } from 'uuid'
-var FormData = require('form-data');
 
 
 const router = Router();
@@ -37,9 +36,13 @@ router.post('/uploadProduct', async(req, res)=>{
     
         })
 
+        console.log(brand)
+
         let brandProducts = await db.brands.findOne({where : {
             products: brand.products
         }})
+
+        console.log(brandProducts)
 
         if(brandProducts.products == null || brandProducts.products == "" || brandProducts.products == ', '){
 
