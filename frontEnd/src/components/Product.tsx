@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { authActions } from "../slice/AuthSlice";
+import { cartActions } from "../slice/CartSlice";
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux';
 
@@ -25,7 +25,7 @@ const Product = () => {
 
     productAltered['quantityInCart'] = quantity
 
-    dispatch(authActions.setCart(productAltered))
+    dispatch(cartActions.setCart(productAltered))
 
     window.location.reload();
   }
