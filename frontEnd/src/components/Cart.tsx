@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {authActions} from '../slice/AuthSlice';
+import {cartActions} from '../slice/CartSlice';
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux';
 
@@ -10,8 +10,8 @@ import './css/Cart.css'
 
 const Cart = () => {
 
-    const cart = useSelector((state:{auth: {cart: []}}) => state.auth.cart)
-    const cartTotal = useSelector((state:{auth: any}) => state.auth.cartTotal)
+    const cart = useSelector((state:{cart: {cart: []}}) => state.cart.cart)
+    const cartTotal = useSelector((state:{cart: any}) => state.cart.cartTotal)
     
 
     const dispatch = useDispatch()
@@ -56,7 +56,7 @@ const Cart = () => {
     
   return (
     <>
-    {empty ? <div className="emptyMsg">There are no items in your cart</div> : 
+    {empty || cartTotal == 0 ? <div className="emptyMsg">There are no items in your cart</div> : 
     
     
     <>
@@ -76,7 +76,7 @@ const Cart = () => {
                     <div className="quantity_selector1">
 
                         <button title={index} id='increase' onClick={
-                            ()=>{dispatch(authActions.setCartQuantity({quantity: obj.quantityInCart + 1, name: obj.name}))
+                            ()=>{dispatch(cartActions.setCartQuantity({quantity: obj.quantityInCart + 1, name: obj.name}))
                             
                             // window.location.reload();
                         }
@@ -86,7 +86,7 @@ const Cart = () => {
                             <div className="quant1">{obj.quantityInCart}</div>
 
                     <button title={index} id='increase' onClick={
-                        ()=>{dispatch(authActions.setCartQuantity({quantity: obj.quantityInCart - 1, name: obj.name}))
+                        ()=>{dispatch(cartActions.setCartQuantity({quantity: obj.quantityInCart - 1, name: obj.name}))
 
                         // window.location.reload();
                     }
@@ -95,7 +95,7 @@ const Cart = () => {
                     </div>
 
                     <button onClick={
-                        ()=>{dispatch(authActions.deleteCartItem({name: obj.name}))
+                        ()=>{dispatch(cartActions.deleteCartItem({name: obj.name}))
 
                         // window.location.reload();
 
@@ -106,7 +106,7 @@ const Cart = () => {
     })}
 
     <div className="check-total-sc">
-        Total: ${total.toFixed(2)}
+        Total: ${cartTotal.toFixed(2)}
     </div>
 
     </div>

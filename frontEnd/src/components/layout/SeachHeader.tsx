@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {authActions} from '../../slice/AuthSlice';
+import { cartActions } from "../../slice/CartSlice";
 import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import '../css/CartIcon.css'
 
 const SeachHeader = () => {
-  const cart = useSelector((state:{auth: {cart: any}}) => state.auth.cart)
+  const cart = useSelector((state:{cart: {cart: any}}) => state.cart.cart)
 
   const [cartQuant, setCartQuant] = useState(0)
 
